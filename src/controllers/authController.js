@@ -314,6 +314,22 @@ const authController = {
     } catch (error) {
       next(error);
     }
+  },
+
+  // Thêm method logout
+  logout: async (req, res, next) => {
+    try {
+      // Trong thực tế, bạn có thể muốn thêm token vào blacklist hoặc 
+      // lưu trữ trong database để track các token đã đăng xuất
+      // Nhưng ở đây chúng ta sẽ xử lý đơn giản bằng cách trả về thông báo thành công
+      
+      res.json({
+        status: 'success',
+        message: 'Đăng xuất thành công'
+      });
+    } catch (error) {
+      next(error);
+    }
   }
 };
 
