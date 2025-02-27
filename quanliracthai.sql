@@ -147,3 +147,9 @@ ALTER TABLE `Reports` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`)
 ALTER TABLE `ReportDetails` ADD FOREIGN KEY (`report_id`) REFERENCES `Reports` (`report_id`) ON DELETE CASCADE;
 
 ALTER TABLE `ReportDetails` ADD FOREIGN KEY (`waste_type_id`) REFERENCES `WasteTypes` (`waste_type_id`) ON DELETE CASCADE;
+
+-- Thêm role ADMIN vào bảng Roles
+INSERT INTO Roles (role_id, name) VALUES (1, 'ADMIN');
+
+-- Giả sử user_id = 1 là admin, thêm vào bảng UserRoles
+INSERT INTO UserRoles (user_id, role_id) VALUES (1, 1);

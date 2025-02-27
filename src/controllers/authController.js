@@ -140,18 +140,36 @@ const authController = {
         );
         console.log('Insert result:', result);
 
-        // Lấy thông tin user vừa tạo
-        const [newUser] = await pool.execute(
-          'SELECT user_id, full_name, username, email, status FROM Users WHERE user_id = ?',
+        // Sau khi insert user thành công, kiểm tra xem có user nào trong hệ thống chưa
+        const [userCount] = await pool.execute('SELECT COUNT(*) as count FROM Users');
+        
+        // Nếu đây là user đầu tiên, set làm admin
+        if (userCount[0].count === 1) {
+          await pool.execute(
+            'INSERT INTO UserRoles (user_id, role_id) VALUES (?, ?)',
+            [result.insertId, 1] // role_id = 1 là ADMIN
+          );
+        }
+
+        // Lấy thông tin user và role
+        const [newUser] = await pool.execute(`
+          SELECT u.user_id, u.full_name, u.username, u.email, u.status, 
+                 GROUP_CONCAT(r.name) as roles
+          FROM Users u
+          LEFT JOIN UserRoles ur ON u.user_id = ur.user_id
+          LEFT JOIN Roles r ON ur.role_id = r.role_id
+          WHERE u.user_id = ?
+          GROUP BY u.user_id`,
           [result.insertId]
         );
 
-        // Tạo JWT token
+        // Tạo JWT token với thêm thông tin về role
         const token = jwt.sign(
           { 
             id: newUser[0].user_id,
             username: newUser[0].username,
-            status: newUser[0].status
+            status: newUser[0].status,
+            roles: newUser[0].roles ? newUser[0].roles.split(',') : []
           }, 
           process.env.JWT_SECRET,
           { expiresIn: '24h' }
@@ -167,7 +185,8 @@ const authController = {
               full_name: newUser[0].full_name,
               username: newUser[0].username,
               email: newUser[0].email,
-              status: newUser[0].status
+              status: newUser[0].status,
+              roles: newUser[0].roles ? newUser[0].roles.split(',') : []
             },
           }
         });
@@ -198,8 +217,13 @@ const authController = {
       }
 
       // Kiểm tra user có tồn tại không
-      const [users] = await pool.execute(
-        'SELECT * FROM Users WHERE username = ? OR email = ?',
+      const [users] = await pool.execute(`
+        SELECT u.*, GROUP_CONCAT(r.name) as roles
+        FROM Users u
+        LEFT JOIN UserRoles ur ON u.user_id = ur.user_id
+        LEFT JOIN Roles r ON ur.role_id = r.role_id
+        WHERE u.username = ? OR u.email = ?
+        GROUP BY u.user_id`,
         [username, username]
       );
 
@@ -220,11 +244,13 @@ const authController = {
         throw new AuthenticationError('Tài khoản đã bị vô hiệu hóa');
       }
 
-      // Tạo JWT token
+      // Tạo JWT token với thêm thông tin về role
       const token = jwt.sign(
         { 
           id: user.user_id,
-          username: user.username
+          username: user.username,
+          status: user.status,
+          roles: user.roles ? user.roles.split(',') : []
         }, 
         process.env.JWT_SECRET,
         { expiresIn: '24h' }
@@ -240,6 +266,8 @@ const authController = {
             full_name: user.full_name,
             username: user.username,
             email: user.email,
+            status: user.status,
+            roles: user.roles ? user.roles.split(',') : []
           },
         }
       });
@@ -247,6 +275,46 @@ const authController = {
       next(error);
     }
   },
+
+  // Thêm method mới vào authController
+  getCurrentUser: async (req, res, next) => {
+    try {
+      const userId = req.user.id;
+
+      const [users] = await pool.execute(`
+        SELECT u.user_id, u.full_name, u.username, u.email, u.status,
+               GROUP_CONCAT(r.name) as roles
+        FROM Users u
+        LEFT JOIN UserRoles ur ON u.user_id = ur.user_id
+        LEFT JOIN Roles r ON ur.role_id = r.role_id
+        WHERE u.user_id = ?
+        GROUP BY u.user_id`,
+        [userId]
+      );
+
+      if (users.length === 0) {
+        throw new AuthenticationError('User không tồn tại');
+      }
+
+      const user = users[0];
+
+      res.json({
+        status: 'success',
+        data: {
+          user: {
+            id: user.user_id,
+            full_name: user.full_name,
+            username: user.username,
+            email: user.email,
+            status: user.status,
+            roles: user.roles ? user.roles.split(',') : []
+          }
+        }
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 };
 
 module.exports = authController; 
