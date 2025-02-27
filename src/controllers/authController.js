@@ -47,8 +47,12 @@ const validateRegistrationData = (data) => {
   }
 
   // Validate phone nếu có
-  if (phone && !validator.isMobilePhone(phone, 'vi-VN')) {
-    errors.push('Số điện thoại không hợp lệ');
+  if (phone) {
+    // Regex cho số điện thoại Việt Nam với các đầu số: 02, 03, 07, 08, 09
+    const phoneRegex = /^(02|03|07|08|09)[0-9]{8}$/;
+    if (!phoneRegex.test(phone)) {
+      errors.push('Số điện thoại không hợp lệ. Số điện thoại phải bắt đầu bằng 02, 03, 07, 08, 09 và có 10 số');
+    }
   }
 
   if (errors.length > 0) {
@@ -60,41 +64,60 @@ const authController = {
   // Đăng ký người dùng mới
   register: async (req, res, next) => {
     try {
-      // Kiểm tra req.body có tồn tại không
+      console.log('Request body:', req.body);
+
       if (!req.body) {
         throw new ValidationError('Dữ liệu đăng ký không được để trống');
       }
 
       let { full_name, username, email, password, phone, address } = req.body;
+      
+      console.log('Extracted data:', { full_name, username, email, password, phone, address });
 
-      // Chuyển đổi các giá trị thành string nếu tồn tại
+      // Chuyển đổi và làm sạch dữ liệu
       full_name = full_name?.toString().trim();
-      username = username?.toString().trim();
-      email = email?.toString().trim();
+      username = username?.toString().trim().toLowerCase(); // Chuyển username về lowercase
+      email = email?.toString().trim().toLowerCase(); // Chuyển email về lowercase
       password = password?.toString();
-      phone = phone?.toString().trim();
-      address = address?.toString().trim();
+      phone = phone?.toString().trim() || null; // Xử lý null cho phone
+      address = address?.toString().trim() || null; // Xử lý null cho address
 
-      // Validate tất cả dữ liệu đầu vào
-      validateRegistrationData({ full_name, username, email, password, phone });
+      console.log('After trim:', { full_name, username, email, password, phone, address });
+
+      // Validate dữ liệu
+      try {
+        validateRegistrationData({ full_name, username, email, password, phone });
+        console.log('Validation passed');
+      } catch (validationError) {
+        console.log('Validation failed:', validationError.message);
+        throw validationError;
+      }
 
       try {
-        // Kiểm tra username và email đã tồn tại chưa
-        const [existingUser] = await pool.execute(
-          'SELECT username, email FROM Users WHERE username = ? OR email = ?',
-          [username, email]
+        // Kiểm tra username và email riêng biệt để thông báo chính xác hơn
+        const [existingUsername] = await pool.execute(
+          'SELECT username FROM Users WHERE username = ?',
+          [username]
         );
 
-        if (existingUser.length > 0) {
-          const field = existingUser[0].username === username ? 'Username' : 'Email';
-          throw new DuplicateError(`${field} đã tồn tại trong hệ thống`);
+        if (existingUsername.length > 0) {
+          throw new DuplicateError('Username đã tồn tại trong hệ thống');
+        }
+
+        const [existingEmail] = await pool.execute(
+          'SELECT email FROM Users WHERE email = ?',
+          [email]
+        );
+
+        if (existingEmail.length > 0) {
+          throw new DuplicateError('Email đã tồn tại trong hệ thống');
         }
 
         // Mã hóa mật khẩu
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        // Thêm user mới vào database
+        // Insert user mới với các trường đúng như trong database
         const [result] = await pool.execute(
           `INSERT INTO Users (
             full_name,
@@ -102,23 +125,33 @@ const authController = {
             email,
             password_hash,
             phone,
-            address
-          ) VALUES (?, ?, ?, ?, ?, ?)`,
+            address,
+            status,
+            created_at
+          ) VALUES (?, ?, ?, ?, ?, ?, 'active', NOW())`,
           [
             full_name,
             username,
             email,
             hashedPassword,
-            phone || null,
-            address || null
+            phone,
+            address
           ]
+        );
+        console.log('Insert result:', result);
+
+        // Lấy thông tin user vừa tạo
+        const [newUser] = await pool.execute(
+          'SELECT user_id, full_name, username, email, status FROM Users WHERE user_id = ?',
+          [result.insertId]
         );
 
         // Tạo JWT token
         const token = jwt.sign(
           { 
-            id: result.insertId,
-            username: username
+            id: newUser[0].user_id,
+            username: newUser[0].username,
+            status: newUser[0].status
           }, 
           process.env.JWT_SECRET,
           { expiresIn: '24h' }
@@ -130,16 +163,19 @@ const authController = {
           data: {
             token,
             user: {
-              id: result.insertId,
-              full_name,
-              username,
-              email,
+              id: newUser[0].user_id,
+              full_name: newUser[0].full_name,
+              username: newUser[0].username,
+              email: newUser[0].email,
+              status: newUser[0].status
             },
           }
         });
       } catch (dbError) {
-        // Xử lý lỗi database
         console.error('Database error:', dbError);
+        if (dbError.code === 'ER_DUP_ENTRY') {
+          throw new DuplicateError('Username hoặc email đã tồn tại');
+        }
         throw new Error('Lỗi khi thao tác với database');
       }
     } catch (error) {
