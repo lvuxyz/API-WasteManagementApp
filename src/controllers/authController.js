@@ -474,6 +474,83 @@ const authController = {
     } catch (error) {
       next(error);
     }
+  },
+
+  // Đổi mật khẩu
+  changePassword: async (req, res, next) => {
+    try {
+      const userId = req.user.id;
+      const { currentPassword, newPassword, confirmPassword } = req.body;
+
+      // Validate input
+      if (!currentPassword || !newPassword || !confirmPassword) {
+        throw new ValidationError('Vui lòng cung cấp đầy đủ thông tin: mật khẩu hiện tại, mật khẩu mới và xác nhận mật khẩu mới');
+      }
+
+      // Kiểm tra mật khẩu mới và xác nhận mật khẩu
+      if (newPassword !== confirmPassword) {
+        throw new ValidationError('Mật khẩu mới và xác nhận mật khẩu mới không khớp');
+      }
+
+      // Kiểm tra mật khẩu mới không được trùng với mật khẩu hiện tại
+      if (currentPassword === newPassword) {
+        throw new ValidationError('Mật khẩu mới không được trùng với mật khẩu hiện tại');
+      }
+
+      // Validate mật khẩu mới
+      if (newPassword.length < 6) {
+        throw new ValidationError('Mật khẩu mới phải có ít nhất 6 ký tự');
+      }
+
+      if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/.test(newPassword)) {
+        throw new ValidationError(
+          'Mật khẩu mới phải đáp ứng các yêu cầu sau:\n' +
+          '- Ít nhất 6 ký tự\n' +
+          '- Ít nhất 1 chữ hoa\n' +
+          '- Ít nhất 1 chữ thường\n' +
+          '- Ít nhất 1 số\n' +
+          '- Ít nhất 1 ký tự đặc biệt (@$!%*?&)'
+        );
+      }
+
+      // Kiểm tra mật khẩu hiện tại
+      const [users] = await pool.execute(
+        'SELECT password_hash FROM Users WHERE user_id = ?',
+        [userId]
+      );
+
+      if (users.length === 0) {
+        throw new AuthenticationError('Người dùng không tồn tại');
+      }
+
+      const user = users[0];
+      const isValidPassword = await bcrypt.compare(currentPassword, user.password_hash);
+
+      if (!isValidPassword) {
+        throw new ValidationError('Mật khẩu hiện tại không chính xác');
+      }
+
+      // Kiểm tra mật khẩu mới có trùng với các mật khẩu đã sử dụng gần đây không
+      const hashedNewPassword = await bcrypt.hash(newPassword, await bcrypt.genSalt(10));
+      const isCurrentPassword = await bcrypt.compare(newPassword, user.password_hash);
+
+      if (isCurrentPassword) {
+        throw new ValidationError('Mật khẩu mới không được trùng với mật khẩu đã sử dụng gần đây');
+      }
+
+      // Cập nhật mật khẩu
+      await pool.execute(
+        'UPDATE Users SET password_hash = ? WHERE user_id = ?',
+        [hashedNewPassword, userId]
+      );
+
+      res.json({
+        status: 'success',
+        message: 'Đổi mật khẩu thành công'
+      });
+    } catch (error) {
+      next(error);
+    }
   }
 };
 

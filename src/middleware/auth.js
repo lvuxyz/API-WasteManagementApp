@@ -12,8 +12,14 @@ const auth = async (req, res, next) => {
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     
-    const [users] = await pool.execute(
-      'SELECT user_id, username, email, status FROM Users WHERE user_id = ?',
+    const [users] = await pool.execute(`
+      SELECT u.user_id, u.username, u.email, u.status,
+             GROUP_CONCAT(r.name) as roles
+      FROM Users u
+      LEFT JOIN UserRoles ur ON u.user_id = ur.user_id
+      LEFT JOIN Roles r ON ur.role_id = r.role_id
+      WHERE u.user_id = ?
+      GROUP BY u.user_id`,
       [decoded.id]
     );
 
@@ -27,11 +33,24 @@ const auth = async (req, res, next) => {
       throw new AuthenticationError('Tài khoản đã bị vô hiệu hóa');
     }
 
-    req.user = user;
+    req.user = {
+      id: user.user_id,
+      username: user.username,
+      email: user.email,
+      status: user.status,
+      roles: user.roles ? user.roles.split(',') : []
+    };
+    
     req.token = token;
     next();
   } catch (error) {
-    next(error);
+    if (error.name === 'JsonWebTokenError') {
+      next(new AuthenticationError('Token không hợp lệ'));
+    } else if (error.name === 'TokenExpiredError') {
+      next(new AuthenticationError('Token đã hết hạn'));
+    } else {
+      next(error);
+    }
   }
 };
 
