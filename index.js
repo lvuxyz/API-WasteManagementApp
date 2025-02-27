@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const mongoose = require('mongoose');
+const mysql = require('mysql2');
 
 // Load env vars
 dotenv.config();
@@ -13,16 +13,33 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Create MySQL connection pool
+const pool = mysql.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+});
+
+// Convert pool to use promises
+const promisePool = pool.promise();
+
+// Test database connection
+promisePool.query('SELECT 1')
+  .then(() => {
+    console.log('Database connected...');
+  })
+  .catch((err) => {
+    console.error('Database connection error:', err);
+  });
+
 // Routes
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
-
-// Connect to MongoDB
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => console.log('MongoDB Connected...'))
-  .catch((err) => console.log('MongoDB connection error:', err));
 
 const PORT = process.env.PORT || 3001;
 

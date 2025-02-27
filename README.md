@@ -1,11 +1,11 @@
 # Waste Management App API
 
-API backend cho ứng dụng Waste Management được xây dựng bằng Node.js, Express và MongoDB.
+API backend cho ứng dụng Waste Management được xây dựng bằng Node.js, Express và MySQL.
 
 ## Yêu cầu hệ thống
 
 - Node.js (version 14 trở lên)
-- MongoDB
+- MySQL
 - npm hoặc yarn
 
 ## Cài đặt
@@ -13,8 +13,8 @@ API backend cho ứng dụng Waste Management được xây dựng bằng Node.j
 1. Clone repository:
 
 ```bash
-git clone https://github.com/yourusername/wastemanagementapp.git
-cd waste-management-app
+git clone https://github.com/lvuxyz/API-WasteManagementApp.git
+cd API-WasteManagementApp
 ```
 
 2. Cài đặt các dependencies:
@@ -27,7 +27,10 @@ npm install
 
 ```env
 PORT=3001
-MONGODB_URI=mongodb://localhost:27017/your-database-name
+DB_HOST=localhost
+DB_USER=your_username
+DB_PASSWORD=your_password
+DB_NAME=waste_management_db
 ```
 
 ## Chạy ứng dụng
@@ -55,7 +58,7 @@ Server sẽ chạy tại `http://localhost:3001`
 ```
 API-WasteManagementApp/
 ├── controllers/     # Xử lý logic của routes
-├── models/         # MongoDB models
+├── models/         # MySQL models
 ├── routes/         # Định nghĩa routes
 ├── middleware/     # Middleware functions
 ├── config/         # Cấu hình
@@ -68,7 +71,7 @@ API-WasteManagementApp/
 ## Công nghệ sử dụng
 
 - Express.js - Web framework
-- MongoDB - Database
-- Mongoose - MongoDB object modeling
+- MySQL - Database
+- mysql2 - MySQL client for Node.js
 - Cors - Enable CORS
 - Dotenv - Environment variables
