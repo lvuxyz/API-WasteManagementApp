@@ -7,6 +7,19 @@ const {
   AuthenticationError, 
   DuplicateError 
 } = require('../utils/errors');
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
+
+// Cấu hình nodemailer
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
+  secure: process.env.SMTP_SECURE === 'true',
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS
+  }
+});
 
 const validateRegistrationData = (data) => {
   const errors = [];
@@ -326,6 +339,137 @@ const authController = {
       res.json({
         status: 'success',
         message: 'Đăng xuất thành công'
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  // Gửi yêu cầu reset password
+  forgotPassword: async (req, res, next) => {
+    try {
+      const { email } = req.body;
+
+      if (!email) {
+        throw new ValidationError('Vui lòng cung cấp email');
+      }
+
+      // Kiểm tra email có tồn tại không
+      const [users] = await pool.execute(
+        'SELECT user_id, full_name, email FROM Users WHERE email = ?',
+        [email]
+      );
+
+      if (users.length === 0) {
+        throw new ValidationError('Email không tồn tại trong hệ thống');
+      }
+
+      const user = users[0];
+
+      // Tạo token reset password
+      const resetToken = crypto.randomBytes(32).toString('hex');
+      const hashedToken = crypto
+        .createHash('sha256')
+        .update(resetToken)
+        .digest('hex');
+
+      // Xóa các token cũ của user này (nếu có)
+      await pool.execute(
+        'DELETE FROM PasswordResets WHERE user_id = ?',
+        [user.user_id]
+      );
+
+      // Lưu token mới vào database (hết hạn sau 15 phút)
+      await pool.execute(
+        `INSERT INTO PasswordResets (user_id, reset_token, expires_at) 
+         VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 15 MINUTE))`,
+        [user.user_id, hashedToken]
+      );
+
+      // Tạo URL reset password
+      const resetURL = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
+
+      // Gửi email
+      await transporter.sendMail({
+        from: process.env.SMTP_FROM,
+        to: user.email,
+        subject: 'Yêu cầu đặt lại mật khẩu',
+        html: `
+          <h1>Xin chào ${user.full_name},</h1>
+          <p>Bạn đã yêu cầu đặt lại mật khẩu. Vui lòng click vào link bên dưới để đặt lại mật khẩu:</p>
+          <a href="${resetURL}">${resetURL}</a>
+          <p>Link này sẽ hết hạn sau 15 phút.</p>
+          <p>Nếu bạn không yêu cầu đặt lại mật khẩu, vui lòng bỏ qua email này.</p>
+        `
+      });
+
+      res.json({
+        status: 'success',
+        message: 'Link đặt lại mật khẩu đã được gửi đến email của bạn'
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  // Reset password với token
+  resetPassword: async (req, res, next) => {
+    try {
+      const { token, password } = req.body;
+
+      if (!token || !password) {
+        throw new ValidationError('Vui lòng cung cấp đầy đủ thông tin');
+      }
+
+      // Validate password
+      if (password.length < 6) {
+        throw new ValidationError('Mật khẩu phải có ít nhất 6 ký tự');
+      }
+
+      if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/.test(password)) {
+        throw new ValidationError('Mật khẩu phải chứa ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt');
+      }
+
+      // Hash token từ params
+      const hashedToken = crypto
+        .createHash('sha256')
+        .update(token)
+        .digest('hex');
+
+      // Tìm token trong database
+      const [resetRecords] = await pool.execute(
+        `SELECT pr.user_id, u.email 
+         FROM PasswordResets pr
+         JOIN Users u ON pr.user_id = u.user_id
+         WHERE pr.reset_token = ? AND pr.expires_at > NOW()`,
+        [hashedToken]
+      );
+
+      if (resetRecords.length === 0) {
+        throw new ValidationError('Token không hợp lệ hoặc đã hết hạn');
+      }
+
+      const resetRecord = resetRecords[0];
+
+      // Hash password mới
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+
+      // Cập nhật password
+      await pool.execute(
+        'UPDATE Users SET password_hash = ? WHERE user_id = ?',
+        [hashedPassword, resetRecord.user_id]
+      );
+
+      // Xóa token đã sử dụng
+      await pool.execute(
+        'DELETE FROM PasswordResets WHERE user_id = ?',
+        [resetRecord.user_id]
+      );
+
+      res.json({
+        status: 'success',
+        message: 'Mật khẩu đã được đặt lại thành công'
       });
     } catch (error) {
       next(error);

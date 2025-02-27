@@ -110,11 +110,22 @@ CREATE TABLE `ReportDetails` (
   PRIMARY KEY (`report_id`, `waste_type_id`)
 );
 
+CREATE TABLE `PasswordResets` (
+  `id` INT PRIMARY KEY AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `reset_token` VARCHAR(255) NOT NULL,
+  `expires_at` DATETIME NOT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`user_id`) REFERENCES `Users`(`user_id`) ON DELETE CASCADE
+);
+
 CREATE INDEX `idx_users_username` ON `Users` (`username`);
 
 CREATE INDEX `idx_users_email` ON `Users` (`email`);
 
 CREATE INDEX `idx_transactions_status` ON `Transactions` (`status`);
+
+CREATE INDEX `idx_reset_token` ON `PasswordResets` (`reset_token`);
 
 ALTER TABLE `UserRoles` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`) ON DELETE CASCADE;
 
