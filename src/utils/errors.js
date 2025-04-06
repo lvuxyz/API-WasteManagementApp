@@ -16,6 +16,13 @@ class ValidationError extends AppError {
   }
 }
 
+class BadRequestError extends AppError {
+  constructor(message) {
+    super(message, 400);
+    this.name = 'BadRequestError';
+  }
+}
+
 class AuthenticationError extends AppError {
   constructor(message) {
     super(message, 401);
@@ -47,6 +54,7 @@ class DuplicateError extends AppError {
 module.exports = {
   AppError,
   ValidationError,
+  BadRequestError,
   AuthenticationError,
   AuthorizationError,
   NotFoundError,
