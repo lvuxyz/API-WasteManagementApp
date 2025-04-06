@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th4 06, 2025 lúc 03:37 PM
+-- Thời gian đã tạo: Th4 06, 2025 lúc 03:56 PM
 -- Phiên bản máy phục vụ: 8.0.30
 -- Phiên bản PHP: 8.1.10
 
@@ -39,6 +39,14 @@ CREATE TABLE `collectionpoints` (
   `status` enum('active','inactive','full') DEFAULT 'active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `collectionpoints`
+--
+
+INSERT INTO `collectionpoints` (`collection_point_id`, `name`, `address`, `latitude`, `longitude`, `operating_hours`, `capacity`, `current_load`, `status`) VALUES
+(1, 'Điểm Thu Gom Số 1', '123 Đường ABC, Quận 1, TP HCM', 10.77360000, 106.70340000, '08:00 - 17:00', 1000.00, 0.00, 'active'),
+(2, 'Điểm Thu Gom Số 1', '123 Đường ABC, Quận 1, TP HCM', 10.77360000, 106.70340000, '08:00 - 17:00', 1000.00, 0.00, 'active');
+
 -- --------------------------------------------------------
 
 --
@@ -49,8 +57,19 @@ CREATE TABLE `collectionpointstatushistory` (
   `status_id` int NOT NULL,
   `collection_point_id` int DEFAULT NULL,
   `status` enum('active','inactive','full') NOT NULL,
-  `updated_at` datetime DEFAULT (now())
+  `updated_at` datetime DEFAULT (now()),
+  `updated_by` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `collectionpointstatushistory`
+--
+
+INSERT INTO `collectionpointstatushistory` (`status_id`, `collection_point_id`, `status`, `updated_at`, `updated_by`) VALUES
+(1, 1, 'active', '2025-04-06 22:49:09', NULL),
+(2, 1, 'full', '2025-04-06 22:50:06', NULL),
+(3, 1, 'active', '2025-04-06 22:50:36', NULL),
+(4, 2, 'active', '2025-04-06 22:52:32', NULL);
 
 -- --------------------------------------------------------
 
@@ -264,13 +283,6 @@ CREATE TABLE `wastetypes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `wastetypes`
---
-
-INSERT INTO `wastetypes` (`waste_type_id`, `name`, `description`, `recyclable`, `handling_instructions`, `unit_price`) VALUES
-(1, 'Nhựa tái chế', 'Các loại nhựa có thể tái chế', 1, 'Rửa sạch trước khi thu gom', 5000.00);
-
---
 -- Chỉ mục cho các bảng đã đổ
 --
 
@@ -285,7 +297,8 @@ ALTER TABLE `collectionpoints`
 --
 ALTER TABLE `collectionpointstatushistory`
   ADD PRIMARY KEY (`status_id`),
-  ADD KEY `collection_point_id` (`collection_point_id`);
+  ADD KEY `collection_point_id` (`collection_point_id`),
+  ADD KEY `updated_by` (`updated_by`);
 
 --
 -- Chỉ mục cho bảng `collectionpointwastetypes`
@@ -396,13 +409,13 @@ ALTER TABLE `wastetypes`
 -- AUTO_INCREMENT cho bảng `collectionpoints`
 --
 ALTER TABLE `collectionpoints`
-  MODIFY `collection_point_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `collection_point_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `collectionpointstatushistory`
 --
 ALTER TABLE `collectionpointstatushistory`
-  MODIFY `status_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `status_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `images`
@@ -462,7 +475,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `wastetypes`
 --
 ALTER TABLE `wastetypes`
-  MODIFY `waste_type_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `waste_type_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ràng buộc đối với các bảng kết xuất
@@ -472,7 +485,8 @@ ALTER TABLE `wastetypes`
 -- Ràng buộc cho bảng `collectionpointstatushistory`
 --
 ALTER TABLE `collectionpointstatushistory`
-  ADD CONSTRAINT `collectionpointstatushistory_ibfk_1` FOREIGN KEY (`collection_point_id`) REFERENCES `collectionpoints` (`collection_point_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `collectionpointstatushistory_ibfk_1` FOREIGN KEY (`collection_point_id`) REFERENCES `collectionpoints` (`collection_point_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `collectionpointstatushistory_ibfk_2` FOREIGN KEY (`updated_by`) REFERENCES `users` (`user_id`);
 
 --
 -- Ràng buộc cho bảng `collectionpointwastetypes`

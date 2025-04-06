@@ -30,6 +30,7 @@ exports.getCollectionPointById = async (req, res, next) => {
   try {
     const { id } = req.params;
     
+    // Lấy thông tin cơ bản của điểm thu gom
     const [rows] = await pool.execute(`
       SELECT * FROM CollectionPoints WHERE collection_point_id = ?
     `, [id]);
@@ -38,18 +39,11 @@ exports.getCollectionPointById = async (req, res, next) => {
       return next(new NotFoundError(`Không tìm thấy điểm thu gom với ID: ${id}`));
     }
     
-    // Get waste types supported by this collection point
+    // Lấy các loại rác được thu gom tại điểm này
     const [wasteTypes] = await pool.execute(`
       SELECT wt.* FROM WasteTypes wt
       JOIN CollectionPointWasteTypes cpwt ON wt.waste_type_id = cpwt.waste_type_id
       WHERE cpwt.collection_point_id = ?
-    `, [id]);
-    
-    // Get status history
-    const [statusHistory] = await pool.execute(`
-      SELECT * FROM CollectionPointStatusHistory
-      WHERE collection_point_id = ?
-      ORDER BY updated_at DESC
     `, [id]);
     
     res.status(200).json({
@@ -57,8 +51,7 @@ exports.getCollectionPointById = async (req, res, next) => {
       data: {
         collectionPoint: {
           ...rows[0],
-          wasteTypes,
-          statusHistory
+          wasteTypes
         }
       }
     });
@@ -96,9 +89,9 @@ exports.createCollectionPoint = async (req, res, next) => {
     
     // Create initial status history entry
     await pool.execute(`
-      INSERT INTO CollectionPointStatusHistory (collection_point_id, status)
-      VALUES (?, ?)
-    `, [result.insertId, status]);
+      INSERT INTO CollectionPointStatusHistory (collection_point_id, status, updated_by)
+      VALUES (?, ?, ?)
+    `, [result.insertId, status, req.user.id]);
     
     // Get the created collection point
     const [newCollectionPoint] = await pool.execute(`
@@ -205,9 +198,9 @@ exports.updateCollectionPoint = async (req, res, next) => {
     // Create status history entry if status has changed
     if (status !== undefined && status !== oldStatus) {
       await pool.execute(`
-        INSERT INTO CollectionPointStatusHistory (collection_point_id, status)
-        VALUES (?, ?)
-      `, [id, status]);
+        INSERT INTO CollectionPointStatusHistory (collection_point_id, status, updated_by)
+        VALUES (?, ?, ?)
+      `, [id, status, req.user.id]);
     }
     
     // Get the updated collection point
@@ -290,9 +283,9 @@ exports.updateCollectionPointStatus = async (req, res, next) => {
       
       // Create status history entry
       await pool.execute(`
-        INSERT INTO CollectionPointStatusHistory (collection_point_id, status)
-        VALUES (?, ?)
-      `, [id, status]);
+        INSERT INTO CollectionPointStatusHistory (collection_point_id, status, updated_by)
+        VALUES (?, ?, ?)
+      `, [id, status, req.user.id]);
     }
     
     // Get the updated collection point
@@ -318,20 +311,26 @@ exports.getCollectionPointStatusHistory = async (req, res, next) => {
   try {
     const { id } = req.params;
     
-    // Check if collection point exists
+    // Kiểm tra điểm thu gom có tồn tại không
     const [existingPoints] = await pool.execute(`
-      SELECT * FROM CollectionPoints WHERE collection_point_id = ?
+      SELECT collection_point_id FROM CollectionPoints WHERE collection_point_id = ?
     `, [id]);
     
     if (existingPoints.length === 0) {
       return next(new NotFoundError(`Không tìm thấy điểm thu gom với ID: ${id}`));
     }
     
-    // Get status history
+    // Lấy lịch sử trạng thái với thêm thông tin chi tiết
     const [statusHistory] = await pool.execute(`
-      SELECT * FROM CollectionPointStatusHistory
-      WHERE collection_point_id = ?
-      ORDER BY updated_at DESC
+      SELECT 
+        cpsh.status_id,
+        cpsh.status,
+        cpsh.updated_at,
+        COALESCE(u.username, 'System') as updated_by
+      FROM CollectionPointStatusHistory cpsh
+      LEFT JOIN Users u ON u.user_id = cpsh.updated_by
+      WHERE cpsh.collection_point_id = ?
+      ORDER BY cpsh.updated_at DESC
     `, [id]);
     
     res.status(200).json({
