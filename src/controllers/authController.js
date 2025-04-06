@@ -162,6 +162,27 @@ const authController = {
             'INSERT INTO UserRoles (user_id, role_id) VALUES (?, ?)',
             [result.insertId, 1] // role_id = 1 là ADMIN
           );
+        } else {
+          // Kiểm tra xem có role USER trong database không (role_id = 2)
+          const [userRoleCheck] = await pool.execute('SELECT role_id FROM Roles WHERE name = "USER"');
+          
+          if (userRoleCheck.length > 0) {
+            // Nếu có role USER, gán cho người dùng mới
+            await pool.execute(
+              'INSERT INTO UserRoles (user_id, role_id) VALUES (?, ?)',
+              [result.insertId, userRoleCheck[0].role_id]
+            );
+          } else {
+            // Nếu chưa có role USER, tạo role mới và gán cho người dùng
+            const [insertRoleResult] = await pool.execute(
+              'INSERT INTO Roles (name) VALUES ("USER")'
+            );
+            
+            await pool.execute(
+              'INSERT INTO UserRoles (user_id, role_id) VALUES (?, ?)',
+              [result.insertId, insertRoleResult.insertId]
+            );
+          }
         }
 
         // Lấy thông tin user và role
