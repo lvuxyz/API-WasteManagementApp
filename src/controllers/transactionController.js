@@ -101,7 +101,7 @@ const transactionController = {
 
       // Kiểm tra điểm thu gom có tồn tại và đang hoạt động
       const [collectionPoint] = await pool.execute(
-        'SELECT * FROM CollectionPoints WHERE collection_point_id = ? AND status = "active"',
+        'SELECT * FROM collectionpoints WHERE collection_point_id = ? AND status = "active"',
         [collection_point_id]
       );
 
@@ -111,7 +111,7 @@ const transactionController = {
 
       // Kiểm tra loại chất thải có tồn tại
       const [wasteType] = await pool.execute(
-        'SELECT * FROM WasteTypes WHERE waste_type_id = ?',
+        'SELECT * FROM wastetypes WHERE waste_type_id = ?',
         [waste_type_id]
       );
 
@@ -121,7 +121,7 @@ const transactionController = {
 
       // Tạo giao dịch mới
       const [result] = await pool.execute(
-        `INSERT INTO Transactions 
+        `INSERT INTO transactions 
          (user_id, collection_point_id, waste_type_id, quantity, unit, transaction_date, status, proof_image_url)
          VALUES (?, ?, ?, ?, ?, NOW(), 'pending', ?)`,
         [user_id, collection_point_id, waste_type_id, quantity, unit, proof_image_url]
@@ -131,7 +131,7 @@ const transactionController = {
 
       // Thêm vào lịch sử giao dịch
       await pool.execute(
-        'INSERT INTO TransactionHistory (transaction_id, status) VALUES (?, "pending")',
+        'INSERT INTO transactionhistory (transaction_id, status) VALUES (?, "pending")',
         [transactionId]
       );
 
@@ -141,10 +141,10 @@ const transactionController = {
                 u.username as user_name,
                 cp.name as collection_point_name,
                 wt.name as waste_type_name
-         FROM Transactions t
-         LEFT JOIN Users u ON t.user_id = u.user_id
-         LEFT JOIN CollectionPoints cp ON t.collection_point_id = cp.collection_point_id
-         LEFT JOIN WasteTypes wt ON t.waste_type_id = wt.waste_type_id
+         FROM transactions t
+         LEFT JOIN users u ON t.user_id = u.user_id
+         LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id
+         LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id
          WHERE t.transaction_id = ?`,
         [transactionId]
       );
@@ -171,10 +171,10 @@ const transactionController = {
                u.username as user_name,
                cp.name as collection_point_name,
                wt.name as waste_type_name
-        FROM Transactions t
-        LEFT JOIN Users u ON t.user_id = u.user_id
-        LEFT JOIN CollectionPoints cp ON t.collection_point_id = cp.collection_point_id
-        LEFT JOIN WasteTypes wt ON t.waste_type_id = wt.waste_type_id
+        FROM transactions t
+        LEFT JOIN users u ON t.user_id = u.user_id
+        LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id
+        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id
       `;
 
       const params = [];
@@ -189,7 +189,7 @@ const transactionController = {
 
       // Lấy tổng số giao dịch
       const [totalCount] = await pool.execute(
-        'SELECT COUNT(*) as count FROM Transactions' + (status ? ' WHERE status = ?' : ''),
+        'SELECT COUNT(*) as count FROM transactions' + (status ? ' WHERE status = ?' : ''),
         status ? [status] : []
       );
 
@@ -223,10 +223,10 @@ const transactionController = {
                 u.full_name as user_full_name,
                 cp.name as collection_point_name,
                 wt.name as waste_type_name
-         FROM Transactions t
-         LEFT JOIN Users u ON t.user_id = u.user_id
-         LEFT JOIN CollectionPoints cp ON t.collection_point_id = cp.collection_point_id
-         LEFT JOIN WasteTypes wt ON t.waste_type_id = wt.waste_type_id
+         FROM transactions t
+         LEFT JOIN users u ON t.user_id = u.user_id
+         LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id
+         LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id
          WHERE t.transaction_id = ?`,
         [id]
       );
@@ -237,7 +237,7 @@ const transactionController = {
 
       // Lấy lịch sử trạng thái giao dịch
       const [history] = await pool.execute(
-        'SELECT * FROM TransactionHistory WHERE transaction_id = ? ORDER BY changed_at ASC',
+        'SELECT * FROM transactionhistory WHERE transaction_id = ? ORDER BY changed_at ASC',
         [id]
       );
 
@@ -266,7 +266,7 @@ const transactionController = {
 
       // Kiểm tra giao dịch tồn tại
       const [transaction] = await pool.execute(
-        'SELECT * FROM Transactions WHERE transaction_id = ?',
+        'SELECT * FROM transactions WHERE transaction_id = ?',
         [id]
       );
 
@@ -276,13 +276,13 @@ const transactionController = {
 
       // Cập nhật trạng thái giao dịch
       await pool.execute(
-        'UPDATE Transactions SET status = ? WHERE transaction_id = ?',
+        'UPDATE transactions SET status = ? WHERE transaction_id = ?',
         [status, id]
       );
 
       // Thêm vào lịch sử
       await pool.execute(
-        'INSERT INTO TransactionHistory (transaction_id, status) VALUES (?, ?)',
+        'INSERT INTO transactionhistory (transaction_id, status) VALUES (?, ?)',
         [id, status]
       );
 
@@ -294,7 +294,7 @@ const transactionController = {
 
         // Lấy giá trị điểm cho loại chất thải
         const [wasteTypeInfo] = await pool.execute(
-          'SELECT unit_price FROM WasteTypes WHERE waste_type_id = ?',
+          'SELECT unit_price FROM wastetypes WHERE waste_type_id = ?',
           [wasteType]
         );
 
@@ -331,9 +331,9 @@ const transactionController = {
         SELECT t.*, 
                cp.name as collection_point_name,
                wt.name as waste_type_name
-        FROM Transactions t
-        LEFT JOIN CollectionPoints cp ON t.collection_point_id = cp.collection_point_id
-        LEFT JOIN WasteTypes wt ON t.waste_type_id = wt.waste_type_id
+        FROM transactions t
+        LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id
+        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id
         WHERE t.user_id = ?
       `;
 
@@ -349,7 +349,7 @@ const transactionController = {
 
       // Lấy tổng số giao dịch của người dùng
       const [totalCount] = await pool.execute(
-        'SELECT COUNT(*) as count FROM Transactions WHERE user_id = ?' + (status ? ' AND status = ?' : ''),
+        'SELECT COUNT(*) as count FROM transactions WHERE user_id = ?' + (status ? ' AND status = ?' : ''),
         status ? [userId, status] : [userId]
       );
 
@@ -379,7 +379,7 @@ const transactionController = {
       
       // Check if transaction exists
       const [transaction] = await pool.execute(
-        'SELECT * FROM Transactions WHERE transaction_id = ?',
+        'SELECT * FROM transactions WHERE transaction_id = ?',
         [id]
       );
       
@@ -389,7 +389,7 @@ const transactionController = {
       
       // Get transaction history
       const [history] = await pool.execute(
-        `SELECT * FROM TransactionHistory 
+        `SELECT * FROM transactionhistory 
          WHERE transaction_id = ? 
          ORDER BY changed_at ASC`,
         [id]
@@ -440,7 +440,7 @@ const transactionController = {
           status,
           COUNT(*) as count,
           DATE_FORMAT(transaction_date, '${dateFormat}') as period
-        FROM Transactions
+        FROM transactions
         GROUP BY ${groupBy}, status
         ORDER BY transaction_date DESC
         LIMIT 30
@@ -452,8 +452,8 @@ const transactionController = {
           wt.name as waste_type,
           SUM(t.quantity) as total_quantity,
           DATE_FORMAT(t.transaction_date, '${dateFormat}') as period
-        FROM Transactions t
-        JOIN WasteTypes wt ON t.waste_type_id = wt.waste_type_id
+        FROM transactions t
+        JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id
         WHERE t.status = 'completed'
         GROUP BY ${groupBy}, t.waste_type_id
         ORDER BY t.transaction_date DESC
