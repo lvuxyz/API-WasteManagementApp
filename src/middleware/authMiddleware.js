@@ -5,7 +5,7 @@ const { AuthenticationError, AuthorizationError } = require('../utils/errors');
 /**
  * Authentication middleware
  */
-exports.isAuthenticated = async (req, res, next) => {
+exports.authenticateUser = async (req, res, next) => {
   try {
     const token = req.header('Authorization')?.replace('Bearer ', '');
     
@@ -60,9 +60,9 @@ exports.isAuthenticated = async (req, res, next) => {
 /**
  * Role-based authorization middleware
  */
-exports.restrictTo = (...roles) => {
+exports.authorizeRoles = (...roles) => {
   return (req, res, next) => {
-    // Make sure req.user exists (requires isAuthenticated middleware to run first)
+    // Make sure req.user exists (requires authenticateUser middleware to run first)
     if (!req.user) {
       return next(new AuthenticationError('Bạn chưa đăng nhập'));
     }
