@@ -1,4 +1,5 @@
 const createTransactionTables = require('./transactionTables');
+const createRecyclingProcessTables = require('./recyclingProcessTables');
 
 const runMigrations = async () => {
   try {
@@ -6,6 +7,9 @@ const runMigrations = async () => {
     
     // Run transaction tables migrations
     await createTransactionTables();
+    
+    // Run recycling process tables migrations
+    await createRecyclingProcessTables();
     
     console.log('All migrations have been completed successfully');
   } catch (error) {
