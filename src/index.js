@@ -5,8 +5,8 @@ require('dotenv').config();
 const authRoutes = require('./routes/authRoutes');
 const wasteTypeRoutes = require('./routes/wasteTypeRoutes');
 const collectionPointRoutes = require('./routes/collectionPointRoutes');
-const transactionRoutes = require('./routes/transactionRoutes');
 const recyclingRoutes = require('./routes/recyclingRoutes');
+const transactionRoutes = require('./routes/transactionRoutes');
 const errorHandler = require('./middleware/errorHandler');
 const { NotFoundError } = require('./utils/errors');
 const runMigrations = require('./migrations');
@@ -25,8 +25,8 @@ app.use('/uploads', express.static('uploads'));
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/waste-types', wasteTypeRoutes);
 app.use('/api/v1/collection-points', collectionPointRoutes);
-app.use('/api/v1/transactions', transactionRoutes);
 app.use('/api/v1/recycling', recyclingRoutes);
+app.use('/api/v1/transactions', transactionRoutes);
 
 // Handle undefined routes
 app.all('*', (req, res, next) => {

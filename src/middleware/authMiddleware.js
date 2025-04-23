@@ -15,6 +15,12 @@ exports.authenticateUser = async (req, res, next) => {
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     
+    const userId = decoded.userId || decoded.id;
+    
+    if (!userId) {
+      throw new AuthenticationError('Token không chứa ID người dùng');
+    }
+    
     const [users] = await pool.execute(`
       SELECT u.user_id, u.username, u.email, u.status,
              GROUP_CONCAT(r.name) as roles
@@ -23,7 +29,7 @@ exports.authenticateUser = async (req, res, next) => {
       LEFT JOIN Roles r ON ur.role_id = r.role_id
       WHERE u.user_id = ?
       GROUP BY u.user_id`,
-      [decoded.id]
+      [userId]
     );
 
     if (users.length === 0) {
@@ -37,6 +43,7 @@ exports.authenticateUser = async (req, res, next) => {
     }
 
     req.user = {
+      userId: user.user_id,
       id: user.user_id,
       username: user.username,
       email: user.email,
@@ -60,7 +67,7 @@ exports.authenticateUser = async (req, res, next) => {
 /**
  * Role-based authorization middleware
  */
-exports.authorizeRoles = (...roles) => {
+exports.authorizeRoles = (roles) => {
   return (req, res, next) => {
     // Make sure req.user exists (requires authenticateUser middleware to run first)
     if (!req.user) {

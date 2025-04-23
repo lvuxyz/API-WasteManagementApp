@@ -51,6 +51,13 @@ class DuplicateError extends AppError {
   }
 }
 
+class DatabaseError extends AppError {
+  constructor(message) {
+    super(message, 500);
+    this.name = 'DatabaseError';
+  }
+}
+
 module.exports = {
   AppError,
   ValidationError,
@@ -58,5 +65,6 @@ module.exports = {
   AuthenticationError,
   AuthorizationError,
   NotFoundError,
-  DuplicateError
+  DuplicateError,
+  DatabaseError
 }; 
