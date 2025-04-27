@@ -32,6 +32,27 @@ class AuthenticationError extends AppError {
   }
 }
 
+class InvalidCredentialsError extends AuthenticationError {
+  constructor(message) {
+    super(message || 'Thông tin đăng nhập không chính xác');
+    this.name = 'InvalidCredentialsError';
+  }
+}
+
+class UserNotFoundError extends AuthenticationError {
+  constructor(username) {
+    super(`Tài khoản '${username}' không tồn tại trong hệ thống`);
+    this.name = 'UserNotFoundError';
+  }
+}
+
+class InvalidPasswordError extends AuthenticationError {
+  constructor() {
+    super('Mật khẩu không chính xác');
+    this.name = 'InvalidPasswordError';
+  }
+}
+
 class AuthorizationError extends AppError {
   constructor(message) {
     super(message || 'Bạn không có quyền thực hiện thao tác này', 403);
@@ -110,6 +131,9 @@ module.exports = {
   ValidationError,
   BadRequestError,
   AuthenticationError,
+  InvalidCredentialsError,
+  UserNotFoundError,
+  InvalidPasswordError,
   AuthorizationError,
   NotFoundError,
   DuplicateError,

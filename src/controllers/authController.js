@@ -4,7 +4,12 @@ const pool = require('../config/database');
 const validator = require('validator');
 const { 
   ValidationError, 
-  AuthenticationError, 
+  AuthenticationError,
+  InvalidCredentialsError,
+  UserNotFoundError,
+  InvalidPasswordError,
+  AccountInactiveError,
+  AccountLockedError,  
   DuplicateError 
 } = require('../utils/errors');
 const crypto = require('crypto');
@@ -76,6 +81,10 @@ const validateRegistrationData = (data) => {
     throw new ValidationError(errors.join('. '));
   }
 };
+
+// Thêm hằng số cho max login attempts
+const MAX_LOGIN_ATTEMPTS = 5;
+const LOGIN_LOCKOUT_TIME = 15; // thời gian khóa tài khoản tính bằng phút
 
 const authController = {
   // Đăng ký người dùng mới
@@ -160,22 +169,55 @@ const authController = {
 
   // Đăng nhập
   login: async (req, res, next) => {
+    let sanitizedUsername = '';
     try {
+      logger.info('Login attempt', { 
+        ip: req.ip, 
+        userAgent: req.get('User-Agent')
+      });
+
       const { username, password } = req.body;
+      
+      // Kiểm tra và chuẩn hóa dữ liệu đầu vào
+      if (!username || !password) {
+        logger.warn('Login attempt with missing credentials');
+        throw new ValidationError('Username và mật khẩu không được để trống');
+      }
+      
+      sanitizedUsername = username.toString().trim().toLowerCase();
 
       // Validate login data
-      AuthValidator.validateLoginData({ username, password });
+      AuthValidator.validateLoginData({ username: sanitizedUsername, password });
 
       // Find user
-      const user = await userRepository.findByUsername(username.toLowerCase());
+      const user = await userRepository.findByUsername(sanitizedUsername);
+      
       if (!user) {
-        throw new AuthenticationError('Username hoặc mật khẩu không đúng');
+        logger.warn('Login attempt with non-existent username', { 
+          username: sanitizedUsername 
+        });
+        throw new InvalidCredentialsError('Username hoặc mật khẩu không đúng');
+      }
+
+      // Kiểm tra status
+      if (user.status !== 'active') {
+        logger.warn('Inactive account login attempt', { 
+          userId: user.user_id,
+          username: user.username,
+          status: user.status
+        });
+        throw new AuthenticationError('Tài khoản của bạn đã bị vô hiệu hóa. Vui lòng liên hệ quản trị viên');
       }
 
       // Verify password
       const isPasswordValid = await bcrypt.compare(password, user.password_hash);
+      
       if (!isPasswordValid) {
-        throw new AuthenticationError('Username hoặc mật khẩu không đúng');
+        logger.warn('Invalid password login attempt', {
+          userId: user.user_id,
+          username: user.username
+        });
+        throw new InvalidCredentialsError('Username hoặc mật khẩu không đúng');
       }
 
       // Get user with roles
@@ -191,6 +233,13 @@ const authController = {
         process.env.JWT_SECRET,
         { expiresIn: '24h' }
       );
+      
+      // Log thành công
+      logger.info('Login successful', {
+        userId: userWithRoles.user_id,
+        username: userWithRoles.username,
+        roles: userWithRoles.roles
+      });
 
       res.json({
         success: true,
@@ -207,7 +256,14 @@ const authController = {
         }
       });
     } catch (error) {
-      logger.error('Login error:', error);
+      // Log lỗi chi tiết
+      logger.error('Login failed', { 
+        username: sanitizedUsername,
+        errorName: error.name,
+        errorMessage: error.message,
+        stack: error.stack
+      });
+      
       next(error);
     }
   },

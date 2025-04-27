@@ -33,3 +33,333 @@
 {"isOperational":true,"level":"error","message":"Login error: Username hoặc mật khẩu không đúng","name":"AuthenticationError","stack":"AuthenticationError: Username hoặc mật khẩu không đúng\n    at login (D:\\Android Studio\\do_an_tot_nghiep\\API-WasteManagementApp\\src\\controllers\\authController.js:172:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","status":"fail","statusCode":401,"timestamp":"2025-04-24T18:42:09.663Z"}
 {"isOperational":true,"level":"error","message":"Login error: Username hoặc mật khẩu không đúng","name":"AuthenticationError","stack":"AuthenticationError: Username hoặc mật khẩu không đúng\n    at login (D:\\Android Studio\\do_an_tot_nghiep\\API-WasteManagementApp\\src\\controllers\\authController.js:178:15)","status":"fail","statusCode":401,"timestamp":"2025-04-25T18:08:29.108Z"}
 {"isOperational":true,"level":"error","message":"Login error: Username hoặc mật khẩu không đúng","name":"AuthenticationError","stack":"AuthenticationError: Username hoặc mật khẩu không đúng\n    at login (D:\\Android Studio\\do_an_tot_nghiep\\API-WasteManagementApp\\src\\controllers\\authController.js:178:15)","status":"fail","statusCode":401,"timestamp":"2025-04-25T18:08:31.666Z"}
+2025-04-28 01:19:53 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:19:53 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:19:54 [INFO]: Checking for login security columns in Users table...
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:19:54 [INFO]: Adding login_attempts column to Users table
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:19:54 [INFO]: Adding lock_until column to Users table
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:19:54 [INFO]: last_login column already exists
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:19:54 [INFO]: Login security columns migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:19:54 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:19:54 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:20:17 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.3"
+}
+2025-04-28 01:20:17 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.3"
+}
+2025-04-28 01:20:17 [ERROR]: Login failed
+Error: Unknown column 'last_login' in 'field list'
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at login (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\authController.js:412:18)
+{
+  "service": "waste-management-api",
+  "username": "admin",
+  "errorName": "Error",
+  "errorMessage": "Unknown column 'last_login' in 'field list'"
+}
+2025-04-28 01:20:17 [ERROR]: 400: Trường dữ liệu không tồn tại.
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/login",
+  "method": "POST"
+}
+2025-04-28 01:22:12 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.3"
+}
+2025-04-28 01:22:12 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.3"
+}
+2025-04-28 01:22:12 [ERROR]: Login failed
+Error: Unknown column 'last_login' in 'field list'
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at login (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\authController.js:412:18)
+{
+  "service": "waste-management-api",
+  "username": "admin",
+  "errorName": "Error",
+  "errorMessage": "Unknown column 'last_login' in 'field list'"
+}
+2025-04-28 01:22:12 [ERROR]: 400: Trường dữ liệu không tồn tại.
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/login",
+  "method": "POST"
+}
+2025-04-28 01:22:51 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:22:51 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:22:51 [INFO]: Checking for login security columns in Users table...
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:22:51 [INFO]: login_attempts column already exists
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:22:51 [INFO]: lock_until column already exists
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:22:51 [INFO]: last_login column already exists
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:22:51 [INFO]: Login security columns migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:22:51 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:22:51 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:23:18 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:23:18 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:23:19 [INFO]: Checking for login security columns in Users table...
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:23:19 [INFO]: login_attempts column already exists
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:23:19 [INFO]: lock_until column already exists
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:23:19 [INFO]: last_login column already exists
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:23:19 [INFO]: Login security columns migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:23:19 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:23:19 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:23:21 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.3"
+}
+2025-04-28 01:23:21 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.3"
+}
+2025-04-28 01:23:21 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-04-28 01:24:54 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:24:54 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:24:54 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:24:54 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:25:00 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.3"
+}
+2025-04-28 01:25:00 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.3"
+}
+2025-04-28 01:25:00 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-04-28 01:25:08 [INFO]: GET /api/v1/transactions
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.3"
+}
+2025-04-28 01:25:08 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "GET"
+}
+2025-04-28 01:25:29 [INFO]: GET /api/v1/transactions
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.3"
+}
+2025-04-28 01:25:29 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at TransactionRepository.getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:69:41)
+    at getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:25:50)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:84:5
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT t.*, u.full_name as user_name, u.username, \n               cp.name as collection_point_name, wt.name as waste_type_name\n        FROM transactions t\n        LEFT JOIN users u ON t.user_id = u.user_id\n        LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n       ORDER BY t.transaction_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-04-27T18:25:29.222Z [ERROR]: Error in getAllTransactions: Error retrieving transactions
+DatabaseError: Error retrieving transactions
+    at TransactionRepository.getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:91:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:25:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-04-28 01:25:29 [ERROR]: 500: Error retrieving transactions
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "GET"
+}
+2025-04-28 01:25:56 [INFO]: GET /api/v1/transactions
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.3"
+}
+2025-04-28 01:25:56 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at TransactionRepository.getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:69:41)
+    at getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:25:50)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:84:5
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT t.*, u.full_name as user_name, u.username, \n               cp.name as collection_point_name, wt.name as waste_type_name\n        FROM transactions t\n        LEFT JOIN users u ON t.user_id = u.user_id\n        LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n       ORDER BY t.transaction_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-04-27T18:25:56.070Z [ERROR]: Error in getAllTransactions: Error retrieving transactions
+DatabaseError: Error retrieving transactions
+    at TransactionRepository.getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:91:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:25:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-04-28 01:25:56 [ERROR]: 500: Error retrieving transactions
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "GET"
+}
+2025-04-28 01:26:00 [INFO]: GET /api/v1/transactions/8
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.3"
+}
+2025-04-28 01:26:00 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/8",
+  "method": "GET"
+}

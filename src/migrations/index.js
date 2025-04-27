@@ -1,9 +1,10 @@
 const createTransactionTables = require('./transactionTables');
 const createRecyclingProcessTables = require('./recyclingProcessTables');
+const logger = require('../utils/logger');
 
 const runMigrations = async () => {
   try {
-    console.log('Running database migrations...');
+    logger.info('Running database migrations...');
     
     // Run transaction tables migrations
     await createTransactionTables();
@@ -11,10 +12,10 @@ const runMigrations = async () => {
     // Run recycling process tables migrations
     await createRecyclingProcessTables();
     
-    console.log('All migrations have been completed successfully');
+    logger.info('All migrations have been completed successfully');
   } catch (error) {
-    console.error('Error running migrations:', error);
-    process.exit(1);
+    logger.error('Error running migrations:', error);
+    throw error;
   }
 };
 

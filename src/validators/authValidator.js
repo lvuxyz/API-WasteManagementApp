@@ -49,45 +49,83 @@ class AuthValidator {
     }
 
     if (errors.length > 0) {
-      throw new ValidationError(errors.join('. '));
+      throw new ValidationError(errors.join('. '), { validationDetails: errors });
     }
   }
 
   static validateLoginData(data) {
     const errors = [];
-    const { username, password } = data;
+    const details = {};
 
-    if (!username) {
-      errors.push('Username không được để trống');
+    // Xử lý trường hợp không có dữ liệu
+    if (!data) {
+      throw new ValidationError('Thông tin đăng nhập không được để trống');
     }
 
+    const { username, password } = data;
+
+    // Validate username
+    if (!username) {
+      errors.push('Tên đăng nhập không được để trống');
+      details.username = 'MISSING';
+    } else if (username.trim() === '') {
+      errors.push('Tên đăng nhập không được chỉ chứa khoảng trắng');
+      details.username = 'INVALID_FORMAT';
+    } else if (username.includes('@')) {
+      // Kiểm tra nếu người dùng nhập email thay vì username
+      if (!validator.isEmail(username)) {
+        errors.push('Định dạng email không hợp lệ');
+        details.username = 'INVALID_EMAIL_FORMAT';
+      }
+    }
+
+    // Validate password
     if (!password) {
       errors.push('Mật khẩu không được để trống');
+      details.password = 'MISSING';
+    } else if (password.length < 6) {
+      errors.push('Mật khẩu phải có ít nhất 6 ký tự');
+      details.password = 'TOO_SHORT';
     }
 
     if (errors.length > 0) {
-      throw new ValidationError(errors.join('. '));
+      throw new ValidationError(errors.join('. '), { validationDetails: details });
     }
+
+    // Trả về dữ liệu đã được chuẩn hóa
+    return {
+      username: username.trim().toLowerCase(),
+      password: password
+    };
   }
 
   static validatePasswordResetData(data) {
     const errors = [];
+    const details = {};
+
     const { password, confirmPassword } = data;
 
     if (!password) {
       errors.push('Mật khẩu không được để trống');
+      details.password = 'MISSING';
     } else if (password.length < 6) {
       errors.push('Mật khẩu phải có ít nhất 6 ký tự');
+      details.password = 'TOO_SHORT';
     } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/.test(password)) {
       errors.push('Mật khẩu phải chứa ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt');
+      details.password = 'INVALID_FORMAT';
     }
 
-    if (password !== confirmPassword) {
+    if (!confirmPassword) {
+      errors.push('Vui lòng xác nhận mật khẩu');
+      details.confirmPassword = 'MISSING';
+    } else if (password !== confirmPassword) {
       errors.push('Mật khẩu xác nhận không khớp');
+      details.confirmPassword = 'MISMATCH';
     }
 
     if (errors.length > 0) {
-      throw new ValidationError(errors.join('. '));
+      throw new ValidationError(errors.join('. '), { validationDetails: details });
     }
   }
 }
