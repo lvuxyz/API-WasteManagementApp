@@ -9,6 +9,7 @@ const recyclingRoutes = require('./routes/recyclingRoutes');
 const transactionRoutes = require('./routes/transactionRoutes');
 const errorHandler = require('./middleware/errorHandler');
 const { NotFoundError } = require('./utils/errors');
+const logger = require('./utils/logger');
 const runMigrations = require('./migrations');
 
 const app = express();
@@ -17,6 +18,15 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));  // Increased limit for image uploads
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+
+// Request logger middleware
+app.use((req, res, next) => {
+  logger.info(`${req.method} ${req.originalUrl}`, {
+    ip: req.ip,
+    userAgent: req.get('User-Agent')
+  });
+  next();
+});
 
 // Static folder for uploads
 app.use('/uploads', express.static('uploads'));
@@ -41,25 +51,49 @@ const PORT = process.env.PORT || 5001;
 // Run migrations before starting the server
 (async () => {
   try {
+    logger.info('Đang áp dụng migrations...');
     await runMigrations();
     app.listen(PORT, () => {
-      console.log(`Server đang chạy trên port ${PORT}`);
+      logger.info(`Server đang chạy trên port ${PORT} trong môi trường ${process.env.NODE_ENV || 'development'}`);
     });
   } catch (error) {
-    console.error('Failed to start server:', error);
+    logger.error('Không thể khởi động server:', { error: error.message, stack: error.stack });
     process.exit(1);
   }
 })();
 
-// Xử lý lỗi không đồng bộ không được bắt
-process.on('unhandledRejection', (err) => {
-  console.log('UNHANDLED REJECTION! 💥 Shutting down...');
-  console.log(err.name, err.message);
+// Xử lý lỗi unhandled promise rejections
+process.on('unhandledRejection', (err, promise) => {
+  logger.error('LỖI KHÔNG XỬ LÝ - UNHANDLED REJECTION:', { 
+    error: err.message,
+    stack: err.stack 
+  });
+  
+  // Đóng server một cách an toàn và thoát
+  setTimeout(() => {
+    process.exit(1);
+  }, 1000);
+});
+
+// Xử lý lỗi uncaught exceptions 
+process.on('uncaughtException', (err) => {
+  logger.error('LỖI KHÔNG BẮT ĐƯỢC - UNCAUGHT EXCEPTION:', { 
+    error: err.message,
+    stack: err.stack 
+  });
+  
+  // Lỗi uncaught là lỗi nghiêm trọng, nên thoát ngay
   process.exit(1);
 });
 
-process.on('uncaughtException', (err) => {
-  console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
-  console.log(err.name, err.message);
-  process.exit(1);
+// Xử lý SIGTERM signal
+process.on('SIGTERM', () => {
+  logger.info('SIGTERM RECEIVED. Shutting down gracefully');
+  process.exit(0);
+});
+
+// Xử lý SIGINT signal (Ctrl+C)
+process.on('SIGINT', () => {
+  logger.info('SIGINT RECEIVED. Shutting down gracefully');
+  process.exit(0);
 }); 
