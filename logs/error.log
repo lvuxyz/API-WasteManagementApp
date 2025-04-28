@@ -153,3 +153,39 @@ DatabaseError: Error retrieving transactions
   "url": "/api/v1/transactions/8",
   "method": "GET"
 }
+2025-04-28 01:26:26 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/statistics",
+  "method": "GET"
+}
+2025-04-27T18:26:29.565Z [ERROR]: Error getting transaction #NaN: Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:212:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:80:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-04-27T18:26:29.565Z [ERROR]: Error in getTransactionById (statistics): Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:212:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:80:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-04-28 01:26:29 [ERROR]: 404: Giao dịch không tồn tại
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/statistics",
+  "method": "GET"
+}

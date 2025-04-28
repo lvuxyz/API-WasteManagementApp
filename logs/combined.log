@@ -363,3 +363,79 @@ DatabaseError: Error retrieving transactions
   "url": "/api/v1/transactions/8",
   "method": "GET"
 }
+2025-04-28 01:26:05 [INFO]: GET /api/v1/transactions/8
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.3"
+}
+2025-04-28 01:26:26 [INFO]: GET /api/v1/transactions/statistics
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.3"
+}
+2025-04-28 01:26:26 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/statistics",
+  "method": "GET"
+}
+2025-04-28 01:26:29 [INFO]: GET /api/v1/transactions/statistics
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.3"
+}
+2025-04-27T18:26:29.565Z [ERROR]: Error getting transaction #NaN: Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:212:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:80:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-04-27T18:26:29.565Z [ERROR]: Error in getTransactionById (statistics): Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:212:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:80:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-04-28 01:26:29 [ERROR]: 404: Giao dịch không tồn tại
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/statistics",
+  "method": "GET"
+}
+2025-04-28 01:26:37 [INFO]: GET /api/v1/transactions/1/history
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.3"
+}
+2025-04-28 01:28:42 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:28:42 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:28:42 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-04-28 01:28:42 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
