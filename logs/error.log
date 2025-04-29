@@ -189,3 +189,204 @@ NotFoundError: Giao dịch không tồn tại
   "url": "/api/v1/transactions/statistics",
   "method": "GET"
 }
+2025-04-30 04:06:08 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}
+2025-04-30 04:07:39 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}
+2025-04-30 04:07:55 [ERROR]: Lỗi MySQL không xử lý được: ER_WRONG_ARGUMENTS
+{
+  "service": "waste-management-api",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute",
+  "sql": "\n        SELECT rp.process_id, rp.transaction_id, rp.waste_type_id, \n               rp.start_date, rp.end_date, rp.status, rp.processed_quantity,\n               wt.name as waste_type_name, \n               t.user_id, u.username as user_name\n        FROM recyclingprocesses rp\n        LEFT JOIN wastetypes wt ON rp.waste_type_id = wt.waste_type_id\n        LEFT JOIN transactions t ON rp.transaction_id = t.transaction_id\n        LEFT JOIN users u ON t.user_id = u.user_id\n        WHERE 1=1\n       AND rp.status = ? ORDER BY rp.start_date DESC LIMIT ? OFFSET ?",
+  "errno": 1210
+}
+2025-04-30 04:07:55 [ERROR]: 500: Lỗi cơ sở dữ liệu. Vui lòng thử lại sau.
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling?status=completed&sort_by=start_date&sort_dir=DESC",
+  "method": "GET"
+}
+2025-04-30 04:09:11 [ERROR]: 404: Không tìm thấy điểm thu gom với ID đã cung cấp
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste-types/collection-point/:collection_point_id",
+  "method": "GET"
+}
+2025-04-30 04:13:36 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}
+2025-04-30 04:13:46 [ERROR]: 400: Expected double-quoted property name in JSON at position 149 (line 8 column 1)
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}
+2025-04-30 04:13:46 [ERROR]: Lỗi không xác định:
+{
+  "service": "waste-management-api",
+  "error": {
+    "expose": true,
+    "statusCode": 400,
+    "status": 400,
+    "body": "\r\n{\r\n  \"transaction_id\": 10,\r\n  \"waste_type_id\": 6,\r\n  \"processed_quantity\": 7.25,\r\n  \"start_date\": \"2024-03-20T08:00:00Z\",\r\n  \"status\": \"pending\",\r\n}",
+    "type": "entity.parse.failed",
+    "message": "Expected double-quoted property name in JSON at position 149 (line 8 column 1)",
+    "name": "SyntaxError",
+    "stack": "SyntaxError: Expected double-quoted property name in JSON at position 149 (line 8 column 1)\n    at JSON.parse (<anonymous>)\n    at parse (D:\\Android Studio\\do_an_tot_nghiep\\API-WasteManagementApp\\node_modules\\body-parser\\lib\\types\\json.js:92:19)\n    at D:\\Android Studio\\do_an_tot_nghiep\\API-WasteManagementApp\\node_modules\\body-parser\\lib\\read.js:128:18\n    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)\n    at invokeCallback (D:\\Android Studio\\do_an_tot_nghiep\\API-WasteManagementApp\\node_modules\\raw-body\\index.js:238:16)\n    at done (D:\\Android Studio\\do_an_tot_nghiep\\API-WasteManagementApp\\node_modules\\raw-body\\index.js:227:7)\n    at IncomingMessage.onEnd (D:\\Android Studio\\do_an_tot_nghiep\\API-WasteManagementApp\\node_modules\\raw-body\\index.js:287:7)\n    at IncomingMessage.emit (node:events:518:28)\n    at endReadableNT (node:internal/streams/readable:1698:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)"
+  }
+}
+2025-04-30 04:13:51 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}
+2025-04-30 04:14:06 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}
+2025-04-30 04:14:26 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}
+2025-04-30 04:15:35 [ERROR]: 404: Giao dịch không tồn tại
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}
+2025-04-30 04:16:01 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "POST"
+}
+2025-04-30 04:16:22 [ERROR]: 404: Giao dịch không tồn tại
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}
+2025-04-29T21:16:38.399Z [ERROR]: Error getting transaction #4: Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:212:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:80:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-04-29T21:16:38.399Z [ERROR]: Error in getTransactionById (4): Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:212:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:80:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-04-30 04:16:38 [ERROR]: 404: Giao dịch không tồn tại
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/4",
+  "method": "GET"
+}
+2025-04-29T21:16:42.311Z [ERROR]: Error getting transaction #4: Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:212:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:80:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-04-29T21:16:42.311Z [ERROR]: Error in getTransactionById (4): Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:212:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:80:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-04-30 04:16:42 [ERROR]: 404: Giao dịch không tồn tại
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/4",
+  "method": "GET"
+}
+2025-04-30 04:17:18 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}
+2025-04-30 04:17:27 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}
+2025-04-30 04:17:57 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/2/status",
+  "method": "PATCH"
+}
+2025-04-30 04:18:36 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}
+2025-04-30 04:19:17 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}
+2025-04-30 04:19:23 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}
+2025-04-30 04:19:35 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}
+2025-04-30 04:23:00 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}

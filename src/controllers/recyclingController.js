@@ -6,12 +6,12 @@ const validateRecyclingData = (data) => {
   const errors = [];
   const { transaction_id, waste_type_id } = data;
 
-  if (!transaction_id) {
-    errors.push('Transaction ID không được để trống');
+  if (!transaction_id || isNaN(parseInt(transaction_id))) {
+    errors.push('Transaction ID phải là số và không được để trống');
   }
 
-  if (!waste_type_id) {
-    errors.push('Waste Type ID không được để trống');
+  if (!waste_type_id || isNaN(parseInt(waste_type_id))) {
+    errors.push('Waste Type ID phải là số và không được để trống');
   }
 
   if (errors.length > 0) {
@@ -156,26 +156,22 @@ const recyclingController = {
 
       // Kiểm tra giao dịch có tồn tại và hoàn thành không
       const [transaction] = await pool.execute(
-        'SELECT * FROM transactions WHERE transaction_id = ?',
-        [transaction_id]
+        'SELECT * FROM transactions WHERE transaction_id = ? AND status = ?',
+        [transaction_id, 'completed']
       );
 
       if (transaction.length === 0) {
-        throw new NotFoundError('Giao dịch không tồn tại');
-      }
-
-      if (transaction[0].status !== 'completed') {
-        throw new ValidationError('Giao dịch chưa hoàn thành, không thể tạo quá trình tái chế');
+        throw new ValidationError('Giao dịch không tồn tại hoặc chưa hoàn thành');
       }
 
       // Kiểm tra loại chất thải có tồn tại không
       const [wasteType] = await pool.execute(
-        'SELECT * FROM wastetypes WHERE waste_type_id = ?',
+        'SELECT * FROM wastetypes WHERE waste_type_id = ? AND recyclable = 1',
         [waste_type_id]
       );
 
       if (wasteType.length === 0) {
-        throw new NotFoundError('Loại chất thải không tồn tại');
+        throw new ValidationError('Loại chất thải không tồn tại hoặc không thể tái chế');
       }
 
       // Kiểm tra đã có quá trình tái chế cho giao dịch này chưa
@@ -198,10 +194,20 @@ const recyclingController = {
 
       const processId = result.insertId;
 
+      // Lấy thông tin chi tiết quá trình tái chế vừa tạo
+      const [newProcess] = await pool.execute(
+        `SELECT rp.*, wt.name as waste_type_name, t.quantity as transaction_quantity
+         FROM recyclingprocesses rp
+         LEFT JOIN wastetypes wt ON rp.waste_type_id = wt.waste_type_id
+         LEFT JOIN transactions t ON rp.transaction_id = t.transaction_id
+         WHERE rp.process_id = ?`,
+        [processId]
+      );
+
       res.status(201).json({
         status: 'success',
         message: 'Khởi tạo quá trình tái chế thành công',
-        data: { process_id: processId }
+        data: newProcess[0]
       });
     } catch (error) {
       next(error);
