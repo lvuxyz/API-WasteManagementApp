@@ -1,5 +1,6 @@
 const pool = require('../config/database');
 const { ValidationError, NotFoundError, AuthorizationError } = require('../utils/errors');
+const logger = require('../utils/logger');
 
 // Hàm kiểm tra định dạng ngày tháng
 const isValidDate = (dateString) => {
@@ -568,6 +569,105 @@ const recyclingController = {
       });
     } catch (error) {
       next(error);
+    }
+  },
+
+  getRecyclingStatistics: async (req, res) => {
+    try {
+      // Get query parameters with default values
+      const { from, to, wasteTypeId } = req.query;
+      
+      // Build base query
+      let query = `
+        SELECT 
+          rp.waste_type_id,
+          wt.name as waste_type_name,
+          COUNT(rp.process_id) as total_processes,
+          SUM(COALESCE(rp.processed_quantity, 0)) as total_processed,
+          COUNT(CASE WHEN rp.status = 'completed' THEN 1 END) as completed_processes,
+          COUNT(CASE WHEN rp.status = 'in_progress' THEN 1 END) as in_progress_processes,
+          COUNT(CASE WHEN rp.status = 'pending' THEN 1 END) as pending_processes
+        FROM recyclingprocesses rp
+        LEFT JOIN wastetypes wt ON rp.waste_type_id = wt.waste_type_id
+        WHERE 1=1
+      `;
+      
+      const params = [];
+
+      // Add date filters if provided - Convert to UTC for comparison
+      if (from) {
+        query += ` AND CONVERT_TZ(rp.start_date, '+00:00', '+07:00') >= ?`;
+        params.push(from);
+      }
+      if (to) {
+        query += ` AND CONVERT_TZ(rp.start_date, '+00:00', '+07:00') <= ?`;
+        params.push(to);
+      }
+
+      // Add waste type filter if provided
+      if (wasteTypeId) {
+        query += ` AND rp.waste_type_id = ?`;
+        params.push(wasteTypeId);
+      }
+
+      // Group by waste type
+      query += ` GROUP BY rp.waste_type_id, wt.name`;
+
+      // Execute query
+      const [rows] = await pool.execute(query, params);
+
+      // Calculate totals
+      const totals = rows.reduce((acc, row) => {
+        acc.totalProcesses += row.total_processes;
+        acc.totalProcessed += parseFloat(row.total_processed) || 0;
+        acc.completedProcesses += row.completed_processes;
+        acc.inProgressProcesses += row.in_progress_processes;
+        acc.pendingProcesses += row.pending_processes;
+        return acc;
+      }, {
+        totalProcesses: 0,
+        totalProcessed: 0,
+        completedProcesses: 0,
+        inProgressProcesses: 0,
+        pendingProcesses: 0
+      });
+
+      // Log the query and parameters for debugging
+      logger.debug('Recycling statistics query:', {
+        query,
+        params,
+        results: rows.length,
+        timezone: 'UTC+7'
+      });
+
+      // Always return 200 with data, even if empty
+      res.status(200).json({
+        status: 'success',
+        data: {
+          statistics: rows,
+          totals,
+          filters: {
+            from,
+            to,
+            wasteTypeId,
+            timezone: 'UTC+7'
+          }
+        }
+      });
+
+    } catch (error) {
+      logger.error('Recycling statistics error:', {
+        error: error.message,
+        stack: error.stack,
+        query: req.query,
+        timezone: 'UTC+7'
+      });
+      
+      res.status(500).json({
+        status: 'error',
+        message: 'Lỗi khi lấy thống kê tái chế. Vui lòng thử lại sau.',
+        error: process.env.NODE_ENV === 'development' ? error.message : undefined
+      });
     }
   }
 };

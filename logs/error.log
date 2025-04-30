@@ -486,3 +486,187 @@ NotFoundError: Giao dịch không tồn tại
   "url": "/api/v1/recycling/all",
   "method": "GET"
 }
+2025-04-30 16:48:03 [ERROR]: Lỗi MySQL không xử lý được: ER_PARSE_ERROR
+{
+  "service": "waste-management-api",
+  "sqlMessage": "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND status = 'completed'\n        GROUP BY YEAR(start_date), MONTH(start_date)\n  ' at line 7",
+  "sql": "\n        SELECT \n          DATE_FORMAT(start_date, '%Y-%m') as period,\n          SUM(processed_quantity) as processed_quantity,\n          COUNT(*) as total_processes\n        FROM recyclingprocesses\n        \n        AND status = 'completed'\n        GROUP BY YEAR(start_date), MONTH(start_date)\n        ORDER BY period\n      ",
+  "errno": 1064
+}
+2025-04-30 16:48:03 [ERROR]: 500: Lỗi cơ sở dữ liệu. Vui lòng thử lại sau.
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/report",
+  "method": "GET"
+}
+2025-04-30 16:51:18 [ERROR]: Lỗi MySQL không xử lý được: ER_PARSE_ERROR
+{
+  "service": "waste-management-api",
+  "sqlMessage": "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND status = 'completed'\n        GROUP BY YEAR(start_date)\n        ORDER BY peri' at line 7",
+  "sql": "\n        SELECT \n          DATE_FORMAT(start_date, '%Y') as period,\n          SUM(processed_quantity) as processed_quantity,\n          COUNT(*) as total_processes\n        FROM recyclingprocesses\n        \n        AND status = 'completed'\n        GROUP BY YEAR(start_date)\n        ORDER BY period\n      ",
+  "errno": 1064
+}
+2025-04-30 16:51:18 [ERROR]: 500: Lỗi cơ sở dữ liệu. Vui lòng thử lại sau.
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/report?from&to&period",
+  "method": "GET"
+}
+2025-04-30 16:53:47 [ERROR]: Lỗi MySQL không xử lý được: ER_PARSE_ERROR
+{
+  "service": "waste-management-api",
+  "sqlMessage": "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND status = 'completed'\n        GROUP BY YEAR(start_date)\n        ORDER BY peri' at line 7",
+  "sql": "\n        SELECT \n          DATE_FORMAT(start_date, '%Y') as period,\n          SUM(processed_quantity) as processed_quantity,\n          COUNT(*) as total_processes\n        FROM recyclingprocesses\n        \n        AND status = 'completed'\n        GROUP BY YEAR(start_date)\n        ORDER BY period\n      ",
+  "errno": 1064
+}
+2025-04-30 16:53:47 [ERROR]: 500: Lỗi cơ sở dữ liệu. Vui lòng thử lại sau.
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/report?from&to&period",
+  "method": "GET"
+}
+2025-04-30 16:54:07 [ERROR]: 404: Không tìm thấy quá trình tái chế
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2024-01-01&to=2024-12-31&wasteTypeId=4",
+  "method": "GET"
+}
+2025-04-30 16:54:55 [ERROR]: 404: Không tìm thấy quá trình tái chế
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2024-01-01&to=2025-12-31&wasteTypeId=4",
+  "method": "GET"
+}
+2025-04-30 16:55:54 [ERROR]: 404: Không tìm thấy quá trình tái chế
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=4",
+  "method": "GET"
+}
+2025-04-30 16:56:46 [ERROR]: 404: Không tìm thấy quá trình tái chế
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=4",
+  "method": "GET"
+}
+2025-04-30 16:58:05 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/4",
+  "method": "PUT"
+}
+2025-04-30 16:58:43 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/4",
+  "method": "PUT"
+}
+2025-04-30 16:59:29 [ERROR]: 404: Không tìm thấy quá trình tái chế
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/4",
+  "method": "PUT"
+}
+2025-04-30 17:00:05 [ERROR]: 404: Không tìm thấy quá trình tái chế
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=4",
+  "method": "GET"
+}
+2025-04-30 17:00:08 [ERROR]: 404: Không tìm thấy quá trình tái chế
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=1",
+  "method": "GET"
+}
+2025-04-30 17:01:30 [ERROR]: 404: Không tìm thấy quá trình tái chế
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=4",
+  "method": "GET"
+}
+2025-04-30 17:02:42 [ERROR]: 404: Không tìm thấy quá trình tái chế
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=4",
+  "method": "GET"
+}
+2025-04-30 17:06:55 [ERROR]: 404: Không tìm thấy quá trình tái chế
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=4",
+  "method": "GET"
+}
+2025-04-30 17:07:21 [ERROR]: 404: Không tìm thấy quá trình tái chế
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=1",
+  "method": "GET"
+}
+2025-04-30T10:11:16.781Z [ERROR]: Error getting transaction #4: Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:212:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:80:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-04-30T10:11:16.781Z [ERROR]: Error in getTransactionById (4): Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:212:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:80:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-04-30 17:11:16 [ERROR]: 404: Giao dịch không tồn tại
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/4",
+  "method": "GET"
+}
+2025-04-30 17:11:31 [ERROR]: Lỗi MySQL không xử lý được: ER_PARSE_ERROR
+{
+  "service": "waste-management-api",
+  "sqlMessage": "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND status = 'completed'\n        GROUP BY YEAR(start_date), MONTH(start_date)\n  ' at line 7",
+  "sql": "\n        SELECT \n          DATE_FORMAT(start_date, '%Y-%m') as period,\n          SUM(processed_quantity) as processed_quantity,\n          COUNT(*) as total_processes\n        FROM recyclingprocesses\n        \n        AND status = 'completed'\n        GROUP BY YEAR(start_date), MONTH(start_date)\n        ORDER BY period\n      ",
+  "errno": 1064
+}
+2025-04-30 17:11:31 [ERROR]: 500: Lỗi cơ sở dữ liệu. Vui lòng thử lại sau.
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/report",
+  "method": "GET"
+}
+2025-04-30 17:12:17 [ERROR]: 404: Không tìm thấy quá trình tái chế
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=4",
+  "method": "GET"
+}
+2025-04-30 17:17:53 [ERROR]: 404: Không tìm thấy quá trình tái chế
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=4",
+  "method": "GET"
+}
+2025-04-30 17:19:10 [ERROR]: 404: Không tìm thấy quá trình tái chế
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=4",
+  "method": "GET"
+}
+2025-04-30 17:22:36 [ERROR]: 404: Không tìm thấy quá trình tái chế
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=4",
+  "method": "GET"
+}

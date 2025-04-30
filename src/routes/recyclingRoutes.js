@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const recyclingController = require('../controllers/recyclingController');
 const { authenticateUser, authorizeRoles } = require('../middleware/authMiddleware');
+const { getRecyclingStatistics } = require('../controllers/recyclingController');
 
 // 0. Lấy toàn bộ danh sách quy trình tái chế (đơn giản)
 router.get('/all', recyclingController.getAllRecyclingProcesses);
@@ -14,6 +15,9 @@ router.get('/user/:userId', authenticateUser, recyclingController.getUserRecycli
 
 // 7. Gửi thông báo cập nhật quá trình tái chế
 router.post('/notify/:id', authenticateUser, authorizeRoles('ADMIN'), recyclingController.sendRecyclingNotification);
+
+// Get recycling statistics (moved above the :id route to prevent param matching)
+router.get('/statistics', authenticateUser, authorizeRoles('ADMIN'), getRecyclingStatistics);
 
 // 3. Xem chi tiết quá trình tái chế (đặt sau các route cụ thể)
 router.get('/:id', authenticateUser, recyclingController.getRecyclingProcessById);
