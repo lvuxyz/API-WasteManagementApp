@@ -390,3 +390,99 @@ NotFoundError: Giao dịch không tồn tại
   "url": "/api/v1/recycling",
   "method": "POST"
 }
+2025-04-30 04:23:56 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "POST"
+}
+2025-04-30 16:35:41 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling?status=completed&waste_type_id=number&from=YYYY-MM-DD&page=1&limit=10",
+  "method": "GET"
+}
+2025-04-30 16:36:35 [ERROR]: Lỗi MySQL không xử lý được: ER_WRONG_ARGUMENTS
+{
+  "service": "waste-management-api",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute",
+  "sql": "\n        SELECT \n          rp.process_id, \n          rp.transaction_id, \n          rp.waste_type_id, \n          rp.start_date, \n          rp.end_date, \n          rp.status, \n          rp.processed_quantity,\n          wt.name as waste_type_name,\n          wt.unit_price as waste_type_price,\n          t.user_id,\n          t.quantity as transaction_quantity,\n          u.username as user_name,\n          u.full_name as user_full_name,\n          u.phone as user_phone\n        FROM recyclingprocesses rp\n        LEFT JOIN wastetypes wt ON rp.waste_type_id = wt.waste_type_id\n        LEFT JOIN transactions t ON rp.transaction_id = t.transaction_id\n        LEFT JOIN users u ON t.user_id = u.user_id\n        WHERE 1=1\n       ORDER BY rp.start_date DESC LIMIT ? OFFSET ?",
+  "errno": 1210
+}
+2025-04-30 16:36:35 [ERROR]: 500: Lỗi cơ sở dữ liệu. Vui lòng thử lại sau.
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "GET"
+}
+2025-04-30 16:39:26 [ERROR]: Lỗi MySQL không xử lý được: ER_WRONG_ARGUMENTS
+{
+  "service": "waste-management-api",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute",
+  "sql": "\n        SELECT \n          rp.process_id, \n          rp.transaction_id, \n          rp.waste_type_id, \n          rp.start_date, \n          rp.end_date, \n          rp.status, \n          rp.processed_quantity,\n          wt.name as waste_type_name,\n          wt.unit_price as waste_type_price,\n          t.user_id,\n          t.quantity as transaction_quantity,\n          u.username as user_name,\n          u.full_name as user_full_name,\n          u.phone as user_phone\n        FROM recyclingprocesses rp\n        LEFT JOIN wastetypes wt ON rp.waste_type_id = wt.waste_type_id\n        LEFT JOIN transactions t ON rp.transaction_id = t.transaction_id\n        LEFT JOIN users u ON t.user_id = u.user_id\n        WHERE 1=1\n       ORDER BY rp.start_date DESC LIMIT ? OFFSET ?",
+  "errno": 1210
+}
+2025-04-30 16:39:26 [ERROR]: 500: Lỗi cơ sở dữ liệu. Vui lòng thử lại sau.
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "GET"
+}
+2025-04-30 16:40:03 [ERROR]: Lỗi MySQL không xử lý được: ER_WRONG_ARGUMENTS
+{
+  "service": "waste-management-api",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute",
+  "sql": "\n        SELECT \n          rp.process_id, \n          rp.transaction_id, \n          rp.waste_type_id, \n          rp.start_date, \n          rp.end_date, \n          rp.status, \n          rp.processed_quantity,\n          wt.name as waste_type_name,\n          wt.unit_price as waste_type_price,\n          t.user_id,\n          t.quantity as transaction_quantity,\n          u.username as user_name,\n          u.full_name as user_full_name,\n          u.phone as user_phone\n        FROM recyclingprocesses rp\n        LEFT JOIN wastetypes wt ON rp.waste_type_id = wt.waste_type_id\n        LEFT JOIN transactions t ON rp.transaction_id = t.transaction_id\n        LEFT JOIN users u ON t.user_id = u.user_id\n        WHERE 1=1\n       ORDER BY rp.start_date DESC LIMIT ? OFFSET ?",
+  "errno": 1210
+}
+2025-04-30 16:40:03 [ERROR]: 500: Lỗi cơ sở dữ liệu. Vui lòng thử lại sau.
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "GET"
+}
+2025-04-30 16:40:50 [ERROR]: Lỗi MySQL không xử lý được: ER_WRONG_ARGUMENTS
+{
+  "service": "waste-management-api",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute",
+  "sql": "\n        SELECT \n          rp.process_id, \n          rp.transaction_id, \n          rp.waste_type_id, \n          rp.start_date, \n          rp.end_date, \n          rp.status, \n          rp.processed_quantity,\n          wt.name as waste_type_name,\n          wt.unit_price as waste_type_price,\n          t.user_id,\n          t.quantity as transaction_quantity,\n          u.username as user_name,\n          u.full_name as user_full_name,\n          u.phone as user_phone\n        FROM recyclingprocesses rp\n        LEFT JOIN wastetypes wt ON rp.waste_type_id = wt.waste_type_id\n        LEFT JOIN transactions t ON rp.transaction_id = t.transaction_id\n        LEFT JOIN users u ON t.user_id = u.user_id\n        WHERE 1=1\n       ORDER BY rp.start_date DESC LIMIT ? OFFSET ?",
+  "errno": 1210
+}
+2025-04-30 16:40:50 [ERROR]: 500: Lỗi cơ sở dữ liệu. Vui lòng thử lại sau.
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling",
+  "method": "GET"
+}
+2025-04-30 16:43:16 [ERROR]: Lỗi MySQL không xử lý được: ER_WRONG_ARGUMENTS
+{
+  "service": "waste-management-api",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute",
+  "sql": "\n        SELECT \n          rp.process_id, \n          rp.transaction_id, \n          rp.waste_type_id, \n          rp.start_date, \n          rp.end_date, \n          rp.status, \n          rp.processed_quantity,\n          wt.name as waste_type_name,\n          wt.unit_price as waste_type_price,\n          t.user_id,\n          t.quantity as transaction_quantity,\n          u.username as user_name,\n          u.full_name as user_full_name,\n          u.phone as user_phone\n        FROM recyclingprocesses rp\n        LEFT JOIN wastetypes wt ON rp.waste_type_id = wt.waste_type_id\n        LEFT JOIN transactions t ON rp.transaction_id = t.transaction_id\n        LEFT JOIN users u ON t.user_id = u.user_id\n        WHERE 1=1\n       AND rp.status = ? AND rp.waste_type_id = ? AND DATE(rp.start_date) >= ? AND DATE(rp.start_date) <= ? ORDER BY rp.start_date DESC LIMIT ? OFFSET ?",
+  "errno": 1210
+}
+2025-04-30 16:43:16 [ERROR]: 500: Lỗi cơ sở dữ liệu. Vui lòng thử lại sau.
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling?page=1&limit=10&status=completed&waste_type_id=4&from=2025-04-01&to=2025-04-30",
+  "method": "GET"
+}
+2025-04-30 16:44:09 [ERROR]: Lỗi MySQL không xử lý được: ER_WRONG_ARGUMENTS
+{
+  "service": "waste-management-api",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute",
+  "sql": "\n        SELECT \n          rp.process_id, \n          rp.transaction_id, \n          rp.waste_type_id, \n          rp.start_date, \n          rp.end_date, \n          rp.status, \n          rp.processed_quantity,\n          wt.name as waste_type_name,\n          wt.unit_price as waste_type_price,\n          t.user_id,\n          t.quantity as transaction_quantity,\n          u.username as user_name,\n          u.full_name as user_full_name,\n          u.phone as user_phone\n        FROM recyclingprocesses rp\n        LEFT JOIN wastetypes wt ON rp.waste_type_id = wt.waste_type_id\n        LEFT JOIN transactions t ON rp.transaction_id = t.transaction_id\n        LEFT JOIN users u ON t.user_id = u.user_id\n        WHERE 1=1\n       AND rp.status = ? AND rp.waste_type_id = ? AND DATE(rp.start_date) >= ? AND DATE(rp.start_date) <= ? ORDER BY rp.start_date DESC LIMIT ? OFFSET ?",
+  "errno": 1210
+}
+2025-04-30 16:44:09 [ERROR]: 500: Lỗi cơ sở dữ liệu. Vui lòng thử lại sau.
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling?page=1&limit=10&status=completed&waste_type_id=4&from=2025-04-01&to=2025-04-30",
+  "method": "GET"
+}
+2025-04-30 16:46:24 [ERROR]: 404: Không tìm thấy quá trình tái chế
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/all",
+  "method": "GET"
+}

@@ -1,6 +1,15 @@
 const pool = require('../config/database');
 const { ValidationError, NotFoundError, AuthorizationError } = require('../utils/errors');
 
+// Hàm kiểm tra định dạng ngày tháng
+const isValidDate = (dateString) => {
+  const regex = /^\d{4}-\d{2}-\d{2}$/;
+  if (!regex.test(dateString)) return false;
+  
+  const date = new Date(dateString);
+  return date instanceof Date && !isNaN(date);
+};
+
 // Validate recycling process data
 const validateRecyclingData = (data) => {
   const errors = [];
@@ -48,6 +57,24 @@ const validateUpdateData = (data) => {
 };
 
 const recyclingController = {
+  // 0. Lấy toàn bộ danh sách quy trình tái chế (đơn giản)
+  getAllRecyclingProcesses: async (req, res, next) => {
+    try {
+      const [rows] = await pool.execute(`
+        SELECT rp.*, wt.name as waste_type_name
+        FROM recyclingprocesses rp
+        LEFT JOIN wastetypes wt ON rp.waste_type_id = wt.waste_type_id
+      `);
+      
+      res.status(200).json({
+        status: 'success',
+        data: rows
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
   // 1. Lấy danh sách quá trình tái chế (có thể lọc)
   getRecyclingProcesses: async (req, res, next) => {
     try {
@@ -56,11 +83,51 @@ const recyclingController = {
       const limit = parseInt(req.query.limit) || 10;
       const offset = (page - 1) * limit;
 
+      // Validate các tham số đầu vào
+      if (page < 1) {
+        throw new ValidationError('Số trang phải lớn hơn 0');
+      }
+
+      if (limit < 1 || limit > 100) {
+        throw new ValidationError('Số lượng bản ghi mỗi trang phải từ 1 đến 100');
+      }
+
+      if (status && !['pending', 'in_progress', 'completed'].includes(status)) {
+        throw new ValidationError('Trạng thái không hợp lệ');
+      }
+
+      if (waste_type_id && isNaN(parseInt(waste_type_id))) {
+        throw new ValidationError('ID loại chất thải phải là số');
+      }
+
+      if (from && !isValidDate(from)) {
+        throw new ValidationError('Ngày bắt đầu không hợp lệ');
+      }
+
+      if (to && !isValidDate(to)) {
+        throw new ValidationError('Ngày kết thúc không hợp lệ');
+      }
+
+      if (from && to && new Date(from) > new Date(to)) {
+        throw new ValidationError('Ngày bắt đầu phải nhỏ hơn ngày kết thúc');
+      }
+
       let query = `
-        SELECT rp.process_id, rp.transaction_id, rp.waste_type_id, 
-               rp.start_date, rp.end_date, rp.status, rp.processed_quantity,
-               wt.name as waste_type_name, 
-               t.user_id, u.username as user_name
+        SELECT 
+          rp.process_id, 
+          rp.transaction_id, 
+          rp.waste_type_id, 
+          rp.start_date, 
+          rp.end_date, 
+          rp.status, 
+          rp.processed_quantity,
+          wt.name as waste_type_name,
+          wt.unit_price as waste_type_price,
+          t.user_id,
+          t.quantity as transaction_quantity,
+          u.username as user_name,
+          u.full_name as user_full_name,
+          u.phone as user_phone
         FROM recyclingprocesses rp
         LEFT JOIN wastetypes wt ON rp.waste_type_id = wt.waste_type_id
         LEFT JOIN transactions t ON rp.transaction_id = t.transaction_id
@@ -81,12 +148,12 @@ const recyclingController = {
       }
 
       if (from) {
-        query += ' AND rp.start_date >= ?';
+        query += ' AND DATE(rp.start_date) >= ?';
         params.push(from);
       }
 
       if (to) {
-        query += ' AND rp.start_date <= ?';
+        query += ' AND DATE(rp.start_date) <= ?';
         params.push(to);
       }
 
@@ -117,17 +184,22 @@ const recyclingController = {
       }
 
       if (from) {
-        countQuery += ' AND rp.start_date >= ?';
+        countQuery += ' AND DATE(rp.start_date) >= ?';
         countParams.push(from);
       }
 
       if (to) {
-        countQuery += ' AND rp.start_date <= ?';
+        countQuery += ' AND DATE(rp.start_date) <= ?';
         countParams.push(to);
       }
 
       const [countResult] = await pool.execute(countQuery, countParams);
       const total = countResult[0].total;
+
+      // Tính toán thông tin phân trang
+      const totalPages = Math.ceil(total / limit);
+      const hasNextPage = page < totalPages;
+      const hasPrevPage = page > 1;
 
       res.status(200).json({
         status: 'success',
@@ -137,7 +209,9 @@ const recyclingController = {
             page,
             limit,
             total,
-            totalPages: Math.ceil(total / limit)
+            totalPages,
+            hasNextPage,
+            hasPrevPage
           }
         }
       });

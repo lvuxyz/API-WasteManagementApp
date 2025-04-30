@@ -3,6 +3,9 @@ const router = express.Router();
 const recyclingController = require('../controllers/recyclingController');
 const { authenticateUser, authorizeRoles } = require('../middleware/authMiddleware');
 
+// 0. Lấy toàn bộ danh sách quy trình tái chế (đơn giản)
+router.get('/all', recyclingController.getAllRecyclingProcesses);
+
 // 5. Thống kê quá trình tái chế (đặt đầu tiên vì có pattern cụ thể)
 router.get('/report', authenticateUser, authorizeRoles('ADMIN'), recyclingController.getRecyclingReport);
 
