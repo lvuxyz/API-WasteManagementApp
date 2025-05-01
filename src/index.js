@@ -7,6 +7,7 @@ const wasteTypeRoutes = require('./routes/wasteTypeRoutes');
 const collectionPointRoutes = require('./routes/collectionPointRoutes');
 const recyclingRoutes = require('./routes/recyclingRoutes');
 const transactionRoutes = require('./routes/transactionRoutes');
+const rewardRoutes = require('./routes/rewardRoutes');
 const errorHandler = require('./middleware/errorHandler');
 const { NotFoundError } = require('./utils/errors');
 const logger = require('./utils/logger');
@@ -37,6 +38,7 @@ app.use('/api/v1/waste-types', wasteTypeRoutes);
 app.use('/api/v1/collection-points', collectionPointRoutes);
 app.use('/api/v1/recycling', recyclingRoutes);
 app.use('/api/v1/transactions', transactionRoutes);
+app.use('/api/v1/rewards', rewardRoutes);
 
 // Handle undefined routes
 app.all('*', (req, res, next) => {

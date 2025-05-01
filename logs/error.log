@@ -670,3 +670,45 @@ NotFoundError: Giao dịch không tồn tại
   "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=4",
   "method": "GET"
 }
+2025-04-30 17:24:58 [ERROR]: 403: Bạn không có quyền thực hiện hành động này
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=6",
+  "method": "GET"
+}
+2025-05-01 22:55:38 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=6",
+  "method": "GET"
+}
+2025-05-01 22:55:50 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=6",
+  "method": "GET"
+}
+2025-05-01 22:55:56 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=6",
+  "method": "GET"
+}
+2025-05-01 22:58:13 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/user/1",
+  "method": "GET"
+}
+2025-05-01 22:58:54 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/notify/1",
+  "method": "POST"
+}
+2025-05-01 22:59:06 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/1",
+  "method": "GET"
+}

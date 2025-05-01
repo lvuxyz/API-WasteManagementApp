@@ -385,67 +385,63 @@ class TransactionRepository {
    * Update transaction status
    */
   static async updateTransactionStatus(transactionId, status) {
-    const connection = await pool.getConnection();
-    
     try {
-      await connection.beginTransaction();
-      
       // Check if transaction exists
-      const [transaction] = await connection.execute(
+      const [transaction] = await pool.execute(
         'SELECT * FROM transactions WHERE transaction_id = ?',
         [transactionId]
       );
       
       if (transaction.length === 0) {
-        throw new NotFoundError('Giao dịch không tồn tại');
+        throw new NotFoundError('Không tìm thấy giao dịch');
       }
       
-      // Update transaction status
-      await connection.execute(
+      // Update status
+      await pool.execute(
         'UPDATE transactions SET status = ? WHERE transaction_id = ?',
         [status, transactionId]
       );
       
-      // Add status to transaction history
-      await connection.execute(
+      // Record status change in history
+      await pool.execute(
         'INSERT INTO transactionhistory (transaction_id, status) VALUES (?, ?)',
         [transactionId, status]
       );
       
-      // If status is 'completed', add rewards
+      // If status is completed, process rewards
       if (status === 'completed') {
-        const [wasteType] = await connection.execute(
-          'SELECT unit_price FROM wastetypes WHERE waste_type_id = ?',
-          [transaction[0].waste_type_id]
-        );
-        
-        if (wasteType.length > 0) {
-          const points = Math.floor(transaction[0].quantity * wasteType[0].unit_price);
-          
-          if (points > 0) {
-            await connection.execute(
-              'INSERT INTO rewards (user_id, transaction_id, points) VALUES (?, ?, ?)',
-              [transaction[0].user_id, transactionId, points]
-            );
-          }
+        try {
+          // We'll use the reward repository to process the reward
+          // But we can't directly import it here to avoid circular dependencies
+          // So we'll require it only when needed
+          const rewardRepository = require('./rewardRepository');
+          await rewardRepository.processTransactionReward(transactionId);
+        } catch (rewardError) {
+          logger.error(`Error processing reward for transaction ${transactionId}:`, rewardError);
+          // We don't want to fail the transaction status update if reward processing fails
+          // So we just log the error and continue
         }
       }
       
-      await connection.commit();
+      // Get updated transaction
+      const [updatedTransaction] = await pool.execute(
+        `SELECT t.*, u.full_name as user_name, u.username, 
+                cp.name as collection_point_name, wt.name as waste_type_name
+         FROM transactions t
+         LEFT JOIN users u ON t.user_id = u.user_id
+         LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id
+         LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id
+         WHERE t.transaction_id = ?`,
+        [transactionId]
+      );
       
-      // Get the updated transaction
-      return await this.getTransactionById(transactionId);
+      return updatedTransaction[0];
     } catch (error) {
-      await connection.rollback();
-      logger.error(`Error updating transaction status #${transactionId}:`, error);
-      
       if (error instanceof NotFoundError) {
         throw error;
       }
-      
-      throw new DatabaseError('Không thể cập nhật trạng thái giao dịch: ' + error.message);
-    } finally {
-      connection.release();
+      logger.error(`Error updating transaction status (${transactionId}):`, error);
+      throw new DatabaseError('Error updating transaction status');
     }
   }
   

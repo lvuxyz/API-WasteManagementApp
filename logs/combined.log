@@ -1649,3 +1649,372 @@ NotFoundError: Giao dịch không tồn tại
   "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=4",
   "method": "GET"
 }
+2025-04-30 17:23:55 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-04-30 17:23:55 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-04-30 17:23:55 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-04-30 17:23:55 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-04-30 17:24:21 [INFO]: GET /api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=4
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-04-30 17:24:21 [DEBUG]: Recycling statistics query:
+{
+  "service": "waste-management-api",
+  "query": "\n        SELECT \n          rp.waste_type_id,\n          wt.name as waste_type_name,\n          COUNT(rp.process_id) as total_processes,\n          SUM(COALESCE(rp.processed_quantity, 0)) as total_processed,\n          COUNT(CASE WHEN rp.status = 'completed' THEN 1 END) as completed_processes,\n          COUNT(CASE WHEN rp.status = 'in_progress' THEN 1 END) as in_progress_processes,\n          COUNT(CASE WHEN rp.status = 'pending' THEN 1 END) as pending_processes\n        FROM recyclingprocesses rp\n        LEFT JOIN wastetypes wt ON rp.waste_type_id = wt.waste_type_id\n        WHERE 1=1\n       AND CONVERT_TZ(rp.start_date, '+00:00', '+07:00') >= ? AND CONVERT_TZ(rp.start_date, '+00:00', '+07:00') <= ? AND rp.waste_type_id = ? GROUP BY rp.waste_type_id, wt.name",
+  "params": [
+    "2025-04-29",
+    "2025-12-31",
+    "4"
+  ],
+  "results": 1,
+  "timezone": "UTC+7"
+}
+2025-04-30 17:24:42 [INFO]: GET /api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=6
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-04-30 17:24:42 [DEBUG]: Recycling statistics query:
+{
+  "service": "waste-management-api",
+  "query": "\n        SELECT \n          rp.waste_type_id,\n          wt.name as waste_type_name,\n          COUNT(rp.process_id) as total_processes,\n          SUM(COALESCE(rp.processed_quantity, 0)) as total_processed,\n          COUNT(CASE WHEN rp.status = 'completed' THEN 1 END) as completed_processes,\n          COUNT(CASE WHEN rp.status = 'in_progress' THEN 1 END) as in_progress_processes,\n          COUNT(CASE WHEN rp.status = 'pending' THEN 1 END) as pending_processes\n        FROM recyclingprocesses rp\n        LEFT JOIN wastetypes wt ON rp.waste_type_id = wt.waste_type_id\n        WHERE 1=1\n       AND CONVERT_TZ(rp.start_date, '+00:00', '+07:00') >= ? AND CONVERT_TZ(rp.start_date, '+00:00', '+07:00') <= ? AND rp.waste_type_id = ? GROUP BY rp.waste_type_id, wt.name",
+  "params": [
+    "2025-04-29",
+    "2025-12-31",
+    "6"
+  ],
+  "results": 1,
+  "timezone": "UTC+7"
+}
+2025-04-30 17:24:49 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-04-30 17:24:49 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-04-30 17:24:49 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 4,
+  "username": "lvuxyz0",
+  "roles": "USER"
+}
+2025-04-30 17:24:58 [INFO]: GET /api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=6
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-04-30 17:24:58 [ERROR]: 403: Bạn không có quyền thực hiện hành động này
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=6",
+  "method": "GET"
+}
+2025-04-30 17:25:06 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-04-30 17:25:06 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-04-30 17:25:06 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-04-30 17:25:22 [INFO]: GET /api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=6
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-04-30 17:25:22 [DEBUG]: Recycling statistics query:
+{
+  "service": "waste-management-api",
+  "query": "\n        SELECT \n          rp.waste_type_id,\n          wt.name as waste_type_name,\n          COUNT(rp.process_id) as total_processes,\n          SUM(COALESCE(rp.processed_quantity, 0)) as total_processed,\n          COUNT(CASE WHEN rp.status = 'completed' THEN 1 END) as completed_processes,\n          COUNT(CASE WHEN rp.status = 'in_progress' THEN 1 END) as in_progress_processes,\n          COUNT(CASE WHEN rp.status = 'pending' THEN 1 END) as pending_processes\n        FROM recyclingprocesses rp\n        LEFT JOIN wastetypes wt ON rp.waste_type_id = wt.waste_type_id\n        WHERE 1=1\n       AND CONVERT_TZ(rp.start_date, '+00:00', '+07:00') >= ? AND CONVERT_TZ(rp.start_date, '+00:00', '+07:00') <= ? AND rp.waste_type_id = ? GROUP BY rp.waste_type_id, wt.name",
+  "params": [
+    "2025-04-29",
+    "2025-12-31",
+    "6"
+  ],
+  "results": 1,
+  "timezone": "UTC+7"
+}
+2025-05-01 22:55:22 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-01 22:55:22 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-01 22:55:22 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-01 22:55:22 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-01 22:55:38 [INFO]: GET /api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=6
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-01 22:55:38 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=6",
+  "method": "GET"
+}
+2025-05-01 22:55:46 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-01 22:55:46 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-01 22:55:46 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-01 22:55:50 [INFO]: GET /api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=6
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-01 22:55:50 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=6",
+  "method": "GET"
+}
+2025-05-01 22:55:56 [INFO]: GET /api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=6
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-01 22:55:56 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=6",
+  "method": "GET"
+}
+2025-05-01 22:56:05 [INFO]: GET /api/v1/recycling/statistics?from=2025-04-29&to=2025-12-31&wasteTypeId=6
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-01 22:56:05 [DEBUG]: Recycling statistics query:
+{
+  "service": "waste-management-api",
+  "query": "\n        SELECT \n          rp.waste_type_id,\n          wt.name as waste_type_name,\n          COUNT(rp.process_id) as total_processes,\n          SUM(COALESCE(rp.processed_quantity, 0)) as total_processed,\n          COUNT(CASE WHEN rp.status = 'completed' THEN 1 END) as completed_processes,\n          COUNT(CASE WHEN rp.status = 'in_progress' THEN 1 END) as in_progress_processes,\n          COUNT(CASE WHEN rp.status = 'pending' THEN 1 END) as pending_processes\n        FROM recyclingprocesses rp\n        LEFT JOIN wastetypes wt ON rp.waste_type_id = wt.waste_type_id\n        WHERE 1=1\n       AND CONVERT_TZ(rp.start_date, '+00:00', '+07:00') >= ? AND CONVERT_TZ(rp.start_date, '+00:00', '+07:00') <= ? AND rp.waste_type_id = ? GROUP BY rp.waste_type_id, wt.name",
+  "params": [
+    "2025-04-29",
+    "2025-12-31",
+    "6"
+  ],
+  "results": 1,
+  "timezone": "UTC+7"
+}
+2025-05-01 22:58:13 [INFO]: GET /api/v1/recycling/user/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-01 22:58:13 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/user/1",
+  "method": "GET"
+}
+2025-05-01 22:58:34 [INFO]: GET /api/v1/recycling/user/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-01 22:58:54 [INFO]: POST /api/v1/recycling/notify/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-01 22:58:54 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/notify/1",
+  "method": "POST"
+}
+2025-05-01 22:59:00 [INFO]: POST /api/v1/recycling/notify/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-01 22:59:06 [INFO]: GET /api/v1/recycling/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-01 22:59:06 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/recycling/1",
+  "method": "GET"
+}
+2025-05-01 22:59:12 [INFO]: GET /api/v1/recycling/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-01 23:04:56 [INFO]: GET /api/v1/collection-points/1/status-history
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-01 23:11:26 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:11:26 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:11:26 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:11:26 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:36:13 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:36:13 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:36:13 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:36:13 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:36:28 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:36:28 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:36:28 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:36:28 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:37:05 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:37:05 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:37:05 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:37:05 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:37:20 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:37:23 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:37:23 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:37:23 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:37:23 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:37:43 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:37:43 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:37:43 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-01 23:37:43 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
