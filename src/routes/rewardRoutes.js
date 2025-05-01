@@ -1,22 +1,24 @@
 const express = require('express');
 const router = express.Router();
 const rewardController = require('../controllers/rewardController');
-const { authenticateJWT, authorizeRoles } = require('../middleware/authMiddleware');
+const { authenticateUser, authorizeRoles } = require('../middleware/authMiddleware');
+
+// Routes for authenticated users
+router.get('/my-rewards', authenticateUser, rewardController.getMyRewards);
+router.get('/my-total-points', authenticateUser, rewardController.getMyTotalPoints);
+router.get('/my-statistics', authenticateUser, rewardController.getMyStatistics);
 
 // Public routes
 router.get('/rankings', rewardController.getUserRankings);
 
-// Protected routes - require user authentication
-router.get('/my-rewards', authenticateJWT, rewardController.getMyRewards);
-router.get('/my-total-points', authenticateJWT, rewardController.getMyTotalPoints);
-router.get('/my-statistics', authenticateJWT, rewardController.getMyStatistics);
-router.get('/:id', authenticateJWT, rewardController.getRewardById);
+// Admin routes
+router.get('/users/:userId', authenticateUser, authorizeRoles(['ADMIN']), rewardController.getUserRewards);
+router.post('/', authenticateUser, authorizeRoles(['ADMIN']), rewardController.createReward);
+router.post('/transactions/:transactionId/process', authenticateUser, authorizeRoles(['ADMIN']), rewardController.processTransactionReward);
+router.put('/:id', authenticateUser, authorizeRoles(['ADMIN']), rewardController.updateReward);
+router.delete('/:id', authenticateUser, authorizeRoles(['ADMIN']), rewardController.deleteReward);
 
-// Admin only routes
-router.get('/users/:userId', authenticateJWT, authorizeRoles(['ADMIN']), rewardController.getUserRewards);
-router.post('/', authenticateJWT, authorizeRoles(['ADMIN']), rewardController.createReward);
-router.put('/:id', authenticateJWT, authorizeRoles(['ADMIN']), rewardController.updateReward);
-router.delete('/:id', authenticateJWT, authorizeRoles(['ADMIN']), rewardController.deleteReward);
-router.post('/transactions/:transactionId/process', authenticateJWT, authorizeRoles(['ADMIN']), rewardController.processTransactionReward);
+// This route must be last to avoid conflicts with other routes
+router.get('/:id', authenticateUser, rewardController.getRewardById);
 
 module.exports = router; 

@@ -411,11 +411,9 @@ class TransactionRepository {
       // If status is completed, process rewards
       if (status === 'completed') {
         try {
-          // We'll use the reward repository to process the reward
-          // But we can't directly import it here to avoid circular dependencies
-          // So we'll require it only when needed
-          const rewardRepository = require('./rewardRepository');
-          await rewardRepository.processTransactionReward(transactionId);
+          // Dynamically import to avoid circular dependencies
+          const RewardRepository = require('./rewardRepository');
+          await RewardRepository.processTransactionReward(transactionId);
         } catch (rewardError) {
           logger.error(`Error processing reward for transaction ${transactionId}:`, rewardError);
           // We don't want to fail the transaction status update if reward processing fails
