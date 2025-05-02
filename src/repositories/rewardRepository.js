@@ -6,82 +6,63 @@ class RewardRepository {
   /**
    * Get rewards for a specific user with pagination
    */
-  static async getUserRewards(userId, page = 1, limit = 10, filters = {}) {
+  static async getUserRewards(userId, page = 1, limit = 10) {
     try {
-      const offset = (page - 1) * limit;
-      
-      // Base query
-      let query = `
+      // Validate and sanitize input
+      const safeUserId = parseInt(userId);
+      const safePage = Math.max(1, parseInt(page));
+      const safeLimit = Math.max(1, Math.min(50, parseInt(limit)));
+      const offset = (safePage - 1) * safeLimit;
+
+      // Get user rewards with basic information
+      const query = `
         SELECT 
           r.reward_id,
           r.points,
           r.earned_date,
-          t.transaction_date,
-          wt.name as waste_type_name
+          IFNULL(t.transaction_date, r.earned_date) as transaction_date,
+          IFNULL(wt.name, 'Manual Reward') as source
         FROM rewards r
         LEFT JOIN transactions t ON r.transaction_id = t.transaction_id
         LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id
         WHERE r.user_id = ?
+        ORDER BY r.earned_date DESC
+        LIMIT ? OFFSET ?
       `;
-      
-      // Add filters
-      const queryParams = [userId];
-      
-      if (filters.from_date) {
-        query += ' AND r.earned_date >= ?';
-        queryParams.push(filters.from_date);
-      }
-      
-      if (filters.to_date) {
-        query += ' AND r.earned_date <= ?';
-        queryParams.push(filters.to_date);
-      }
-      
-      // Order by (most recent first)
-      query += ' ORDER BY r.earned_date DESC';
-      
-      // Add pagination
-      query += ' LIMIT ? OFFSET ?';
-      queryParams.push(limit, offset);
-      
-      // Execute query
-      const [rewards] = await pool.execute(query, queryParams);
-      
-      // Get total points for user
-      const [totalPoints] = await pool.execute(
-        'SELECT COALESCE(SUM(points), 0) as total_points FROM rewards WHERE user_id = ?',
-        [userId]
+
+      const [rewards] = await pool.query(query, [safeUserId, safeLimit, offset]);
+
+      // Get total points
+      const [totalPoints] = await pool.query(
+        'SELECT IFNULL(SUM(points), 0) as total FROM rewards WHERE user_id = ?',
+        [safeUserId]
       );
-      
-      // Get total count for pagination
-      let countQuery = 'SELECT COUNT(*) as total FROM rewards WHERE user_id = ?';
-      const countParams = [userId];
-      
-      if (filters.from_date) {
-        countQuery += ' AND earned_date >= ?';
-        countParams.push(filters.from_date);
-      }
-      
-      if (filters.to_date) {
-        countQuery += ' AND earned_date <= ?';
-        countParams.push(filters.to_date);
-      }
-      
-      const [totalCount] = await pool.execute(countQuery, countParams);
-      
+
+      // Get total count of rewards
+      const [totalCount] = await pool.query(
+        'SELECT COUNT(*) as count FROM rewards WHERE user_id = ?',
+        [safeUserId]
+      );
+
+      const total = parseInt(totalCount[0].count);
+      const totalPages = Math.ceil(total / safeLimit);
+
       return {
-        rewards,
-        total_points: totalPoints[0].total_points,
+        rewards: rewards.map(reward => ({
+          ...reward,
+          points: parseInt(reward.points)
+        })),
+        total_points: parseInt(totalPoints[0].total),
         pagination: {
-          total: totalCount[0].total,
-          page: Number(page),
-          limit: Number(limit),
-          pages: Math.ceil(totalCount[0].total / limit)
+          current_page: safePage,
+          total_pages: totalPages,
+          total_items: total,
+          items_per_page: safeLimit
         }
       };
     } catch (error) {
-      logger.error('Error getting user rewards:', error);
-      throw new DatabaseError('Error retrieving user rewards');
+      logger.error('Error in getUserRewards:', error);
+      throw new DatabaseError('Không thể lấy thông tin điểm thưởng của người dùng');
     }
   }
 

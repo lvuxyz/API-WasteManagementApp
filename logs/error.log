@@ -1716,3 +1716,123 @@ DatabaseError: Error retrieving user rankings
   "url": "/api/v1/rewards/rankings",
   "method": "GET"
 }
+2025-05-02 15:10:49 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:48:36)
+    at getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:150:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:84:5
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT \n          r.reward_id,\n          r.points,\n          r.earned_date,\n          t.transaction_date,\n          wt.name as waste_type_name\n        FROM rewards r\n        LEFT JOIN transactions t ON r.transaction_id = t.transaction_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n        WHERE r.user_id = ?\n       ORDER BY r.earned_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-02T08:10:49.791Z [ERROR]: Error in getUserRewards (1): Error retrieving user rewards
+DatabaseError: Error retrieving user rewards
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:84:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:150:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 15:10:49 [ERROR]: 500: Error retrieving user rewards
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/users/1",
+  "method": "GET"
+}
+2025-05-02 15:14:36 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "GET"
+}
+2025-05-02 15:14:46 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at TransactionRepository.getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:69:41)
+    at getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:25:50)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:84:5
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT t.*, u.full_name as user_name, u.username, \n               cp.name as collection_point_name, wt.name as waste_type_name\n        FROM transactions t\n        LEFT JOIN users u ON t.user_id = u.user_id\n        LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n       ORDER BY t.transaction_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-02T08:14:46.140Z [ERROR]: Error in getAllTransactions: Error retrieving transactions
+DatabaseError: Error retrieving transactions
+    at TransactionRepository.getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:91:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:25:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 15:14:46 [ERROR]: 500: Error retrieving transactions
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "GET"
+}
+2025-05-02 15:14:58 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at TransactionRepository.getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:69:41)
+    at getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:25:50)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:84:5
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT t.*, u.full_name as user_name, u.username, \n               cp.name as collection_point_name, wt.name as waste_type_name\n        FROM transactions t\n        LEFT JOIN users u ON t.user_id = u.user_id\n        LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n       ORDER BY t.transaction_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-02T08:14:58.110Z [ERROR]: Error in getAllTransactions: Error retrieving transactions
+DatabaseError: Error retrieving transactions
+    at TransactionRepository.getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:91:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:25:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 15:14:58 [ERROR]: 500: Error retrieving transactions
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "GET"
+}

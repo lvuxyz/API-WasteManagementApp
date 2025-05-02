@@ -8,7 +8,10 @@ class TransactionRepository {
    */
   static async getAllTransactions(page = 1, limit = 10, filters = {}) {
     try {
-      const offset = (page - 1) * limit;
+      // Validate and sanitize input
+      const safePage = Math.max(1, parseInt(page));
+      const safeLimit = Math.max(1, Math.min(50, parseInt(limit)));
+      const offset = (safePage - 1) * safeLimit;
       
       // Base query
       let query = `
@@ -21,8 +24,8 @@ class TransactionRepository {
       `;
       
       // Add filters
-      const whereConditions = [];
       const queryParams = [];
+      const whereConditions = [];
       
       if (filters.status) {
         whereConditions.push('t.status = ?');
@@ -31,17 +34,17 @@ class TransactionRepository {
       
       if (filters.user_id) {
         whereConditions.push('t.user_id = ?');
-        queryParams.push(filters.user_id);
+        queryParams.push(parseInt(filters.user_id));
       }
       
       if (filters.collection_point_id) {
         whereConditions.push('t.collection_point_id = ?');
-        queryParams.push(filters.collection_point_id);
+        queryParams.push(parseInt(filters.collection_point_id));
       }
       
       if (filters.waste_type_id) {
         whereConditions.push('t.waste_type_id = ?');
-        queryParams.push(filters.waste_type_id);
+        queryParams.push(parseInt(filters.waste_type_id));
       }
       
       if (filters.date_from) {
@@ -58,32 +61,34 @@ class TransactionRepository {
         query += ' WHERE ' + whereConditions.join(' AND ');
       }
       
-      // Order by
-      query += ' ORDER BY t.transaction_date DESC';
-      
-      // Add pagination
-      query += ' LIMIT ? OFFSET ?';
-      queryParams.push(Number(limit), Number(offset));
+      // Add order and pagination
+      query += ' ORDER BY t.transaction_date DESC LIMIT ? OFFSET ?';
+      queryParams.push(safeLimit, offset);
       
       // Execute query
-      const [transactions] = await pool.execute(query, queryParams);
+      const [transactions] = await pool.query(query, queryParams);
       
-      // Get total count for pagination
+      // Get total count
       let countQuery = 'SELECT COUNT(*) as total FROM transactions t';
+      const countParams = [];
       
       if (whereConditions.length > 0) {
         countQuery += ' WHERE ' + whereConditions.join(' AND ');
+        countParams.push(...queryParams.slice(0, -2)); // Exclude limit and offset
       }
       
-      const [totalCount] = await pool.execute(countQuery, queryParams.slice(0, -2));
+      const [totalCount] = await pool.query(countQuery, countParams);
       
       return {
-        transactions,
+        transactions: transactions.map(t => ({
+          ...t,
+          quantity: parseFloat(t.quantity)
+        })),
         pagination: {
-          total: totalCount[0].total,
-          page: Number(page),
-          limit: Number(limit),
-          pages: Math.ceil(totalCount[0].total / limit)
+          total: parseInt(totalCount[0].total),
+          page: safePage,
+          limit: safeLimit,
+          pages: Math.ceil(totalCount[0].total / safeLimit)
         }
       };
     } catch (error) {

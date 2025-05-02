@@ -138,20 +138,20 @@ const rewardController = {
   getUserRewards: async (req, res, next) => {
     try {
       const userId = parseInt(req.params.userId);
+      if (!userId) {
+        throw new ValidationError('ID người dùng không hợp lệ');
+      }
+
       const page = parseInt(req.query.page) || 1;
       const limit = parseInt(req.query.limit) || 10;
       
-      // Extract filters from query params
-      const filters = {
-        from_date: req.query.from_date,
-        to_date: req.query.to_date
-      };
-      
-      const result = await rewardRepository.getUserRewards(userId, page, limit, filters);
+      const result = await rewardRepository.getUserRewards(userId, page, limit);
       
       res.json({
         success: true,
-        message: 'Lấy thông tin điểm thưởng của người dùng thành công',
+        message: result.rewards.length > 0 
+          ? 'Lấy thông tin điểm thưởng thành công' 
+          : 'Người dùng chưa có điểm thưởng',
         data: result
       });
     } catch (error) {
