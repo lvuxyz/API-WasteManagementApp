@@ -90,14 +90,14 @@ const rewardController = {
    */
   getUserRankings: async (req, res, next) => {
     try {
-      const limit = parseInt(req.query.limit) || 10;
-      
-      const result = await rewardRepository.getUserRankings(limit);
+      const rankings = await rewardRepository.getUserRankings();
       
       res.json({
         success: true,
-        message: 'Lấy xếp hạng người dùng thành công',
-        data: result
+        message: rankings.length > 0 
+          ? 'Lấy bảng xếp hạng thành công' 
+          : 'Chưa có dữ liệu xếp hạng',
+        data: rankings
       });
     } catch (error) {
       logger.error('Error in getUserRankings:', error);
@@ -152,11 +152,7 @@ const rewardController = {
       res.json({
         success: true,
         message: 'Lấy thông tin điểm thưởng của người dùng thành công',
-        data: {
-          rewards: result.rewards,
-          total_points: result.total_points,
-          pagination: result.pagination
-        }
+        data: result
       });
     } catch (error) {
       logger.error(`Error in getUserRewards (${req.params.userId}):`, error);

@@ -12,7 +12,12 @@ class RewardRepository {
       
       // Base query
       let query = `
-        SELECT r.*, t.transaction_date, wt.name as waste_type_name
+        SELECT 
+          r.reward_id,
+          r.points,
+          r.earned_date,
+          t.transaction_date,
+          wt.name as waste_type_name
         FROM rewards r
         LEFT JOIN transactions t ON r.transaction_id = t.transaction_id
         LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id
@@ -37,14 +42,14 @@ class RewardRepository {
       
       // Add pagination
       query += ' LIMIT ? OFFSET ?';
-      queryParams.push(Number(limit), Number(offset));
+      queryParams.push(limit, offset);
       
       // Execute query
       const [rewards] = await pool.execute(query, queryParams);
       
       // Get total points for user
       const [totalPoints] = await pool.execute(
-        'SELECT SUM(points) as total_points FROM rewards WHERE user_id = ?',
+        'SELECT COALESCE(SUM(points), 0) as total_points FROM rewards WHERE user_id = ?',
         [userId]
       );
       
@@ -66,7 +71,7 @@ class RewardRepository {
       
       return {
         rewards,
-        total_points: totalPoints[0].total_points || 0,
+        total_points: totalPoints[0].total_points,
         pagination: {
           total: totalCount[0].total,
           page: Number(page),
@@ -151,30 +156,34 @@ class RewardRepository {
   /**
    * Get user rankings by total points
    */
-  static async getUserRankings(limit = 10) {
+  static async getUserRankings() {
     try {
       const query = `
         SELECT 
           u.user_id,
           u.username,
           u.full_name,
-          SUM(r.points) as total_points,
-          COUNT(DISTINCT r.transaction_id) as transaction_count
-        FROM rewards r
-        JOIN users u ON r.user_id = u.user_id
-        GROUP BY u.user_id
+          IFNULL(SUM(r.points), 0) as total_points
+        FROM users u
+        LEFT JOIN rewards r ON u.user_id = r.user_id
+        GROUP BY u.user_id, u.username, u.full_name
         ORDER BY total_points DESC
-        LIMIT ?
+        LIMIT 10
       `;
       
-      const [rankings] = await pool.execute(query, [Number(limit)]);
+      const [rankings] = await pool.query(query);
       
-      return {
-        rankings
-      };
+      // Add rank number and format response
+      return rankings.map((user, index) => ({
+        rank: index + 1,
+        user_id: user.user_id,
+        username: user.username,
+        full_name: user.full_name,
+        total_points: parseInt(user.total_points)
+      }));
     } catch (error) {
-      logger.error('Error getting user rankings:', error);
-      throw new DatabaseError('Error retrieving user rankings');
+      logger.error('Error in getUserRankings:', error);
+      throw new DatabaseError('Không thể lấy thông tin bảng xếp hạng');
     }
   }
 

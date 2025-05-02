@@ -2074,3 +2074,1728 @@ NotFoundError: Giao dịch không tồn tại
 {
   "service": "waste-management-api"
 }
+2025-05-02 00:30:32 [INFO]: GET /api/v1/rewards/users/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:30:32 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:43:36)
+    at getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:150:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:84:5
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT r.*, t.transaction_date, wt.name as waste_type_name\n        FROM rewards r\n        LEFT JOIN transactions t ON r.transaction_id = t.transaction_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n        WHERE r.user_id = ?\n       ORDER BY r.earned_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-01T17:30:32.173Z [ERROR]: Error in getUserRewards (1): Error retrieving user rewards
+DatabaseError: Error retrieving user rewards
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:79:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:150:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:30:32 [ERROR]: 500: Error retrieving user rewards
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/users/1",
+  "method": "GET"
+}
+2025-05-02 00:31:16 [INFO]: POST /api/v1/rewards
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:31:16 [ERROR]: Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`rewards`, CONSTRAINT `rewards_ibfk_2` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`transaction_id`) ON DELETE SET NULL)
+Error: Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`rewards`, CONSTRAINT `rewards_ibfk_2` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`transaction_id`) ON DELETE SET NULL)
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.createReward (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:232:35)
+    at createReward (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:181:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:84:5
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_NO_REFERENCED_ROW_2",
+  "errno": 1452,
+  "sql": "\n        INSERT INTO rewards (user_id, points, transaction_id)\n        VALUES (?, ?, ?)\n      ",
+  "sqlState": "23000",
+  "sqlMessage": "Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`rewards`, CONSTRAINT `rewards_ibfk_2` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`transaction_id`) ON DELETE SET NULL)"
+}
+2025-05-01T17:31:16.462Z [ERROR]: Error in createReward: Error creating reward
+DatabaseError: Error creating reward
+    at RewardRepository.createReward (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:243:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async createReward (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:181:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:31:16 [ERROR]: 500: Error creating reward
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards",
+  "method": "POST"
+}
+2025-05-02 00:31:26 [INFO]: POST /api/v1/rewards
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:32:30 [INFO]: GET /api/v1/rewards/rankings
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:32:30 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:170:37)
+    at getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT \n          u.user_id,\n          u.username,\n          u.full_name,\n          SUM(r.points) as total_points,\n          COUNT(DISTINCT r.transaction_id) as transaction_count\n        FROM rewards r\n        JOIN users u ON r.user_id = u.user_id\n        GROUP BY u.user_id\n        ORDER BY total_points DESC\n        LIMIT ?\n      ",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-01T17:32:30.147Z [ERROR]: Error in getUserRankings: Error retrieving user rankings
+DatabaseError: Error retrieving user rankings
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:177:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:32:30 [ERROR]: 500: Error retrieving user rankings
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/rankings",
+  "method": "GET"
+}
+2025-05-02 00:32:47 [INFO]: GET /api/v1/rewards/rankings?limit=10
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:32:47 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:170:37)
+    at getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT \n          u.user_id,\n          u.username,\n          u.full_name,\n          SUM(r.points) as total_points,\n          COUNT(DISTINCT r.transaction_id) as transaction_count\n        FROM rewards r\n        JOIN users u ON r.user_id = u.user_id\n        GROUP BY u.user_id\n        ORDER BY total_points DESC\n        LIMIT ?\n      ",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-01T17:32:47.976Z [ERROR]: Error in getUserRankings: Error retrieving user rankings
+DatabaseError: Error retrieving user rankings
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:177:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:32:47 [ERROR]: 500: Error retrieving user rankings
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/rankings?limit=10",
+  "method": "GET"
+}
+2025-05-02 00:33:00 [INFO]: GET /api/v1/rewards/rankings?limit=1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:33:00 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:170:37)
+    at getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT \n          u.user_id,\n          u.username,\n          u.full_name,\n          SUM(r.points) as total_points,\n          COUNT(DISTINCT r.transaction_id) as transaction_count\n        FROM rewards r\n        JOIN users u ON r.user_id = u.user_id\n        GROUP BY u.user_id\n        ORDER BY total_points DESC\n        LIMIT ?\n      ",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-01T17:33:00.097Z [ERROR]: Error in getUserRankings: Error retrieving user rankings
+DatabaseError: Error retrieving user rankings
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:177:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:33:00 [ERROR]: 500: Error retrieving user rankings
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/rankings?limit=1",
+  "method": "GET"
+}
+2025-05-02 00:33:27 [INFO]: GET /api/v1/rewards/my-rewards
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:33:27 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:43:36)
+    at getMyRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:22:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT r.*, t.transaction_date, wt.name as waste_type_name\n        FROM rewards r\n        LEFT JOIN transactions t ON r.transaction_id = t.transaction_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n        WHERE r.user_id = ?\n       ORDER BY r.earned_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-01T17:33:27.863Z [ERROR]: Error in getMyRewards: Error retrieving user rewards
+DatabaseError: Error retrieving user rewards
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:79:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getMyRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:22:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:33:27 [ERROR]: 500: Error retrieving user rewards
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/my-rewards",
+  "method": "GET"
+}
+2025-05-02 00:33:51 [INFO]: GET /api/v1/rewards/my-total-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:34:00 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:34:00 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-02 00:34:10 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:35:18 [INFO]: GET /api/v1/rewards/4
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:35:18 [ERROR]: 401: Không tìm thấy token xác thực
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/4",
+  "method": "GET"
+}
+2025-05-02 00:35:24 [INFO]: GET /api/v1/rewards/4
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:36:30 [INFO]: GET /api/v1/rewards/users/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:36:30 [ERROR]: 401: Không tìm thấy token xác thực
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/users/1",
+  "method": "GET"
+}
+2025-05-02 00:36:35 [INFO]: GET /api/v1/rewards/users/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:36:35 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:43:36)
+    at getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:150:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:84:5
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT r.*, t.transaction_date, wt.name as waste_type_name\n        FROM rewards r\n        LEFT JOIN transactions t ON r.transaction_id = t.transaction_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n        WHERE r.user_id = ?\n       ORDER BY r.earned_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-01T17:36:35.494Z [ERROR]: Error in getUserRewards (1): Error retrieving user rewards
+DatabaseError: Error retrieving user rewards
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:79:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:150:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:36:35 [ERROR]: 500: Error retrieving user rewards
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/users/1",
+  "method": "GET"
+}
+2025-05-02 00:37:23 [INFO]: GET /api/v1/rewards/users/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:37:23 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:43:36)
+    at getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:150:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:84:5
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT r.*, t.transaction_date, wt.name as waste_type_name\n        FROM rewards r\n        LEFT JOIN transactions t ON r.transaction_id = t.transaction_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n        WHERE r.user_id = ?\n       ORDER BY r.earned_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-01T17:37:23.687Z [ERROR]: Error in getUserRewards (1): Error retrieving user rewards
+DatabaseError: Error retrieving user rewards
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:79:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:150:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:37:23 [ERROR]: 500: Error retrieving user rewards
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/users/1",
+  "method": "GET"
+}
+2025-05-02 00:38:04 [INFO]: GET /api/v1/rewards/my-total-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:39:33 [INFO]: GET /api/v1/transactions
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:39:33 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "GET"
+}
+2025-05-02 00:39:48 [INFO]: GET /api/v1/transactions
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:39:48 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at TransactionRepository.getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:69:41)
+    at getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:25:50)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:84:5
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT t.*, u.full_name as user_name, u.username, \n               cp.name as collection_point_name, wt.name as waste_type_name\n        FROM transactions t\n        LEFT JOIN users u ON t.user_id = u.user_id\n        LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n       ORDER BY t.transaction_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-01T17:39:48.186Z [ERROR]: Error in getAllTransactions: Error retrieving transactions
+DatabaseError: Error retrieving transactions
+    at TransactionRepository.getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:91:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getAllTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:25:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:39:48 [ERROR]: 500: Error retrieving transactions
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "GET"
+}
+2025-05-02 00:40:10 [INFO]: GET /api/v1/recycling/all
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:40:25 [INFO]: POST /api/v1/rewards/transactions/1/process
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:40:58 [INFO]: POST /api/v1/rewards/transactions/1/process
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:41:02 [INFO]: POST /api/v1/rewards/transactions/1/process
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:41:04 [INFO]: POST /api/v1/rewards/transactions/1/process
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:43:15 [INFO]: DELETE /api/v1/rewards/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:43:35 [INFO]: DELETE /api/v1/rewards/2
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:43:38 [INFO]: DELETE /api/v1/rewards/2
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-01T17:43:38.724Z [ERROR]: Error in deleteReward (2): Không tìm thấy thông tin điểm thưởng
+NotFoundError: Không tìm thấy thông tin điểm thưởng
+    at RewardRepository.deleteReward (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:294:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async deleteReward (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:228:7)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-02 00:43:38 [ERROR]: 404: Không tìm thấy thông tin điểm thưởng
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/2",
+  "method": "DELETE"
+}
+2025-05-02 00:45:20 [INFO]: GET /api/v1/transactions/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:46:08 [INFO]: POST /api/v1/rewards/transactions/1/process
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:48:06 [INFO]: GET /api/v1/rewards/rankings
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:48:06 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:170:37)
+    at getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT \n          u.user_id,\n          u.username,\n          u.full_name,\n          SUM(r.points) as total_points,\n          COUNT(DISTINCT r.transaction_id) as transaction_count\n        FROM rewards r\n        JOIN users u ON r.user_id = u.user_id\n        GROUP BY u.user_id\n        ORDER BY total_points DESC\n        LIMIT ?\n      ",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-01T17:48:06.900Z [ERROR]: Error in getUserRankings: Error retrieving user rankings
+DatabaseError: Error retrieving user rankings
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:177:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:48:06 [ERROR]: 500: Error retrieving user rankings
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/rankings",
+  "method": "GET"
+}
+2025-05-02 00:48:24 [INFO]: GET /api/v1/rewards/rankings
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:48:24 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:170:37)
+    at getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT \n          u.user_id,\n          u.username,\n          u.full_name,\n          SUM(r.points) as total_points,\n          COUNT(DISTINCT r.transaction_id) as transaction_count\n        FROM rewards r\n        JOIN users u ON r.user_id = u.user_id\n        GROUP BY u.user_id\n        ORDER BY total_points DESC\n        LIMIT ?\n      ",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-01T17:48:24.698Z [ERROR]: Error in getUserRankings: Error retrieving user rankings
+DatabaseError: Error retrieving user rankings
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:177:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:48:24 [ERROR]: 500: Error retrieving user rankings
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/rankings",
+  "method": "GET"
+}
+2025-05-02 00:48:38 [INFO]: GET /api/v1/rewards/rankings?limit=10
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:48:38 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:170:37)
+    at getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT \n          u.user_id,\n          u.username,\n          u.full_name,\n          SUM(r.points) as total_points,\n          COUNT(DISTINCT r.transaction_id) as transaction_count\n        FROM rewards r\n        JOIN users u ON r.user_id = u.user_id\n        GROUP BY u.user_id\n        ORDER BY total_points DESC\n        LIMIT ?\n      ",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-01T17:48:38.879Z [ERROR]: Error in getUserRankings: Error retrieving user rankings
+DatabaseError: Error retrieving user rankings
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:177:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:48:38 [ERROR]: 500: Error retrieving user rankings
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/rankings?limit=10",
+  "method": "GET"
+}
+2025-05-02 00:49:15 [INFO]: GET /api/v1/rewards/my-rewards
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:49:15 [ERROR]: 401: Không tìm thấy token xác thực
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/my-rewards",
+  "method": "GET"
+}
+2025-05-02 00:49:19 [INFO]: GET /api/v1/rewards/my-rewards
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:49:19 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:43:36)
+    at getMyRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:22:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT r.*, t.transaction_date, wt.name as waste_type_name\n        FROM rewards r\n        LEFT JOIN transactions t ON r.transaction_id = t.transaction_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n        WHERE r.user_id = ?\n       ORDER BY r.earned_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-01T17:49:19.733Z [ERROR]: Error in getMyRewards: Error retrieving user rewards
+DatabaseError: Error retrieving user rewards
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:79:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getMyRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:22:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:49:19 [ERROR]: 500: Error retrieving user rewards
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/my-rewards",
+  "method": "GET"
+}
+2025-05-02 00:49:41 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:49:41 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:49:41 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 4,
+  "username": "lvuxyz0",
+  "roles": "USER"
+}
+2025-05-02 00:49:49 [INFO]: GET /api/v1/rewards/my-rewards
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:49:49 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:43:36)
+    at getMyRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:22:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT r.*, t.transaction_date, wt.name as waste_type_name\n        FROM rewards r\n        LEFT JOIN transactions t ON r.transaction_id = t.transaction_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n        WHERE r.user_id = ?\n       ORDER BY r.earned_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-01T17:49:49.850Z [ERROR]: Error in getMyRewards: Error retrieving user rewards
+DatabaseError: Error retrieving user rewards
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:79:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getMyRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:22:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:49:49 [ERROR]: 500: Error retrieving user rewards
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/my-rewards",
+  "method": "GET"
+}
+2025-05-02 00:50:12 [INFO]: GET /api/v1/rewards/my-rewards
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:50:12 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:43:36)
+    at getMyRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:22:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT r.*, t.transaction_date, wt.name as waste_type_name\n        FROM rewards r\n        LEFT JOIN transactions t ON r.transaction_id = t.transaction_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n        WHERE r.user_id = ?\n       ORDER BY r.earned_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-01T17:50:12.614Z [ERROR]: Error in getMyRewards: Error retrieving user rewards
+DatabaseError: Error retrieving user rewards
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:79:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getMyRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:22:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:50:12 [ERROR]: 500: Error retrieving user rewards
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/my-rewards",
+  "method": "GET"
+}
+2025-05-02 00:50:27 [INFO]: GET /api/v1/rewards/my-total-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:50:39 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:50:39 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:50:39 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-02 00:50:47 [INFO]: GET /api/v1/rewards/my-total-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:51:55 [INFO]: GET /api/v1/rewards/my-statistics
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:53:42 [INFO]: PUT /api/v1/rewards/4
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:54:55 [INFO]: POST /api/v1/rewards
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:55:15 [INFO]: POST /api/v1/rewards
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:55:15 [ERROR]: Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`rewards`, CONSTRAINT `rewards_ibfk_2` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`transaction_id`) ON DELETE SET NULL)
+Error: Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`rewards`, CONSTRAINT `rewards_ibfk_2` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`transaction_id`) ON DELETE SET NULL)
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.createReward (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:232:35)
+    at createReward (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:181:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:84:5
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_NO_REFERENCED_ROW_2",
+  "errno": 1452,
+  "sql": "\n        INSERT INTO rewards (user_id, points, transaction_id)\n        VALUES (?, ?, ?)\n      ",
+  "sqlState": "23000",
+  "sqlMessage": "Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`rewards`, CONSTRAINT `rewards_ibfk_2` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`transaction_id`) ON DELETE SET NULL)"
+}
+2025-05-01T17:55:15.403Z [ERROR]: Error in createReward: Error creating reward
+DatabaseError: Error creating reward
+    at RewardRepository.createReward (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:243:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async createReward (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:181:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:55:15 [ERROR]: 500: Error creating reward
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards",
+  "method": "POST"
+}
+2025-05-02 00:55:20 [INFO]: POST /api/v1/rewards
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:55:47 [INFO]: GET /api/v1/rewards/my-total-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:55:55 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:55:55 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:55:55 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 5,
+  "username": "lvuxyz1",
+  "roles": "USER"
+}
+2025-05-02 00:56:29 [INFO]: GET /api/v1/rewards/my-total-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:56:40 [INFO]: PUT /api/v1/rewards/4
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:57:20 [INFO]: PUT /api/v1/rewards/5
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:57:33 [INFO]: GET /api/v1/rewards/my-total-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:57:46 [INFO]: PUT /api/v1/rewards/5
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:57:55 [INFO]: PUT /api/v1/rewards/4
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:58:19 [INFO]: GET /api/v1/rewards/users/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:58:19 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:43:36)
+    at getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:150:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:84:5
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT r.*, t.transaction_date, wt.name as waste_type_name\n        FROM rewards r\n        LEFT JOIN transactions t ON r.transaction_id = t.transaction_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n        WHERE r.user_id = ?\n       ORDER BY r.earned_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-01T17:58:19.035Z [ERROR]: Error in getUserRewards (1): Error retrieving user rewards
+DatabaseError: Error retrieving user rewards
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:79:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:150:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 00:58:19 [ERROR]: 500: Error retrieving user rewards
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/users/1",
+  "method": "GET"
+}
+2025-05-02 00:58:41 [INFO]: POST /api/v1/rewards
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:58:47 [INFO]: GET /api/v1/rewards/my-total-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 00:59:16 [INFO]: POST /api/v1/rewards
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 01:08:21 [INFO]: SIGINT RECEIVED. Shutting down gracefully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:13:08 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:13:08 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:13:09 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:13:09 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:13:09 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:13:09 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:13:10 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 14:13:10 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 14:13:11 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 5,
+  "username": "lvuxyz1",
+  "roles": "USER"
+}
+2025-05-02 14:53:20 [INFO]: GET /api/v1/rewards/my-total-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 14:53:23 [INFO]: GET /api/v1/rewards/my-total-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 14:53:44 [INFO]: GET /api/v1/rewards/my-total-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 14:54:46 [INFO]: GET /api/v1/rewards/users/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 14:54:46 [ERROR]: 403: Bạn không có quyền thực hiện hành động này
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/users/1",
+  "method": "GET"
+}
+2025-05-02 14:54:53 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 14:54:53 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 14:54:53 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-02 14:54:59 [INFO]: GET /api/v1/rewards/users/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 14:54:59 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:43:36)
+    at getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:150:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:84:5
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT r.*, t.transaction_date, wt.name as waste_type_name\n        FROM rewards r\n        LEFT JOIN transactions t ON r.transaction_id = t.transaction_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n        WHERE r.user_id = ?\n       ORDER BY r.earned_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-02T07:54:59.937Z [ERROR]: Error in getUserRewards (1): Error retrieving user rewards
+DatabaseError: Error retrieving user rewards
+    at RewardRepository.getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:79:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRewards (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:150:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 14:54:59 [ERROR]: 500: Error retrieving user rewards
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/users/1",
+  "method": "GET"
+}
+2025-05-02 14:55:24 [INFO]: GET /api/v1/rewards/rankings
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 14:55:24 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:170:37)
+    at getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:45)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT \n          u.user_id,\n          u.username,\n          u.full_name,\n          SUM(r.points) as total_points,\n          COUNT(DISTINCT r.transaction_id) as transaction_count\n        FROM rewards r\n        JOIN users u ON r.user_id = u.user_id\n        GROUP BY u.user_id\n        ORDER BY total_points DESC\n        LIMIT ?\n      ",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-02T07:55:24.749Z [ERROR]: Error in getUserRankings: Error retrieving user rankings
+DatabaseError: Error retrieving user rankings
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:177:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 14:55:24 [ERROR]: 500: Error retrieving user rankings
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/rankings",
+  "method": "GET"
+}
+2025-05-02 14:56:37 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:37 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:37 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:37 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:37 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:37 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:50 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:50 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:50 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:50 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:50 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:50 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:59 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:59 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:59 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:59 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:59 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 14:56:59 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:00:58 [INFO]: GET /api/v1/rankings?limit=10
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 15:00:58 [ERROR]: 404: Không tìm thấy /api/v1/rankings?limit=10 trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rankings?limit=10",
+  "method": "GET"
+}
+2025-05-02 15:01:03 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:01:03 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:01:03 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:01:03 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:01:03 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:01:03 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:01:05 [INFO]: GET /api/v1/rankings?limit=10
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 15:01:05 [ERROR]: 404: Không tìm thấy /api/v1/rankings?limit=10 trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rankings?limit=10",
+  "method": "GET"
+}
+2025-05-02 15:01:28 [INFO]: GET /api/v1/rewards/rankings?limit=10
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 15:01:28 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:174:37)
+    at getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:47)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT \n          u.user_id,\n          u.username,\n          u.full_name,\n          COALESCE(SUM(r.points), 0) as total_points\n        FROM users u\n        LEFT JOIN rewards r ON r.user_id = u.user_id\n        GROUP BY u.user_id, u.username, u.full_name\n        ORDER BY total_points DESC\n        LIMIT ?\n      ",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-02T08:01:28.885Z [ERROR]: Error in getUserRankings: Error retrieving user rankings
+DatabaseError: Error retrieving user rankings
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:179:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:24)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 15:01:28 [ERROR]: 500: Error retrieving user rankings
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/rankings?limit=10",
+  "method": "GET"
+}
+2025-05-02 15:01:56 [INFO]: GET /api/v1/rewards/rankings?limit=10
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 15:01:56 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:174:37)
+    at getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:47)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT \n          u.user_id,\n          u.username,\n          u.full_name,\n          COALESCE(SUM(r.points), 0) as total_points\n        FROM users u\n        LEFT JOIN rewards r ON r.user_id = u.user_id\n        GROUP BY u.user_id, u.username, u.full_name\n        ORDER BY total_points DESC\n        LIMIT ?\n      ",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-02T08:01:56.328Z [ERROR]: Error in getUserRankings: Error retrieving user rankings
+DatabaseError: Error retrieving user rankings
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:179:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:24)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 15:01:56 [ERROR]: 500: Error retrieving user rankings
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/rankings?limit=10",
+  "method": "GET"
+}
+2025-05-02 15:02:07 [INFO]: GET /api/v1/rewards/rankings?limit=10
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 15:02:07 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:174:37)
+    at getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:47)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT \n          u.user_id,\n          u.username,\n          u.full_name,\n          COALESCE(SUM(r.points), 0) as total_points\n        FROM users u\n        LEFT JOIN rewards r ON r.user_id = u.user_id\n        GROUP BY u.user_id, u.username, u.full_name\n        ORDER BY total_points DESC\n        LIMIT ?\n      ",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-02T08:02:07.712Z [ERROR]: Error in getUserRankings: Error retrieving user rankings
+DatabaseError: Error retrieving user rankings
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:179:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:24)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 15:02:07 [ERROR]: 500: Error retrieving user rankings
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/rankings?limit=10",
+  "method": "GET"
+}
+2025-05-02 15:02:52 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:02:52 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:02:52 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:02:52 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:02:52 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:02:52 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:02:54 [INFO]: GET /api/v1/rewards/rankings?limit=10
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 15:02:54 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:178:37)
+    at getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:47)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT \n          u.user_id,\n          u.username,\n          u.full_name,\n          COALESCE(SUM(r.points), 0) as total_points,\n          COUNT(r.reward_id) as reward_count\n        FROM users u\n        LEFT JOIN rewards r ON r.user_id = u.user_id\n        GROUP BY u.user_id, u.username, u.full_name\n        ORDER BY total_points DESC, u.username ASC\n        LIMIT ?\n      ",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-02T08:02:54.909Z [ERROR]: Error in getUserRankings: Error retrieving user rankings
+DatabaseError: Error retrieving user rankings
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:191:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:24)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 15:02:54 [ERROR]: 500: Error retrieving user rankings
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/rankings?limit=10",
+  "method": "GET"
+}
+2025-05-02 15:03:06 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:03:06 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:03:06 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:03:06 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:03:06 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:03:06 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:04:22 [INFO]: GET /api/v1/rewards/rankings
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 15:04:22 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:178:37)
+    at getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:47)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT \n          u.user_id,\n          u.username,\n          u.full_name,\n          COALESCE(SUM(r.points), 0) as total_points,\n          COUNT(r.reward_id) as reward_count\n        FROM users u\n        LEFT JOIN rewards r ON r.user_id = u.user_id\n        GROUP BY u.user_id, u.username, u.full_name\n        ORDER BY total_points DESC, u.username ASC\n        LIMIT ?\n      ",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-02T08:04:22.498Z [ERROR]: Error in getUserRankings: Error retrieving user rankings
+DatabaseError: Error retrieving user rankings
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:191:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:24)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 15:04:22 [ERROR]: 500: Error retrieving user rankings
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/rankings",
+  "method": "GET"
+}
+2025-05-02 15:04:39 [INFO]: SIGINT RECEIVED. Shutting down gracefully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:04:55 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:04:55 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:04:55 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:04:55 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:04:55 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:04:55 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:05:06 [INFO]: GET /api/v1/rewards/rankings
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 15:05:06 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:178:37)
+    at getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:47)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT \n          u.user_id,\n          u.username,\n          u.full_name,\n          COALESCE(SUM(r.points), 0) as total_points,\n          COUNT(r.reward_id) as reward_count\n        FROM users u\n        LEFT JOIN rewards r ON r.user_id = u.user_id\n        GROUP BY u.user_id, u.username, u.full_name\n        ORDER BY total_points DESC, u.username ASC\n        LIMIT ?\n      ",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-02T08:05:06.055Z [ERROR]: Error in getUserRankings: Error retrieving user rankings
+DatabaseError: Error retrieving user rankings
+    at RewardRepository.getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\rewardRepository.js:191:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserRankings (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\rewardController.js:95:24)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-02 15:05:06 [ERROR]: 500: Error retrieving user rankings
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/rankings",
+  "method": "GET"
+}
+2025-05-02 15:06:06 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:06:06 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:06:06 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:06:06 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:06:06 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-02 15:06:06 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
