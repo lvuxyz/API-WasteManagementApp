@@ -38,21 +38,49 @@ const transactionController = {
   
   /**
    * Get user's transactions
+   * 
+   * Endpoint: GET /api/transactions/my-transactions
+   * 
+   * Conditions for use:
+   * - User must be authenticated (valid JWT token in Authorization header)
+   * 
+   * Optional query parameters:
+   * - page: Page number (default: 1)
+   * - limit: Items per page (default: 10, max: 50)
+   * - status: Filter by status (e.g., 'pending', 'completed', 'rejected')
+   * - collection_point_id: Filter by collection point ID
+   * - waste_type_id: Filter by waste type ID
+   * - date_from: Filter transactions from this date (format: YYYY-MM-DD)
+   * - date_to: Filter transactions to this date (format: YYYY-MM-DD)
    */
   getUserTransactions: async (req, res, next) => {
     try {
+      // Ensure user is authenticated
+      if (!req.user || !req.user.userId) {
+        return next(new AuthorizationError('Bạn cần đăng nhập để xem giao dịch'));
+      }
+      
       const userId = req.user.userId;
-      const page = parseInt(req.query.page) || 1;
-      const limit = parseInt(req.query.limit) || 10;
+      const page = req.query.page || 1;
+      const limit = req.query.limit || 10;
       
       // Extract filters from query params
       const filters = {
         status: req.query.status,
-        collection_point_id: req.query.collection_point_id ? parseInt(req.query.collection_point_id) : undefined,
-        waste_type_id: req.query.waste_type_id ? parseInt(req.query.waste_type_id) : undefined,
+        collection_point_id: req.query.collection_point_id,
+        waste_type_id: req.query.waste_type_id,
         date_from: req.query.date_from,
         date_to: req.query.date_to
       };
+      
+      // Validate date formats if provided
+      if (filters.date_from && !/^\d{4}-\d{2}-\d{2}$/.test(filters.date_from)) {
+        return next(new ValidationError('Định dạng date_from không hợp lệ. Sử dụng YYYY-MM-DD'));
+      }
+      
+      if (filters.date_to && !/^\d{4}-\d{2}-\d{2}$/.test(filters.date_to)) {
+        return next(new ValidationError('Định dạng date_to không hợp lệ. Sử dụng YYYY-MM-DD'));
+      }
       
       const result = await transactionRepository.getUserTransactions(userId, page, limit, filters);
       

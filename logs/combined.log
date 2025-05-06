@@ -4105,3 +4105,3262 @@ DatabaseError: Error retrieving transactions
   "ip": "::1",
   "userAgent": "PostmanRuntime/7.43.4"
 }
+2025-05-02 15:52:52 [INFO]: GET /api/v1/transactions/images/proof-123.jpg
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-02 15:52:52 [ERROR]: 404: Không tìm thấy /api/v1/transactions/images/proof-123.jpg trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/images/proof-123.jpg",
+  "method": "GET"
+}
+2025-05-02 15:53:28 [INFO]: GET /api/v1/transactions
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"
+}
+2025-05-02 15:53:28 [ERROR]: 401: Không tìm thấy token xác thực
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "GET"
+}
+2025-05-02 15:53:29 [INFO]: GET /favicon.ico
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"
+}
+2025-05-02 15:53:29 [ERROR]: 404: Không tìm thấy /favicon.ico trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/favicon.ico",
+  "method": "GET"
+}
+2025-05-03 01:23:40 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:23:40 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-03 01:23:43 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:23:43 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-03 01:24:01 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:24:01 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:24:02 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-03 01:24:04 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:24:12 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:25:01 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:25:05 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:27:07 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:27:09 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:27:24 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:27:24 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:27:24 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-03 01:27:26 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:27:29 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:27:38 [INFO]: POST /api/v1/auth/logout
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:46:18 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:46:18 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:46:18 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-03 01:46:21 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:52:03 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 01:53:00 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:53:07 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:53:16 [INFO]: GET /api/v1/waste-types/5
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.1.3",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:55:26 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 01:55:45 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 01:58:51 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:58:53 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:59:08 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:59:08 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:59:08 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-03 01:59:10 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:59:42 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 01:59:44 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:00:02 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:00:02 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:00:02 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-03 02:00:04 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:05:35 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:05:40 [INFO]: GET /api/v1/waste-types/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:05:40 [ERROR]: 404: Không tìm thấy loại chất thải với ID đã cung cấp
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste-types/1",
+  "method": "GET"
+}
+2025-05-03 02:05:52 [INFO]: GET /api/v1/waste-types/4
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:06:14 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:06:17 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:07:18 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:07:21 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:13:02 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:13:02 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:13:02 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-03 02:13:05 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:13:09 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:13:13 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:18:57 [INFO]: SIGINT RECEIVED. Shutting down gracefully
+{
+  "service": "waste-management-api"
+}
+2025-05-03 02:20:18 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-03 02:20:18 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-03 02:20:18 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-03 02:20:18 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-03 02:20:18 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-03 02:20:18 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-03 02:20:47 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:20:49 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:21:07 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:21:07 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:21:07 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-03 02:21:10 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:21:13 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:21:16 [INFO]: GET /api/v1/waste-types/5
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:22:32 [INFO]: GET /api/v1/waste-types/6
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:23:24 [INFO]: GET /api/v1/waste-types/collection-point/:collection_point_id
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:23:24 [ERROR]: 404: Không tìm thấy điểm thu gom với ID đã cung cấp
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste-types/collection-point/:collection_point_id",
+  "method": "GET"
+}
+2025-05-03 02:23:34 [INFO]: GET /api/v1/collection-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:23:41 [INFO]: GET /api/v1/waste-types/collection-point/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:23:52 [INFO]: GET /api/v1/waste-types/5
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:37:17 [INFO]: POST /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:37:17 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:37:18 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:37:20 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:37:47 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:38:11 [INFO]: GET /api/v1/waste-types/16
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:38:14 [INFO]: GET /api/v1/waste-types/16
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:39:47 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:39:52 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:40:24 [INFO]: GET /api/v1/waste-types/13
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:40:42 [INFO]: GET /api/v1/waste-types/collection-point/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:41:06 [INFO]: GET /api/v1/waste-types/13/collection-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:48:55 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:48:56 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:49:02 [INFO]: GET /api/v1/waste-types/16
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:49:08 [INFO]: DELETE /api/v1/waste-types/16
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:49:19 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:49:19 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:49:49 [INFO]: DELETE /api/v1/waste-types/16
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:49:49 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste-types/16",
+  "method": "DELETE"
+}
+2025-05-03 02:50:03 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:50:03 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:50:04 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 4,
+  "username": "lvuxyz0",
+  "roles": "USER"
+}
+2025-05-03 02:50:15 [INFO]: DELETE /api/v1/waste-types/16
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:50:15 [ERROR]: 403: Bạn không có quyền thực hiện hành động này
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste-types/16",
+  "method": "DELETE"
+}
+2025-05-03 02:50:23 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:50:23 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:50:23 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-03 02:50:30 [INFO]: DELETE /api/v1/waste-types/16
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 02:50:30 [ERROR]: 404: Không tìm thấy loại chất thải với ID đã cung cấp
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste-types/16",
+  "method": "DELETE"
+}
+2025-05-03 02:50:49 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:50:51 [INFO]: POST /api/v1/auth/logout
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:03 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:03 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:03 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 5,
+  "username": "lvuxyz1",
+  "roles": "USER"
+}
+2025-05-03 02:51:04 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:07 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:07 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:08 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:12 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:16 [INFO]: GET /api/v1/waste-types/14
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:23 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:25 [INFO]: POST /api/v1/auth/logout
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:35 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:35 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:35 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-03 02:51:36 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:38 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:38 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:41 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:46 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:57 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:57 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:51:59 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:52:03 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:53:45 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 02:53:48 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:00:08 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:00:40 [INFO]: POST /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:00:40 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:00:40 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:00:46 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:00:49 [INFO]: GET /api/v1/waste-types/17
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:01:07 [INFO]: GET /api/v1/waste-types/17
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:01:07 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:02:04 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:02:06 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:02:06 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:02:13 [INFO]: GET /api/v1/waste-types/17
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:02:23 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:02:26 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:02:27 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:05:34 [INFO]: GET /api/v1/waste-types/17
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:08:02 [INFO]: PATCH /api/v1/waste-types/17
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 03:08:02 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste-types/17",
+  "method": "PATCH"
+}
+2025-05-03 03:08:17 [INFO]: PATCH /api/v1/waste-types/17
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 03:08:23 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:08:26 [INFO]: GET /api/v1/waste-types/17
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:08:49 [INFO]: PATCH /api/v1/waste-types/17
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 03:08:52 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:08:58 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:09:02 [INFO]: GET /api/v1/waste-types/17
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:15:53 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:15:59 [INFO]: GET /api/v1/waste-types/17
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:15:59 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:16:03 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:16:06 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:16:17 [INFO]: GET /api/v1/waste-types/17
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:16:22 [INFO]: DELETE /api/v1/waste-types/17
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:18:11 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:18:13 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:18:30 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:18:30 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:18:30 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-03 03:18:33 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:18:37 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:18:38 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:18:54 [INFO]: POST /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:18:54 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:18:55 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:18:57 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:19:01 [INFO]: GET /api/v1/waste-types/18
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:19:10 [INFO]: DELETE /api/v1/waste-types/18
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:19:21 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:19:25 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:19:25 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:23:05 [INFO]: PATCH /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:23:06 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:23:07 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:23:10 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:23:11 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:23:23 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:23:26 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:23:36 [INFO]: GET /api/v1/waste-types/12
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:23:42 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:27:27 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:27:27 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:31:41 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:31:43 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:32:10 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:32:10 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:32:10 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-03 03:32:12 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:32:15 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:32:15 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:32:16 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:32:23 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:32:23 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:32:48 [INFO]: PATCH /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:32:48 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:32:49 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:32:52 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:33:00 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:33:02 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:33:14 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:33:14 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:33:27 [INFO]: PATCH /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:33:27 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:33:28 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:33:31 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 03:33:33 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:00:18 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:01:13 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:01:14 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:01:17 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:01:20 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:01:21 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:02:14 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:02:17 [INFO]: GET /api/v1/waste-types/5
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:02:32 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:02:33 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:02:37 [INFO]: DELETE /api/v1/waste-types/collection-point?waste_type_id=11&collection_point_id=1
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:02:37 [ERROR]: 404: Không tìm thấy loại chất thải với ID đã cung cấp
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste-types/collection-point?waste_type_id=11&collection_point_id=1",
+  "method": "DELETE"
+}
+2025-05-03 04:05:40 [INFO]: GET /api/v1/waste-types/collection-point/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 04:18:03 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:18:05 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:18:23 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:18:23 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:18:23 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-03 04:18:25 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:18:37 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:18:37 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:18:41 [INFO]: GET /api/v1/waste-types/5
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:18:50 [INFO]: GET /api/v1/waste-types/5
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:28:23 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:28:25 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:28:41 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:28:41 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:28:41 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-03 04:28:43 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:28:46 [INFO]: GET /api/v1/waste/collection-points
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:28:46 [ERROR]: 404: Không tìm thấy /api/v1/waste/collection-points trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste/collection-points",
+  "method": "GET"
+}
+2025-05-03 04:28:51 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:28:52 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:29:11 [INFO]: GET /api/v1/waste-types/13/collection-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 04:29:17 [INFO]: GET /api/v1/collection-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-03 04:29:21 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:29:21 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:29:28 [INFO]: GET /api/v1/waste-types/6
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:29:35 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:29:36 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:29:41 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:30:31 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:30:31 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:30:57 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:31:21 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:34:17 [INFO]: GET /api/v1/waste-types/5
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:38:49 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:38:50 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:38:52 [INFO]: GET /api/v1/waste/collection-points
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:38:52 [ERROR]: 404: Không tìm thấy /api/v1/waste/collection-points trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste/collection-points",
+  "method": "GET"
+}
+2025-05-03 04:38:55 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:38:55 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:38:56 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:39:01 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:39:25 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:39:57 [INFO]: GET /api/v1/waste/collection-points
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:39:57 [ERROR]: 404: Không tìm thấy /api/v1/waste/collection-points trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste/collection-points",
+  "method": "GET"
+}
+2025-05-03 04:42:48 [INFO]: GET /api/v1/waste/collection-points
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:42:48 [ERROR]: 404: Không tìm thấy /api/v1/waste/collection-points trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste/collection-points",
+  "method": "GET"
+}
+2025-05-03 04:42:50 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:42:51 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:42:54 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:42:58 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:43:07 [INFO]: GET /api/v1/waste-types/14
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:43:07 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:43:10 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:43:12 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:48:44 [INFO]: GET /api/v1/waste-types/11
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:48:48 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:48:49 [INFO]: GET /api/v1/waste/collection-points
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.215.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-03 04:48:49 [ERROR]: 404: Không tìm thấy /api/v1/waste/collection-points trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste/collection-points",
+  "method": "GET"
+}
+2025-05-03 04:49:37 [INFO]: SIGINT RECEIVED. Shutting down gracefully
+{
+  "service": "waste-management-api"
+}
+2025-05-03 18:34:33 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-03 18:34:33 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-03 18:35:07 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-03 18:35:07 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-03 18:35:08 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-03 18:35:08 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-03 18:35:08 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-03 18:35:08 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-04 21:25:47 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-04 21:25:47 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-04 21:25:47 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-04 21:25:47 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-04 21:25:47 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-04 21:25:47 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-04 21:32:45 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-04 21:32:45 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-04 21:32:48 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-04 21:32:48 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-05 23:47:33 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-05 23:47:33 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-05 23:47:33 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-05 23:47:33 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-05 23:47:33 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-05 23:47:33 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-05 23:50:42 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:50:42 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-05 23:50:44 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:50:44 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-05 23:51:25 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:51:25 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:51:25 [ERROR]: Login failed
+ValidationError: Mật khẩu phải có ít nhất 6 ký tự
+    at AuthValidator.validateLoginData (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\validators\authValidator.js:92:13)
+    at login (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\authController.js:190:21)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:175:3)
+{
+  "service": "waste-management-api",
+  "username": "a",
+  "errorName": "ValidationError",
+  "errorMessage": "Mật khẩu phải có ít nhất 6 ký tự"
+}
+2025-05-05 23:51:25 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/login",
+  "method": "POST"
+}
+2025-05-05 23:51:38 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:51:38 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:51:39 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 5,
+  "username": "lvuxyz1",
+  "roles": "USER"
+}
+2025-05-05 23:51:42 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:53:23 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-05 23:53:23 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-05 23:53:23 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-05 23:53:31 [INFO]: GET /api/v1/recycling/all
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-05 23:56:57 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:56:59 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:57:16 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:57:16 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:57:16 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-05 23:57:18 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:57:22 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:57:23 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:58:10 [INFO]: POST /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:58:11 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:58:11 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:58:26 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:58:29 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:58:37 [INFO]: GET /api/v1/waste-types/19
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:58:49 [INFO]: GET /api/v1/waste-types/19
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:58:49 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:59:19 [INFO]: PATCH /api/v1/waste-types/19
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:59:20 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:59:21 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:59:24 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:59:39 [INFO]: DELETE /api/v1/waste-types/19
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-05 23:59:50 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:04:05 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:04:05 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:04:21 [INFO]: POST /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:04:22 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:04:22 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:04:30 [INFO]: DELETE /api/v1/waste-types/20
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:04:30 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:04:37 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:05:59 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:27:12 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:27:15 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:27:32 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:27:32 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:27:32 [WARN]: Invalid password login attempt
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin"
+}
+2025-05-06 00:27:32 [ERROR]: Login failed
+InvalidCredentialsError: Username hoặc mật khẩu không đúng
+    at login (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\authController.js:220:15)
+{
+  "service": "waste-management-api",
+  "username": "admin",
+  "errorName": "InvalidCredentialsError",
+  "errorMessage": "Username hoặc mật khẩu không đúng"
+}
+2025-05-06 00:27:32 [ERROR]: 401: Username hoặc mật khẩu không đúng
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/login",
+  "method": "POST"
+}
+2025-05-06 00:27:40 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:27:40 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:27:40 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-06 00:27:42 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:56:07 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:57:37 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:57:39 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:57:56 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:57:56 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:57:56 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-06 00:58:00 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:59:17 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:59:22 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:59:35 [INFO]: POST /api/v1/auth/logout
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:59:46 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:59:46 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:59:47 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-06 00:59:48 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 00:59:51 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 01:07:46 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 01:07:46 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 01:19:59 [INFO]: SIGINT RECEIVED. Shutting down gracefully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 15:43:10 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 15:43:10 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 15:43:10 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 15:43:10 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 15:43:10 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 15:43:10 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-06 15:47:23 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 15:47:23 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 15:47:23 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-06 15:47:27 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 15:47:30 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 15:48:59 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 15:51:54 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 15:51:54 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 15:51:54 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-06 15:51:57 [INFO]: GET /api/v1/transactions
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 15:51:57 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "GET"
+}
+2025-05-06 15:52:07 [INFO]: GET /api/v1/transactions
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 16:09:40 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:09:43 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:10:10 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:10:10 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:10:10 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-06 16:10:12 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:16:34 [INFO]: POST /api/v1/waste/transactions
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:16:34 [ERROR]: 404: Không tìm thấy /api/v1/waste/transactions trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste/transactions",
+  "method": "POST"
+}
+2025-05-06 16:17:58 [INFO]: POST /api/v1/transactions
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06T09:17:58.633Z [ERROR]: Error in createTransaction: Điểm thu gom không được để trống. Loại rác thải không được để trống. Số lượng không được để trống
+ValidationError: Điểm thu gom không được để trống. Loại rác thải không được để trống. Số lượng không được để trống
+    at TransactionValidator.validateCreateTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\validators\transactionValidator.js:30:13)
+    at createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:111:28)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "statusCode": 400,
+  "status": "fail",
+  "isOperational": true,
+  "name": "ValidationError"
+}
+2025-05-06 16:17:58 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "POST"
+}
+2025-05-06 16:17:59 [INFO]: POST /api/v1/transactions
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06T09:17:59.542Z [ERROR]: Error in createTransaction: Điểm thu gom không được để trống. Loại rác thải không được để trống. Số lượng không được để trống
+ValidationError: Điểm thu gom không được để trống. Loại rác thải không được để trống. Số lượng không được để trống
+    at TransactionValidator.validateCreateTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\validators\transactionValidator.js:30:13)
+    at createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:111:28)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "statusCode": 400,
+  "status": "fail",
+  "isOperational": true,
+  "name": "ValidationError"
+}
+2025-05-06 16:17:59 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "POST"
+}
+2025-05-06 16:18:28 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:19:15 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:19:17 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:19:31 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:19:31 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:19:31 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-06 16:19:33 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:19:37 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:19:40 [INFO]: POST /api/v1/auth/logout
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:21:40 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:21:40 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:21:40 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-06 16:21:42 [INFO]: POST /api/v1/transactions
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06T09:21:42.668Z [ERROR]: Error in createTransaction: Điểm thu gom không được để trống. Loại rác thải không được để trống. Số lượng không được để trống
+ValidationError: Điểm thu gom không được để trống. Loại rác thải không được để trống. Số lượng không được để trống
+    at TransactionValidator.validateCreateTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\validators\transactionValidator.js:30:13)
+    at createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:111:28)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "statusCode": 400,
+  "status": "fail",
+  "isOperational": true,
+  "name": "ValidationError"
+}
+2025-05-06 16:21:42 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "POST"
+}
+2025-05-06 16:21:43 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:21:50 [INFO]: POST /api/v1/transactions
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06T09:21:50.429Z [ERROR]: Error in createTransaction: Điểm thu gom không được để trống. Loại rác thải không được để trống. Số lượng không được để trống
+ValidationError: Điểm thu gom không được để trống. Loại rác thải không được để trống. Số lượng không được để trống
+    at TransactionValidator.validateCreateTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\validators\transactionValidator.js:30:13)
+    at createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:111:28)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "statusCode": 400,
+  "status": "fail",
+  "isOperational": true,
+  "name": "ValidationError"
+}
+2025-05-06 16:21:50 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "POST"
+}
+2025-05-06 16:26:38 [INFO]: GET /api/v1/transactions?page=1&limit=10
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:34:02 [INFO]: GET /api/v1/transactions?page=1&limit=10
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:35:03 [INFO]: GET /api/v1/transactions?page=1&limit=10
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:40:37 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:40:39 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:40:53 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:40:53 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:40:53 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-06 16:40:55 [INFO]: GET /api/v1/transactions?page=1&limit=5
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:40:56 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:41:38 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:41:40 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:42:14 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:42:14 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:42:14 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 1,
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-06 16:42:16 [INFO]: GET /api/v1/transactions?page=1&limit=5
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:42:17 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:42:21 [INFO]: GET /api/v1/transactions?page=1&limit=4
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:42:40 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:42:43 [INFO]: POST /api/v1/auth/logout
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:49:27 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:49:27 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:49:27 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 5,
+  "username": "lvuxyz1",
+  "roles": "USER"
+}
+2025-05-06 16:49:29 [INFO]: GET /api/v1/transactions?page=1&limit=5
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:49:29 [ERROR]: 403: Bạn không có quyền thực hiện hành động này
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions?page=1&limit=5",
+  "method": "GET"
+}
+2025-05-06 16:49:30 [INFO]: GET /api/v1/auth/me
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:49:35 [INFO]: GET /api/v1/transactions?page=1&limit=4
+{
+  "service": "waste-management-api",
+  "ip": "::ffff:192.168.173.105",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-06 16:49:35 [ERROR]: 403: Bạn không có quyền thực hiện hành động này
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions?page=1&limit=4",
+  "method": "GET"
+}
+2025-05-06 16:49:51 [INFO]: GET /api/v1/transactions/1
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 16:49:51 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/1",
+  "method": "GET"
+}
+2025-05-06 18:03:30 [INFO]: SIGINT RECEIVED. Shutting down gracefully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:08:59 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:08:59 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:08:59 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:08:59 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:08:59 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:08:59 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:09:00 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 18:09:00 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 18:09:00 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 5,
+  "username": "lvuxyz1",
+  "roles": "USER"
+}
+2025-05-06 18:09:06 [INFO]: GET /api/v1/transactions/my-transactions
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 18:09:06 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at TransactionRepository.getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:152:41)
+    at getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:57:50)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT t.*, cp.name as collection_point_name, wt.name as waste_type_name\n        FROM transactions t\n        LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n        WHERE t.user_id = ?\n       ORDER BY t.transaction_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-06T11:09:06.758Z [ERROR]: Error in getUserTransactions: Error retrieving user transactions
+DatabaseError: Error retrieving user transactions
+    at TransactionRepository.getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:196:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:57:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-06 18:09:06 [ERROR]: 500: Error retrieving user transactions
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/my-transactions",
+  "method": "GET"
+}
+2025-05-06 18:12:01 [INFO]: GET /api/v1/transactions/my-transactions
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 18:12:01 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at TransactionRepository.getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:152:41)
+    at getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:57:50)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT t.*, cp.name as collection_point_name, wt.name as waste_type_name\n        FROM transactions t\n        LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n        WHERE t.user_id = ?\n       ORDER BY t.transaction_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-06T11:12:01.476Z [ERROR]: Error in getUserTransactions: Error retrieving user transactions
+DatabaseError: Error retrieving user transactions
+    at TransactionRepository.getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:196:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:57:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-06 18:12:01 [ERROR]: 500: Error retrieving user transactions
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/my-transactions",
+  "method": "GET"
+}
+2025-05-06 18:12:12 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:12:12 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:12:12 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:12:12 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:12:12 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:12:12 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:12:34 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:12:34 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:12:35 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:12:35 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:12:35 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:12:35 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:12:49 [INFO]: GET /api/v1/transactions/my-transactions
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 18:12:49 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at TransactionRepository.getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:179:14)
+    at getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:75:50)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT t.*, \n               cp.name as collection_point_name, \n               wt.name as waste_type_name\n        FROM transactions t\n        LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n        WHERE t.user_id = ?\n       ORDER BY t.transaction_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-06T11:12:49.924Z [ERROR]: Error in getUserTransactions: Error retrieving user transactions
+DatabaseError: Error retrieving user transactions
+    at TransactionRepository.getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:199:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:75:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-06 18:12:49 [ERROR]: 500: Error retrieving user transactions
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/my-transactions",
+  "method": "GET"
+}
+2025-05-06 18:13:10 [INFO]: GET /api/v1/waste-types
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 18:13:23 [INFO]: GET /api/v1/rewards/my-total-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 18:13:23 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/my-total-points",
+  "method": "GET"
+}
+2025-05-06 18:13:35 [INFO]: GET /api/v1/rewards/my-total-points
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 18:15:09 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:09 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:09 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:09 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:09 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:09 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:27 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:27 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:28 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:28 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:28 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:28 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:36 [INFO]: GET /api/v1/transactions/my-transactions
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 18:15:51 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:51 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:51 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:51 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:51 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:15:51 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:16:11 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:16:11 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:16:11 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:16:11 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:16:11 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:16:11 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:16:15 [INFO]: POST /api/v1/auth/login
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 18:16:15 [INFO]: Login attempt
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 18:16:15 [INFO]: Login successful
+{
+  "service": "waste-management-api",
+  "userId": 4,
+  "username": "lvuxyz0",
+  "roles": "USER"
+}
+2025-05-06 18:16:24 [INFO]: GET /api/v1/transactions/my-transactions
+{
+  "service": "waste-management-api",
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-06 18:16:28 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:16:28 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:16:28 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:16:28 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:16:28 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-06 18:16:28 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}

@@ -53,6 +53,33 @@ Server sẽ chạy tại `http://localhost:3001`
 
 - `GET /`: Kiểm tra server hoạt động
 
+### Giao dịch (Transactions)
+
+- `GET /api/transactions/my-transactions`: Lấy danh sách giao dịch của người dùng hiện tại
+  - **Yêu cầu:** Cần xác thực (JWT token trong header Authorization)
+  - **Query Parameters:**
+    - `page`: Số trang (mặc định: 1)
+    - `limit`: Số lượng kết quả mỗi trang (mặc định: 10, tối đa: 50)
+    - `status`: Lọc theo trạng thái (ví dụ: 'pending', 'completed', 'rejected')
+    - `collection_point_id`: Lọc theo ID điểm thu gom
+    - `waste_type_id`: Lọc theo loại rác
+    - `date_from`: Lọc từ ngày (định dạng: YYYY-MM-DD)
+    - `date_to`: Lọc đến ngày (định dạng: YYYY-MM-DD)
+  - **Phản hồi:**
+    ```json
+    {
+      "success": true,
+      "message": "Lấy danh sách giao dịch của bạn thành công",
+      "data": [...],
+      "pagination": {
+        "total": 20,
+        "page": 1,
+        "limit": 10,
+        "pages": 2
+      }
+    }
+    ```
+
 ## Cấu trúc thư mục
 
 ```
@@ -75,3 +102,7 @@ API-WasteManagementApp/
 - mysql2 - MySQL client for Node.js
 - Cors - Enable CORS
 - Dotenv - Environment variables
+
+```
+
+```

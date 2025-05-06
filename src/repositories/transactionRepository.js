@@ -98,13 +98,27 @@ class TransactionRepository {
   }
   
   /**
-   * Get user transactions
+   * Get user transactions with filters and pagination
+   * 
+   * @param {number} userId - The ID of the user
+   * @param {number} page - The page number (starts from 1)
+   * @param {number} limit - Number of items per page
+   * @param {object} filters - Filter options for transactions
+   * @returns {object} Transactions and pagination information
    */
   static async getUserTransactions(userId, page = 1, limit = 10, filters = {}) {
     try {
-      const offset = (page - 1) * limit;
+      // Validate user ID
+      if (!userId) {
+        throw new Error('User ID is required');
+      }
       
-      // Base query
+      // Sanitize input
+      const safePage = Math.max(1, parseInt(page));
+      const safeLimit = Math.max(1, Math.min(50, parseInt(limit)));
+      const offset = (safePage - 1) * safeLimit;
+      
+      // Base query with joins
       let query = `
         SELECT t.*, cp.name as collection_point_name, wt.name as waste_type_name
         FROM transactions t
@@ -123,12 +137,12 @@ class TransactionRepository {
       
       if (filters.collection_point_id) {
         query += ' AND t.collection_point_id = ?';
-        queryParams.push(filters.collection_point_id);
+        queryParams.push(parseInt(filters.collection_point_id) || 0);
       }
       
       if (filters.waste_type_id) {
         query += ' AND t.waste_type_id = ?';
-        queryParams.push(filters.waste_type_id);
+        queryParams.push(parseInt(filters.waste_type_id) || 0);
       }
       
       if (filters.date_from) {
@@ -141,58 +155,66 @@ class TransactionRepository {
         queryParams.push(filters.date_to);
       }
       
-      // Order by
-      query += ' ORDER BY t.transaction_date DESC';
-      
-      // Add pagination
-      query += ' LIMIT ? OFFSET ?';
-      queryParams.push(Number(limit), Number(offset));
+      // Add sorting and pagination
+      query += ' ORDER BY t.transaction_date DESC LIMIT ? OFFSET ?';
+      queryParams.push(safeLimit, offset);
       
       // Execute query
-      const [transactions] = await pool.execute(query, queryParams);
+      const [transactions] = await pool.query(query, queryParams);
       
-      // Get total count for pagination
-      let countQuery = 'SELECT COUNT(*) as total FROM transactions WHERE user_id = ?';
+      // Get total count for pagination with same filters
+      let countQuery = 'SELECT COUNT(*) as total FROM transactions t WHERE t.user_id = ?';
       const countParams = [userId];
       
       if (filters.status) {
-        countQuery += ' AND status = ?';
+        countQuery += ' AND t.status = ?';
         countParams.push(filters.status);
       }
       
       if (filters.collection_point_id) {
-        countQuery += ' AND collection_point_id = ?';
-        countParams.push(filters.collection_point_id);
+        countQuery += ' AND t.collection_point_id = ?';
+        countParams.push(parseInt(filters.collection_point_id) || 0);
       }
       
       if (filters.waste_type_id) {
-        countQuery += ' AND waste_type_id = ?';
-        countParams.push(filters.waste_type_id);
+        countQuery += ' AND t.waste_type_id = ?';
+        countParams.push(parseInt(filters.waste_type_id) || 0);
       }
       
       if (filters.date_from) {
-        countQuery += ' AND transaction_date >= ?';
+        countQuery += ' AND t.transaction_date >= ?';
         countParams.push(filters.date_from);
       }
       
       if (filters.date_to) {
-        countQuery += ' AND transaction_date <= ?';
+        countQuery += ' AND t.transaction_date <= ?';
         countParams.push(filters.date_to);
       }
       
-      const [totalCount] = await pool.execute(countQuery, countParams);
+      const [totalCount] = await pool.query(countQuery, countParams);
+      const total = totalCount[0] ? parseInt(totalCount[0].total) : 0;
       
       return {
-        transactions,
+        // Convert decimal values to proper JavaScript numbers
+        transactions: transactions.map(t => ({
+          ...t,
+          quantity: t.quantity !== null ? parseFloat(t.quantity) : null
+        })),
         pagination: {
-          total: totalCount[0].total,
-          page: Number(page),
-          limit: Number(limit),
-          pages: Math.ceil(totalCount[0].total / limit)
+          total,
+          page: safePage,
+          limit: safeLimit,
+          pages: Math.ceil(total / safeLimit)
         }
       };
     } catch (error) {
       logger.error('Error getting user transactions:', error);
+      if (error.code === 'ER_BAD_FIELD_ERROR') {
+        throw new DatabaseError('Invalid field in query');
+      }
+      if (error.code === 'ER_PARSE_ERROR') {
+        throw new DatabaseError('SQL syntax error');
+      }
       throw new DatabaseError('Error retrieving user transactions');
     }
   }

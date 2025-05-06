@@ -1836,3 +1836,409 @@ DatabaseError: Error retrieving transactions
   "url": "/api/v1/transactions",
   "method": "GET"
 }
+2025-05-02 15:52:52 [ERROR]: 404: Không tìm thấy /api/v1/transactions/images/proof-123.jpg trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/images/proof-123.jpg",
+  "method": "GET"
+}
+2025-05-02 15:53:28 [ERROR]: 401: Không tìm thấy token xác thực
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "GET"
+}
+2025-05-02 15:53:29 [ERROR]: 404: Không tìm thấy /favicon.ico trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/favicon.ico",
+  "method": "GET"
+}
+2025-05-03 01:23:40 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-03 01:23:43 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-03 02:05:40 [ERROR]: 404: Không tìm thấy loại chất thải với ID đã cung cấp
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste-types/1",
+  "method": "GET"
+}
+2025-05-03 02:23:24 [ERROR]: 404: Không tìm thấy điểm thu gom với ID đã cung cấp
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste-types/collection-point/:collection_point_id",
+  "method": "GET"
+}
+2025-05-03 02:49:49 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste-types/16",
+  "method": "DELETE"
+}
+2025-05-03 02:50:15 [ERROR]: 403: Bạn không có quyền thực hiện hành động này
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste-types/16",
+  "method": "DELETE"
+}
+2025-05-03 02:50:30 [ERROR]: 404: Không tìm thấy loại chất thải với ID đã cung cấp
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste-types/16",
+  "method": "DELETE"
+}
+2025-05-03 03:08:02 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste-types/17",
+  "method": "PATCH"
+}
+2025-05-03 04:02:37 [ERROR]: 404: Không tìm thấy loại chất thải với ID đã cung cấp
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste-types/collection-point?waste_type_id=11&collection_point_id=1",
+  "method": "DELETE"
+}
+2025-05-03 04:28:46 [ERROR]: 404: Không tìm thấy /api/v1/waste/collection-points trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste/collection-points",
+  "method": "GET"
+}
+2025-05-03 04:38:52 [ERROR]: 404: Không tìm thấy /api/v1/waste/collection-points trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste/collection-points",
+  "method": "GET"
+}
+2025-05-03 04:39:57 [ERROR]: 404: Không tìm thấy /api/v1/waste/collection-points trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste/collection-points",
+  "method": "GET"
+}
+2025-05-03 04:42:48 [ERROR]: 404: Không tìm thấy /api/v1/waste/collection-points trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste/collection-points",
+  "method": "GET"
+}
+2025-05-03 04:48:49 [ERROR]: 404: Không tìm thấy /api/v1/waste/collection-points trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste/collection-points",
+  "method": "GET"
+}
+2025-05-03 18:34:33 [ERROR]: 
+Error
+    at PromisePool.query (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at createTransactionTables (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\transactionTables.js:8:44)
+    at runMigrations (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\index.js:11:11)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:57:11
+    at Object.<anonymous> (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:65:3)
+    at Module._compile (node:internal/modules/cjs/loader:1546:14)
+    at Object..js (node:internal/modules/cjs/loader:1689:10)
+    at Module.load (node:internal/modules/cjs/loader:1318:32)
+    at Function._load (node:internal/modules/cjs/loader:1128:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+{
+  "service": "waste-management-api",
+  "code": "ECONNREFUSED"
+}
+2025-05-04 21:32:45 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-04 21:32:48 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-05 23:50:42 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-05 23:50:44 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-05 23:51:25 [ERROR]: Login failed
+ValidationError: Mật khẩu phải có ít nhất 6 ký tự
+    at AuthValidator.validateLoginData (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\validators\authValidator.js:92:13)
+    at login (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\authController.js:190:21)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\index.js:175:3)
+{
+  "service": "waste-management-api",
+  "username": "a",
+  "errorName": "ValidationError",
+  "errorMessage": "Mật khẩu phải có ít nhất 6 ký tự"
+}
+2025-05-05 23:51:25 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/login",
+  "method": "POST"
+}
+2025-05-06 00:27:32 [ERROR]: Login failed
+InvalidCredentialsError: Username hoặc mật khẩu không đúng
+    at login (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\authController.js:220:15)
+{
+  "service": "waste-management-api",
+  "username": "admin",
+  "errorName": "InvalidCredentialsError",
+  "errorMessage": "Username hoặc mật khẩu không đúng"
+}
+2025-05-06 00:27:32 [ERROR]: 401: Username hoặc mật khẩu không đúng
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/login",
+  "method": "POST"
+}
+2025-05-06 15:51:57 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "GET"
+}
+2025-05-06 16:16:34 [ERROR]: 404: Không tìm thấy /api/v1/waste/transactions trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste/transactions",
+  "method": "POST"
+}
+2025-05-06T09:17:58.633Z [ERROR]: Error in createTransaction: Điểm thu gom không được để trống. Loại rác thải không được để trống. Số lượng không được để trống
+ValidationError: Điểm thu gom không được để trống. Loại rác thải không được để trống. Số lượng không được để trống
+    at TransactionValidator.validateCreateTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\validators\transactionValidator.js:30:13)
+    at createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:111:28)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "statusCode": 400,
+  "status": "fail",
+  "isOperational": true,
+  "name": "ValidationError"
+}
+2025-05-06 16:17:58 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "POST"
+}
+2025-05-06T09:17:59.542Z [ERROR]: Error in createTransaction: Điểm thu gom không được để trống. Loại rác thải không được để trống. Số lượng không được để trống
+ValidationError: Điểm thu gom không được để trống. Loại rác thải không được để trống. Số lượng không được để trống
+    at TransactionValidator.validateCreateTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\validators\transactionValidator.js:30:13)
+    at createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:111:28)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "statusCode": 400,
+  "status": "fail",
+  "isOperational": true,
+  "name": "ValidationError"
+}
+2025-05-06 16:17:59 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "POST"
+}
+2025-05-06T09:21:42.668Z [ERROR]: Error in createTransaction: Điểm thu gom không được để trống. Loại rác thải không được để trống. Số lượng không được để trống
+ValidationError: Điểm thu gom không được để trống. Loại rác thải không được để trống. Số lượng không được để trống
+    at TransactionValidator.validateCreateTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\validators\transactionValidator.js:30:13)
+    at createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:111:28)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "statusCode": 400,
+  "status": "fail",
+  "isOperational": true,
+  "name": "ValidationError"
+}
+2025-05-06 16:21:42 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "POST"
+}
+2025-05-06T09:21:50.429Z [ERROR]: Error in createTransaction: Điểm thu gom không được để trống. Loại rác thải không được để trống. Số lượng không được để trống
+ValidationError: Điểm thu gom không được để trống. Loại rác thải không được để trống. Số lượng không được để trống
+    at TransactionValidator.validateCreateTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\validators\transactionValidator.js:30:13)
+    at createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:111:28)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "statusCode": 400,
+  "status": "fail",
+  "isOperational": true,
+  "name": "ValidationError"
+}
+2025-05-06 16:21:50 [ERROR]: 400: Dữ liệu không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "POST"
+}
+2025-05-06 16:49:29 [ERROR]: 403: Bạn không có quyền thực hiện hành động này
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions?page=1&limit=5",
+  "method": "GET"
+}
+2025-05-06 16:49:35 [ERROR]: 403: Bạn không có quyền thực hiện hành động này
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions?page=1&limit=4",
+  "method": "GET"
+}
+2025-05-06 16:49:51 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/1",
+  "method": "GET"
+}
+2025-05-06 18:09:06 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at TransactionRepository.getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:152:41)
+    at getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:57:50)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT t.*, cp.name as collection_point_name, wt.name as waste_type_name\n        FROM transactions t\n        LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n        WHERE t.user_id = ?\n       ORDER BY t.transaction_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-06T11:09:06.758Z [ERROR]: Error in getUserTransactions: Error retrieving user transactions
+DatabaseError: Error retrieving user transactions
+    at TransactionRepository.getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:196:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:57:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-06 18:09:06 [ERROR]: 500: Error retrieving user transactions
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/my-transactions",
+  "method": "GET"
+}
+2025-05-06 18:12:01 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at TransactionRepository.getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:152:41)
+    at getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:57:50)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT t.*, cp.name as collection_point_name, wt.name as waste_type_name\n        FROM transactions t\n        LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n        WHERE t.user_id = ?\n       ORDER BY t.transaction_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-06T11:12:01.476Z [ERROR]: Error in getUserTransactions: Error retrieving user transactions
+DatabaseError: Error retrieving user transactions
+    at TransactionRepository.getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:196:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:57:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-06 18:12:01 [ERROR]: 500: Error retrieving user transactions
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/my-transactions",
+  "method": "GET"
+}
+2025-05-06 18:12:49 [ERROR]: Incorrect arguments to mysqld_stmt_execute
+Error: Incorrect arguments to mysqld_stmt_execute
+    at PromisePool.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:54:22)
+    at TransactionRepository.getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:179:14)
+    at getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:75:50)
+    at Layer.handle [as handle_request] (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\router\route.js:149:13)
+    at exports.authenticateUser (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\middleware\authMiddleware.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "code": "ER_WRONG_ARGUMENTS",
+  "errno": 1210,
+  "sql": "\n        SELECT t.*, \n               cp.name as collection_point_name, \n               wt.name as waste_type_name\n        FROM transactions t\n        LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id\n        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id\n        WHERE t.user_id = ?\n       ORDER BY t.transaction_date DESC LIMIT ? OFFSET ?",
+  "sqlState": "HY000",
+  "sqlMessage": "Incorrect arguments to mysqld_stmt_execute"
+}
+2025-05-06T11:12:49.924Z [ERROR]: Error in getUserTransactions: Error retrieving user transactions
+DatabaseError: Error retrieving user transactions
+    at TransactionRepository.getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:199:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getUserTransactions (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:75:22)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-06 18:12:49 [ERROR]: 500: Error retrieving user transactions
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/my-transactions",
+  "method": "GET"
+}
+2025-05-06 18:13:23 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/rewards/my-total-points",
+  "method": "GET"
+}
