@@ -109,6 +109,7 @@ class UserRepository {
     try {
       const [rows] = await pool.execute(`
         SELECT u.user_id, u.full_name, u.username, u.email, u.status, 
+               u.phone, u.address, u.created_at, u.login_attempts, u.lock_until,
                GROUP_CONCAT(r.name) as roles
         FROM Users u
         LEFT JOIN UserRoles ur ON u.user_id = ur.user_id

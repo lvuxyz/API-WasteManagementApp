@@ -271,12 +271,73 @@ const authController = {
   // Thêm method mới vào authController
   getCurrentUser: async (req, res, next) => {
     try {
+      // Get basic user information
       const user = await userRepository.getUserWithRoles(req.user.userId);
       
       if (!user) {
         throw new AuthenticationError('Người dùng không tồn tại');
       }
 
+      // Get user's transactions summary
+      const [transactionStats] = await pool.execute(`
+        SELECT 
+          COUNT(*) as total_transactions,
+          SUM(CASE WHEN status = 'completed' THEN 1 ELSE 0 END) as completed_transactions,
+          SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) as pending_transactions,
+          SUM(CASE WHEN status = 'rejected' THEN 1 ELSE 0 END) as rejected_transactions,
+          SUM(CASE WHEN status = 'verified' THEN 1 ELSE 0 END) as verified_transactions,
+          SUM(quantity) as total_quantity
+        FROM transactions 
+        WHERE user_id = ?
+      `, [user.user_id]);
+
+      // Get user's reward information
+      const [rewardStats] = await pool.execute(`
+        SELECT 
+          COUNT(*) as total_rewards,
+          SUM(points) as total_points,
+          MAX(earned_date) as last_reward_date
+        FROM rewards 
+        WHERE user_id = ?
+      `, [user.user_id]);
+
+      // Get user's latest transactions
+      const [latestTransactions] = await pool.execute(`
+        SELECT 
+          t.transaction_id, t.status, t.quantity, t.transaction_date,
+          cp.name as collection_point_name,
+          wt.name as waste_type_name
+        FROM transactions t
+        LEFT JOIN collectionpoints cp ON t.collection_point_id = cp.collection_point_id
+        LEFT JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id
+        WHERE t.user_id = ?
+        ORDER BY t.transaction_date DESC
+        LIMIT 5
+      `, [user.user_id]);
+
+      // Get user's total waste types processed
+      const [wasteTypeStats] = await pool.execute(`
+        SELECT 
+          wt.name as waste_type_name,
+          SUM(t.quantity) as total_quantity
+        FROM transactions t
+        JOIN wastetypes wt ON t.waste_type_id = wt.waste_type_id
+        WHERE t.user_id = ? AND t.status = 'completed'
+        GROUP BY t.waste_type_id, wt.name
+        ORDER BY total_quantity DESC
+      `, [user.user_id]);
+
+      // Get user's account information timestamps
+      const [accountInfo] = await pool.execute(`
+        SELECT 
+          created_at,
+          status,
+          lock_until
+        FROM Users
+        WHERE user_id = ?
+      `, [user.user_id]);
+
+      // Build comprehensive response
       res.json({
         success: true,
         data: {
@@ -285,8 +346,29 @@ const authController = {
             full_name: user.full_name,
             username: user.username,
             email: user.email,
-            roles: user.roles ? user.roles.split(',') : []
-          }
+            phone: user.phone || null,
+            address: user.address || null,
+            roles: user.roles ? user.roles.split(',') : [],
+            account_status: user.status,
+            created_at: accountInfo[0]?.created_at || null,
+            lock_until: accountInfo[0]?.lock_until || null
+          },
+          transaction_stats: transactionStats[0] || {
+            total_transactions: 0,
+            completed_transactions: 0,
+            pending_transactions: 0,
+            rejected_transactions: 0,
+            verified_transactions: 0,
+            total_quantity: 0
+          },
+          reward_stats: rewardStats[0] || {
+            total_rewards: 0,
+            total_points: 0,
+            last_reward_date: null
+          },
+          latest_transactions: latestTransactions,
+          waste_type_stats: wasteTypeStats,
+          timezone: 'UTC+7'
         }
       });
     } catch (error) {

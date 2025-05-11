@@ -2805,3 +2805,9 @@ DatabaseError: Không thể xóa giao dịch: Không có quyền xóa giao dịc
   "url": "/api/v1/transactions/19/status",
   "method": "PATCH"
 }
+2025-05-11 14:36:11 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
