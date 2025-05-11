@@ -542,9 +542,16 @@ class TransactionRepository {
         throw new NotFoundError('Giao dịch không tồn tại');
       }
       
-      // Get transaction history
+      // Get transaction history with Vietnam timezone (UTC+7)
       const [history] = await pool.execute(
-        'SELECT * FROM transactionhistory WHERE transaction_id = ? ORDER BY changed_at ASC',
+        `SELECT 
+          history_id, 
+          transaction_id, 
+          status, 
+          CONVERT_TZ(changed_at, '+00:00', '+07:00') as changed_at 
+        FROM transactionhistory 
+        WHERE transaction_id = ? 
+        ORDER BY changed_at ASC`,
         [transactionId]
       );
       

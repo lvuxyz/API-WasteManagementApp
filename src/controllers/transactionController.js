@@ -277,10 +277,13 @@ const transactionController = {
       
       const history = await transactionRepository.getTransactionHistory(transactionId);
       
+      logger.info(`GET /api/v1/transactions/${transactionId}/history - Vietnam timezone (UTC+7) applied`);
+      
       res.json({
         success: true,
         message: 'Lấy lịch sử giao dịch thành công',
-        data: history
+        data: history,
+        timezone: 'UTC+7'
       });
     } catch (error) {
       logger.error(`Error in getTransactionHistory (${req.params.id}):`, error);

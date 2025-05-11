@@ -2287,3 +2287,521 @@ Error
   "service": "waste-management-api",
   "code": "ECONNREFUSED"
 }
+2025-05-07 18:54:42 [ERROR]: 404: Không tìm thấy /api/v1/waste/collection-points trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste/collection-points",
+  "method": "GET"
+}
+2025-05-07 23:24:03 [ERROR]: 
+Error
+    at PromisePool.query (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at createTransactionTables (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\transactionTables.js:8:44)
+    at runMigrations (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\index.js:11:11)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:57:11
+    at Object.<anonymous> (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:65:3)
+    at Module._compile (node:internal/modules/cjs/loader:1546:14)
+    at Object..js (node:internal/modules/cjs/loader:1689:10)
+    at Module.load (node:internal/modules/cjs/loader:1318:32)
+    at Function._load (node:internal/modules/cjs/loader:1128:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+{
+  "service": "waste-management-api",
+  "code": "ECONNREFUSED"
+}
+2025-05-09 02:28:23 [ERROR]: 404: Không tìm thấy /api/v1/waste/collection-points trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste/collection-points",
+  "method": "GET"
+}
+2025-05-09 02:28:37 [ERROR]: 404: Không tìm thấy /api/v1/waste/collection-points trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/waste/collection-points",
+  "method": "GET"
+}
+2025-05-09 02:28:38 [ERROR]: 404: Không tìm thấy /favicon.ico trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/favicon.ico",
+  "method": "GET"
+}
+2025-05-09 16:07:22 [ERROR]: 
+Error
+    at PromisePool.query (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at createTransactionTables (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\transactionTables.js:8:44)
+    at runMigrations (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\index.js:11:11)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:57:11
+    at Object.<anonymous> (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:65:3)
+    at Module._compile (node:internal/modules/cjs/loader:1546:14)
+    at Object..js (node:internal/modules/cjs/loader:1689:10)
+    at Module.load (node:internal/modules/cjs/loader:1318:32)
+    at Function._load (node:internal/modules/cjs/loader:1128:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+{
+  "service": "waste-management-api",
+  "code": "ECONNREFUSED"
+}
+2025-05-09 16:37:55 [ERROR]: Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`transactions`, CONSTRAINT `transactions_ibfk_3` FOREIGN KEY (`waste_type_id`) REFERENCES `wastetypes` (`waste_type_id`) ON DELETE SET NULL)
+Error: Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`transactions`, CONSTRAINT `transactions_ibfk_3` FOREIGN KEY (`waste_type_id`) REFERENCES `wastetypes` (`waste_type_id`) ON DELETE SET NULL)
+    at PromisePoolConnection.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at TransactionRepository.createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:289:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:158:27)
+{
+  "service": "waste-management-api",
+  "code": "ER_NO_REFERENCED_ROW_2",
+  "errno": 1452,
+  "sql": "INSERT INTO transactions \n            (user_id, collection_point_id, waste_type_id, quantity, unit, proof_image_url) \n         VALUES (?, ?, ?, ?, ?, ?)",
+  "sqlState": "23000",
+  "sqlMessage": "Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`transactions`, CONSTRAINT `transactions_ibfk_3` FOREIGN KEY (`waste_type_id`) REFERENCES `wastetypes` (`waste_type_id`) ON DELETE SET NULL)"
+}
+2025-05-09T09:37:55.215Z [ERROR]: Error in createTransaction: Không thể tạo giao dịch: Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`transactions`, CONSTRAINT `transactions_ibfk_3` FOREIGN KEY (`waste_type_id`) REFERENCES `wastetypes` (`waste_type_id`) ON DELETE SET NULL)
+DatabaseError: Không thể tạo giao dịch: Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`transactions`, CONSTRAINT `transactions_ibfk_3` FOREIGN KEY (`waste_type_id`) REFERENCES `wastetypes` (`waste_type_id`) ON DELETE SET NULL)
+    at TransactionRepository.createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:318:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:158:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-09 16:37:55 [ERROR]: 500: Không thể tạo giao dịch: Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`transactions`, CONSTRAINT `transactions_ibfk_3` FOREIGN KEY (`waste_type_id`) REFERENCES `wastetypes` (`waste_type_id`) ON DELETE SET NULL)
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "POST"
+}
+2025-05-09 16:44:30 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/my-transactions",
+  "method": "GET"
+}
+2025-05-09 17:17:31 [ERROR]: Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`transactions`, CONSTRAINT `transactions_ibfk_3` FOREIGN KEY (`waste_type_id`) REFERENCES `wastetypes` (`waste_type_id`) ON DELETE SET NULL)
+Error: Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`transactions`, CONSTRAINT `transactions_ibfk_3` FOREIGN KEY (`waste_type_id`) REFERENCES `wastetypes` (`waste_type_id`) ON DELETE SET NULL)
+    at PromisePoolConnection.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at TransactionRepository.createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:289:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:158:27)
+{
+  "service": "waste-management-api",
+  "code": "ER_NO_REFERENCED_ROW_2",
+  "errno": 1452,
+  "sql": "INSERT INTO transactions \n            (user_id, collection_point_id, waste_type_id, quantity, unit, proof_image_url) \n         VALUES (?, ?, ?, ?, ?, ?)",
+  "sqlState": "23000",
+  "sqlMessage": "Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`transactions`, CONSTRAINT `transactions_ibfk_3` FOREIGN KEY (`waste_type_id`) REFERENCES `wastetypes` (`waste_type_id`) ON DELETE SET NULL)"
+}
+2025-05-09T10:17:31.944Z [ERROR]: Error in createTransaction: Không thể tạo giao dịch: Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`transactions`, CONSTRAINT `transactions_ibfk_3` FOREIGN KEY (`waste_type_id`) REFERENCES `wastetypes` (`waste_type_id`) ON DELETE SET NULL)
+DatabaseError: Không thể tạo giao dịch: Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`transactions`, CONSTRAINT `transactions_ibfk_3` FOREIGN KEY (`waste_type_id`) REFERENCES `wastetypes` (`waste_type_id`) ON DELETE SET NULL)
+    at TransactionRepository.createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:318:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:158:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-09 17:17:31 [ERROR]: 500: Không thể tạo giao dịch: Cannot add or update a child row: a foreign key constraint fails (`quanliracthai`.`transactions`, CONSTRAINT `transactions_ibfk_3` FOREIGN KEY (`waste_type_id`) REFERENCES `wastetypes` (`waste_type_id`) ON DELETE SET NULL)
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "POST"
+}
+2025-05-09 17:21:52 [ERROR]: Out of range value for column 'quantity' at row 1
+Error: Out of range value for column 'quantity' at row 1
+    at PromisePoolConnection.execute (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\connection.js:47:22)
+    at TransactionRepository.createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:289:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:158:27)
+{
+  "service": "waste-management-api",
+  "code": "ER_WARN_DATA_OUT_OF_RANGE",
+  "errno": 1264,
+  "sql": "INSERT INTO transactions \n            (user_id, collection_point_id, waste_type_id, quantity, unit, proof_image_url) \n         VALUES (?, ?, ?, ?, ?, ?)",
+  "sqlState": "22003",
+  "sqlMessage": "Out of range value for column 'quantity' at row 1"
+}
+2025-05-09T10:21:52.807Z [ERROR]: Error in createTransaction: Không thể tạo giao dịch: Out of range value for column 'quantity' at row 1
+DatabaseError: Không thể tạo giao dịch: Out of range value for column 'quantity' at row 1
+    at TransactionRepository.createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:318:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async createTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:158:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-09 17:21:52 [ERROR]: 500: Không thể tạo giao dịch: Out of range value for column 'quantity' at row 1
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "POST"
+}
+2025-05-09 17:39:38 [ERROR]: 404: Không tìm thấy /favicon.ico trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/favicon.ico",
+  "method": "GET"
+}
+2025-05-09 17:51:29 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/17",
+  "method": "GET"
+}
+2025-05-09 17:57:13 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/17/status",
+  "method": "PATCH"
+}
+2025-05-09 17:57:25 [ERROR]: 401: Token không hợp lệ
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/17/status",
+  "method": "PATCH"
+}
+2025-05-10 16:31:07 [ERROR]: 
+Error
+    at PromisePool.query (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at createTransactionTables (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\transactionTables.js:8:44)
+    at runMigrations (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\index.js:11:11)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:57:11
+    at Object.<anonymous> (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:65:3)
+    at Module._compile (node:internal/modules/cjs/loader:1546:14)
+    at Object..js (node:internal/modules/cjs/loader:1689:10)
+    at Module.load (node:internal/modules/cjs/loader:1318:32)
+    at Function._load (node:internal/modules/cjs/loader:1128:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+{
+  "service": "waste-management-api",
+  "code": "ECONNREFUSED"
+}
+2025-05-10 16:50:31 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/statistics",
+  "method": "GET"
+}
+2025-05-10T09:50:48.805Z [ERROR]: Error getting transaction #NaN: Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:108:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-10T09:50:48.805Z [ERROR]: Error in getTransactionById (statistics): Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:108:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-10 16:50:48 [ERROR]: 404: Giao dịch không tồn tại
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/statistics",
+  "method": "GET"
+}
+2025-05-10T09:51:18.574Z [ERROR]: Error getting transaction #NaN: Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:108:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-10T09:51:18.574Z [ERROR]: Error in getTransactionById (statistics): Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:108:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-10 16:51:18 [ERROR]: 404: Giao dịch không tồn tại
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/statistics?period=daily",
+  "method": "GET"
+}
+2025-05-10T09:51:24.963Z [ERROR]: Error getting transaction #NaN: Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:108:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-10T09:51:24.963Z [ERROR]: Error in getTransactionById (statistics): Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:108:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-10 16:51:24 [ERROR]: 404: Giao dịch không tồn tại
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/statistics?period=weekly",
+  "method": "GET"
+}
+2025-05-10T09:51:29.764Z [ERROR]: Error getting transaction #NaN: Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:108:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-10T09:51:29.764Z [ERROR]: Error in getTransactionById (statistics): Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:108:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-10 16:51:29 [ERROR]: 404: Giao dịch không tồn tại
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/statistics?period=monthly",
+  "method": "GET"
+}
+2025-05-10T09:51:34.012Z [ERROR]: Error getting transaction #NaN: Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:108:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-10T09:51:34.012Z [ERROR]: Error in getTransactionById (statistics): Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:108:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-10 16:51:34 [ERROR]: 404: Giao dịch không tồn tại
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/statistics?period=yearly",
+  "method": "GET"
+}
+2025-05-10T09:51:48.994Z [ERROR]: Error getting transaction #NaN: Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:108:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-10T09:51:48.994Z [ERROR]: Error in getTransactionById (statistics): Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:108:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-10 16:51:48 [ERROR]: 404: Giao dịch không tồn tại
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/statistics",
+  "method": "GET"
+}
+2025-05-10 16:51:53 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/1/history",
+  "method": "GET"
+}
+2025-05-10 18:04:04 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/19",
+  "method": "GET"
+}
+2025-05-10 18:36:15 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions",
+  "method": "GET"
+}
+2025-05-10T12:50:58.206Z [ERROR]: Error getting transaction #6: Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:108:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-10T12:50:58.206Z [ERROR]: Error in getTransactionById (6): Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:108:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-10 19:50:58 [ERROR]: 404: Giao dịch không tồn tại
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/6",
+  "method": "GET"
+}
+2025-05-10T12:51:10.323Z [ERROR]: Error getting transaction #5: Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:108:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-10T12:51:10.323Z [ERROR]: Error in getTransactionById (5): Giao dịch không tồn tại
+NotFoundError: Giao dịch không tồn tại
+    at TransactionRepository.getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:239:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getTransactionById (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:108:27)
+{
+  "service": "waste-management-api",
+  "statusCode": 404,
+  "status": "fail",
+  "isOperational": true,
+  "name": "NotFoundError"
+}
+2025-05-10 19:51:10 [ERROR]: 404: Giao dịch không tồn tại
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/5",
+  "method": "GET"
+}
+2025-05-10 20:05:21 [ERROR]: 403: Bạn không có quyền thực hiện hành động này
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions?page=1&limit=10",
+  "method": "GET"
+}
+2025-05-10 20:05:21 [ERROR]: 403: Bạn không có quyền thực hiện hành động này
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions?page=1&limit=10",
+  "method": "GET"
+}
+2025-05-10 20:57:11 [ERROR]: Error deleting transaction #19: Không có quyền xóa giao dịch này
+Error: Không có quyền xóa giao dịch này
+    at TransactionRepository.deleteTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:493:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async deleteTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:250:7)
+{
+  "service": "waste-management-api"
+}
+2025-05-10T13:57:11.398Z [ERROR]: Error in deleteTransaction (19): Không thể xóa giao dịch: Không có quyền xóa giao dịch này
+DatabaseError: Không thể xóa giao dịch: Không có quyền xóa giao dịch này
+    at TransactionRepository.deleteTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\repositories\transactionRepository.js:524:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async deleteTransaction (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\transactionController.js:250:7)
+{
+  "service": "waste-management-api",
+  "statusCode": 500,
+  "status": "error",
+  "isOperational": true,
+  "name": "DatabaseError"
+}
+2025-05-10 20:57:11 [ERROR]: 500: Không thể xóa giao dịch: Không có quyền xóa giao dịch này
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/19",
+  "method": "DELETE"
+}
+2025-05-10 21:05:02 [ERROR]: 403: Bạn không có quyền thực hiện hành động này
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/19/status",
+  "method": "PATCH"
+}
+2025-05-10 21:06:49 [ERROR]: 403: Bạn không có quyền thực hiện hành động này
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/19/status",
+  "method": "PATCH"
+}
+2025-05-10 21:18:05 [ERROR]: 403: Bạn không có quyền thực hiện hành động này
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/transactions/19/status",
+  "method": "PATCH"
+}
