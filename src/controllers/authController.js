@@ -341,18 +341,24 @@ const authController = {
       res.json({
         success: true,
         data: {
-          user: {
+          // Basic user information
+          basic_info: {
             id: user.user_id,
             full_name: user.full_name,
             username: user.username,
             email: user.email,
             phone: user.phone || null,
             address: user.address || null,
-            roles: user.roles ? user.roles.split(',') : [],
-            account_status: user.status,
-            created_at: accountInfo[0]?.created_at || null,
-            lock_until: accountInfo[0]?.lock_until || null
+            roles: user.roles ? user.roles.split(',') : []
           },
+          // Account status information
+          account_status: {
+            status: user.status,
+            created_at: accountInfo[0]?.created_at || null,
+            lock_until: accountInfo[0]?.lock_until || null,
+            login_attempts: user.login_attempts || 0
+          },
+          // Transaction statistics
           transaction_stats: transactionStats[0] || {
             total_transactions: 0,
             completed_transactions: 0,
@@ -361,13 +367,16 @@ const authController = {
             verified_transactions: 0,
             total_quantity: 0
           },
-          reward_stats: rewardStats[0] || {
-            total_rewards: 0,
-            total_points: 0,
-            last_reward_date: null
+          // Additional data section
+          additional_data: {
+            waste_type_stats: wasteTypeStats,
+            reward_stats: rewardStats[0] || {
+              total_rewards: 0,
+              total_points: 0,
+              last_reward_date: null
+            },
+            latest_transactions: latestTransactions
           },
-          latest_transactions: latestTransactions,
-          waste_type_stats: wasteTypeStats,
           timezone: 'UTC+7'
         }
       });

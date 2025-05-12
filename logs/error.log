@@ -2811,3 +2811,19 @@ DatabaseError: Không thể xóa giao dịch: Không có quyền xóa giao dịc
   "url": "/api/v1/auth/me",
   "method": "GET"
 }
+2025-05-12 16:43:50 [ERROR]: 
+Error
+    at PromisePool.query (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at createTransactionTables (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\transactionTables.js:8:44)
+    at runMigrations (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\index.js:11:11)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:57:11
+    at Object.<anonymous> (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:65:3)
+    at Module._compile (node:internal/modules/cjs/loader:1546:14)
+    at Object..js (node:internal/modules/cjs/loader:1689:10)
+    at Module.load (node:internal/modules/cjs/loader:1318:32)
+    at Function._load (node:internal/modules/cjs/loader:1128:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+{
+  "service": "waste-management-api",
+  "code": "ECONNREFUSED"
+}
