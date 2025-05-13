@@ -2827,3 +2827,126 @@ Error
   "service": "waste-management-api",
   "code": "ECONNREFUSED"
 }
+2025-05-12 16:59:09 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-12 16:59:11 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-12 17:02:20 [ERROR]: Login failed
+InvalidCredentialsError: Username hoặc mật khẩu không đúng
+    at login (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\controllers\authController.js:220:15)
+{
+  "service": "waste-management-api",
+  "username": "admin",
+  "errorName": "InvalidCredentialsError",
+  "errorMessage": "Username hoặc mật khẩu không đúng"
+}
+2025-05-12 17:02:20 [ERROR]: 401: Username hoặc mật khẩu không đúng
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/login",
+  "method": "POST"
+}
+2025-05-12 17:02:36 [ERROR]: 404: Không tìm thấy /api/v1auth/me trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1auth/me",
+  "method": "GET"
+}
+2025-05-12 17:02:53 [ERROR]: 404: Không tìm thấy /api/v1auth/me trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1auth/me",
+  "method": "GET"
+}
+2025-05-12 17:08:09 [ERROR]: 404: Không tìm thấy /api/v1auth/me trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1auth/me",
+  "method": "GET"
+}
+2025-05-12 17:09:50 [ERROR]: 404: Không tìm thấy /api/v1auth/me trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1auth/me",
+  "method": "GET"
+}
+2025-05-12 17:10:16 [ERROR]: 404: Không tìm thấy /api/v1auth/me trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1auth/me",
+  "method": "GET"
+}
+2025-05-12 17:10:45 [ERROR]: 404: Không tìm thấy /api/v1auth/me trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1auth/me",
+  "method": "GET"
+}
+2025-05-12 17:11:46 [ERROR]: 404: Không tìm thấy /api/v1auth/me trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1auth/me",
+  "method": "GET"
+}
+2025-05-12 17:11:50 [ERROR]: 404: Không tìm thấy /api/v1auth/me trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1auth/me",
+  "method": "GET"
+}
+2025-05-12 17:13:12 [ERROR]: 404: Không tìm thấy /api/v1auth/me trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1auth/me",
+  "method": "GET"
+}
+2025-05-12 17:15:02 [ERROR]: 404: Không tìm thấy /api/v1auth/me trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1auth/me",
+  "method": "GET"
+}
+2025-05-12 17:33:33 [ERROR]: 401: Token đã hết hạn
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-12 17:58:15 [ERROR]: 404: Không tìm thấy /api/v1/api/v1/auth/me trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-12 17:59:01 [ERROR]: 404: Không tìm thấy /api/v1/api/v1/auth/me trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-12 18:01:42 [ERROR]: 404: Không tìm thấy /api/v1/api/v1/auth/me trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-12 18:01:47 [ERROR]: 404: Không tìm thấy /api/v1/api/v1/auth/me trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/api/v1/auth/me",
+  "method": "GET"
+}
+2025-05-12 18:02:03 [ERROR]: 404: Không tìm thấy /api/v1/api/v1/auth/me trên server này!
+{
+  "service": "waste-management-api",
+  "url": "/api/v1/api/v1/auth/me",
+  "method": "GET"
+}
