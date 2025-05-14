@@ -22,10 +22,24 @@ app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // Request logger middleware
 app.use((req, res, next) => {
+  // Generate a unique request ID
+  req.id = require('crypto').randomUUID();
+  
   logger.info(`${req.method} ${req.originalUrl}`, {
+    requestId: req.id,
     ip: req.ip,
     userAgent: req.get('User-Agent')
   });
+  
+  // Log response on completion
+  res.on('finish', () => {
+    const logLevel = res.statusCode >= 400 ? 'warn' : 'info';
+    logger[logLevel](`Response: ${res.statusCode} ${req.method} ${req.originalUrl}`, {
+      requestId: req.id,
+      statusCode: res.statusCode
+    });
+  });
+  
   next();
 });
 

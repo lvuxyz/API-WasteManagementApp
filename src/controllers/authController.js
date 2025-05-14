@@ -18,6 +18,11 @@ const AuthValidator = require('../validators/authValidator');
 const userRepository = require('../repositories/userRepository');
 const emailService = require('../services/emailService');
 const logger = require('../utils/logger');
+const { createControllerLogger } = require('../utils/apiLogger');
+
+// Tạo logger cho controller
+const CONTROLLER_NAME = 'authController';
+const apiLogger = createControllerLogger(CONTROLLER_NAME);
 
 // Cấu hình nodemailer
 const transporter = nodemailer.createTransport({
@@ -89,8 +94,12 @@ const LOGIN_LOCKOUT_TIME = 15; // thời gian khóa tài khoản tính bằng ph
 const authController = {
   // Đăng ký người dùng mới
   register: async (req, res, next) => {
+    const FUNCTION_NAME = 'register';
     try {
+      apiLogger.logFunction(FUNCTION_NAME, 'Bắt đầu đăng ký người dùng mới', req);
+      
       if (!req.body) {
+        apiLogger.logWarning(FUNCTION_NAME, 'Dữ liệu đăng ký trống', req);
         throw new ValidationError('Dữ liệu đăng ký không được để trống');
       }
 
@@ -104,6 +113,15 @@ const authController = {
       phone = phone?.toString().trim() || null;
       address = address?.toString().trim() || null;
 
+      // Log về dữ liệu đăng ký (ẩn mật khẩu)
+      apiLogger.logFunction(FUNCTION_NAME, 'Dữ liệu đăng ký đã được làm sạch', req, { 
+        full_name, 
+        username, 
+        email, 
+        phone, 
+        address 
+      });
+
       // Validate data
       AuthValidator.validateRegistrationData({ full_name, username, email, password, phone });
 
@@ -116,12 +134,15 @@ const authController = {
         phone,
         address
       });
+      
+      apiLogger.logFunction(FUNCTION_NAME, 'Người dùng đã được tạo thành công', req, { userId });
 
       // Check if this is the first user (admin)
       const [userCount] = await pool.execute('SELECT COUNT(*) as count FROM Users');
       
       if (userCount[0].count === 1) {
         await userRepository.assignRole(userId, 1); // ADMIN role
+        apiLogger.logFunction(FUNCTION_NAME, 'Đã gán quyền ADMIN cho người dùng đầu tiên', req, { userId });
       } else {
         const [userRoleCheck] = await pool.execute('SELECT role_id FROM Roles WHERE name = "USER"');
         
@@ -131,6 +152,7 @@ const authController = {
           const [insertRoleResult] = await pool.execute('INSERT INTO Roles (name) VALUES ("USER")');
           await userRepository.assignRole(userId, insertRoleResult.insertId);
         }
+        apiLogger.logFunction(FUNCTION_NAME, 'Đã gán quyền USER cho người dùng mới', req, { userId });
       }
 
       // Get user with roles
@@ -146,6 +168,11 @@ const authController = {
         process.env.JWT_SECRET,
         { expiresIn: '24h' }
       );
+      
+      apiLogger.logFunction(FUNCTION_NAME, 'Đăng ký hoàn tất thành công', req, { 
+        userId: user.user_id, 
+        username: user.username 
+      });
 
       res.status(201).json({
         success: true,
@@ -162,16 +189,17 @@ const authController = {
         }
       });
     } catch (error) {
-      logger.error('Registration error:', error);
+      apiLogger.logError(FUNCTION_NAME, 'Đăng ký thất bại', req, error);
       next(error);
     }
   },
 
   // Đăng nhập
   login: async (req, res, next) => {
+    const FUNCTION_NAME = 'login';
     let sanitizedUsername = '';
     try {
-      logger.info('Login attempt', { 
+      apiLogger.logFunction(FUNCTION_NAME, 'Bắt đầu đăng nhập', req, { 
         ip: req.ip, 
         userAgent: req.get('User-Agent')
       });
@@ -180,7 +208,7 @@ const authController = {
       
       // Kiểm tra và chuẩn hóa dữ liệu đầu vào
       if (!username || !password) {
-        logger.warn('Login attempt with missing credentials');
+        apiLogger.logWarning(FUNCTION_NAME, 'Thiếu thông tin đăng nhập', req);
         throw new ValidationError('Username và mật khẩu không được để trống');
       }
       
@@ -193,7 +221,7 @@ const authController = {
       const user = await userRepository.findByUsername(sanitizedUsername);
       
       if (!user) {
-        logger.warn('Login attempt with non-existent username', { 
+        apiLogger.logWarning(FUNCTION_NAME, 'Đăng nhập với username không tồn tại', req, { 
           username: sanitizedUsername 
         });
         throw new InvalidCredentialsError('Username hoặc mật khẩu không đúng');
@@ -201,7 +229,7 @@ const authController = {
 
       // Kiểm tra status
       if (user.status !== 'active') {
-        logger.warn('Inactive account login attempt', { 
+        apiLogger.logWarning(FUNCTION_NAME, 'Đăng nhập với tài khoản không hoạt động', req, { 
           userId: user.user_id,
           username: user.username,
           status: user.status
@@ -213,7 +241,7 @@ const authController = {
       const isPasswordValid = await bcrypt.compare(password, user.password_hash);
       
       if (!isPasswordValid) {
-        logger.warn('Invalid password login attempt', {
+        apiLogger.logWarning(FUNCTION_NAME, 'Đăng nhập với mật khẩu không đúng', req, {
           userId: user.user_id,
           username: user.username
         });
@@ -235,7 +263,7 @@ const authController = {
       );
       
       // Log thành công
-      logger.info('Login successful', {
+      apiLogger.logFunction(FUNCTION_NAME, 'Đăng nhập thành công', req, {
         userId: userWithRoles.user_id,
         username: userWithRoles.username,
         roles: userWithRoles.roles
@@ -256,25 +284,28 @@ const authController = {
         }
       });
     } catch (error) {
-      // Log lỗi chi tiết
-      logger.error('Login failed', { 
-        username: sanitizedUsername,
-        errorName: error.name,
-        errorMessage: error.message,
-        stack: error.stack
+      apiLogger.logError(FUNCTION_NAME, 'Đăng nhập thất bại', req, error, { 
+        username: sanitizedUsername 
       });
-      
       next(error);
     }
   },
 
   // Thêm method mới vào authController
   getCurrentUser: async (req, res, next) => {
+    const FUNCTION_NAME = 'getCurrentUser';
     try {
+      apiLogger.logFunction(FUNCTION_NAME, 'Đang lấy thông tin người dùng hiện tại', req, {
+        userId: req.user.userId
+      });
+
       // Get basic user information
       const user = await userRepository.getUserWithRoles(req.user.userId);
       
       if (!user) {
+        apiLogger.logWarning(FUNCTION_NAME, 'Người dùng không tồn tại', req, {
+          userId: req.user.userId
+        });
         throw new AuthenticationError('Người dùng không tồn tại');
       }
 
@@ -337,6 +368,12 @@ const authController = {
         WHERE user_id = ?
       `, [user.user_id]);
 
+      apiLogger.logFunction(FUNCTION_NAME, 'Lấy thông tin người dùng thành công', req, {
+        userId: user.user_id,
+        username: user.username,
+        transactionCount: transactionStats[0].total_transactions 
+      });
+
       // Build comprehensive response
       res.json({
         success: true,
@@ -381,13 +418,18 @@ const authController = {
         }
       });
     } catch (error) {
-      logger.error('Get current user error:', error);
+      apiLogger.logError(FUNCTION_NAME, 'Lấy thông tin người dùng thất bại', req, error);
       next(error);
     }
   },
 
   // Thêm method logout
   logout: async (req, res) => {
+    const FUNCTION_NAME = 'logout';
+    apiLogger.logFunction(FUNCTION_NAME, 'Người dùng đăng xuất', req, {
+      userId: req.user?.userId
+    });
+    
     res.json({
       success: true,
       message: 'Đăng xuất thành công'
@@ -396,37 +438,53 @@ const authController = {
 
   // Gửi yêu cầu reset password
   forgotPassword: async (req, res, next) => {
+    const FUNCTION_NAME = 'forgotPassword';
     try {
+      apiLogger.logFunction(FUNCTION_NAME, 'Yêu cầu đặt lại mật khẩu', req);
+      
       const { email } = req.body;
 
       if (!email) {
+        apiLogger.logWarning(FUNCTION_NAME, 'Thiếu email khi yêu cầu đặt lại mật khẩu', req);
         throw new ValidationError('Email không được để trống');
       }
 
       const user = await userRepository.findByEmail(email.toLowerCase());
       if (!user) {
+        apiLogger.logWarning(FUNCTION_NAME, 'Email không tồn tại trong hệ thống', req, {
+          email: email.toLowerCase()
+        });
         throw new ValidationError('Email không tồn tại trong hệ thống');
       }
 
       const resetToken = await userRepository.createPasswordResetToken(user.user_id);
       await emailService.sendPasswordResetEmail(user.email, resetToken);
 
+      apiLogger.logFunction(FUNCTION_NAME, 'Đã gửi email đặt lại mật khẩu', req, {
+        userId: user.user_id,
+        email: user.email
+      });
+
       res.json({
         success: true,
         message: 'Email đặt lại mật khẩu đã được gửi'
       });
     } catch (error) {
-      logger.error('Forgot password error:', error);
+      apiLogger.logError(FUNCTION_NAME, 'Gửi yêu cầu đặt lại mật khẩu thất bại', req, error);
       next(error);
     }
   },
 
   // Reset password với token
   resetPassword: async (req, res, next) => {
+    const FUNCTION_NAME = 'resetPassword';
     try {
+      apiLogger.logFunction(FUNCTION_NAME, 'Bắt đầu đặt lại mật khẩu', req);
+      
       const { token, password, confirmPassword } = req.body;
 
       if (!token) {
+        apiLogger.logWarning(FUNCTION_NAME, 'Token không hợp lệ', req);
         throw new ValidationError('Token không hợp lệ');
       }
 
@@ -434,28 +492,41 @@ const authController = {
 
       const resetToken = await userRepository.validatePasswordResetToken(token);
       if (!resetToken) {
+        apiLogger.logWarning(FUNCTION_NAME, 'Token không hợp lệ hoặc đã hết hạn', req, {
+          token: token
+        });
         throw new ValidationError('Token không hợp lệ hoặc đã hết hạn');
       }
 
       await userRepository.updatePassword(resetToken.user_id, password);
       await userRepository.deletePasswordResetToken(token);
 
+      apiLogger.logFunction(FUNCTION_NAME, 'Đặt lại mật khẩu thành công', req, {
+        userId: resetToken.user_id
+      });
+
       res.json({
         success: true,
         message: 'Đặt lại mật khẩu thành công'
       });
     } catch (error) {
-      logger.error('Reset password error:', error);
+      apiLogger.logError(FUNCTION_NAME, 'Đặt lại mật khẩu thất bại', req, error);
       next(error);
     }
   },
 
   // Đổi mật khẩu
   changePassword: async (req, res, next) => {
+    const FUNCTION_NAME = 'changePassword';
     try {
+      apiLogger.logFunction(FUNCTION_NAME, 'Bắt đầu đổi mật khẩu', req, {
+        userId: req.user.userId
+      });
+      
       const { currentPassword, newPassword, confirmPassword } = req.body;
 
       if (!currentPassword) {
+        apiLogger.logWarning(FUNCTION_NAME, 'Thiếu mật khẩu hiện tại', req);
         throw new ValidationError('Mật khẩu hiện tại không được để trống');
       }
 
@@ -463,22 +534,32 @@ const authController = {
 
       const user = await userRepository.findById(req.user.userId);
       if (!user) {
+        apiLogger.logWarning(FUNCTION_NAME, 'Người dùng không tồn tại', req, {
+          userId: req.user.userId
+        });
         throw new AuthenticationError('Người dùng không tồn tại');
       }
 
       const isPasswordValid = await bcrypt.compare(currentPassword, user.password_hash);
       if (!isPasswordValid) {
+        apiLogger.logWarning(FUNCTION_NAME, 'Mật khẩu hiện tại không đúng', req, {
+          userId: user.user_id
+        });
         throw new AuthenticationError('Mật khẩu hiện tại không đúng');
       }
 
       await userRepository.updatePassword(user.user_id, newPassword);
+
+      apiLogger.logFunction(FUNCTION_NAME, 'Đổi mật khẩu thành công', req, {
+        userId: user.user_id
+      });
 
       res.json({
         success: true,
         message: 'Đổi mật khẩu thành công'
       });
     } catch (error) {
-      logger.error('Change password error:', error);
+      apiLogger.logError(FUNCTION_NAME, 'Đổi mật khẩu thất bại', req, error);
       next(error);
     }
   }

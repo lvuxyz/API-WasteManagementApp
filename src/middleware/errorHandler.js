@@ -83,7 +83,8 @@ const handleMySQLError = (error) => {
   logger.error(`Lỗi MySQL không xử lý được: ${error.code}`, { 
     sqlMessage: error.sqlMessage,
     sql: error.sql,
-    errno: error.errno
+    errno: error.errno,
+    requestId: req?.id
   });
   
   return new AppError('Lỗi cơ sở dữ liệu. Vui lòng thử lại sau.', 500);
@@ -93,11 +94,15 @@ const handleMySQLError = (error) => {
  * Gửi lỗi trong môi trường phát triển
  */
 const sendErrorDev = (err, req, res) => {
-  logger.error(`${err.statusCode}: ${err.message}`, { 
+  logger.error(`API Error [${err.statusCode}]: ${err.message}`, { 
+    error: err, 
     stack: err.stack,
-    url: req.originalUrl,
+    path: req.originalUrl,
     method: req.method,
-    body: req.body
+    body: req.body,
+    params: req.params,
+    query: req.query,
+    requestId: req.id
   });
 
   res.status(err.statusCode).json({
@@ -112,10 +117,12 @@ const sendErrorDev = (err, req, res) => {
  * Gửi lỗi trong môi trường sản phẩm
  */
 const sendErrorProd = (err, req, res) => {
-  // Log lỗi
-  logger.error(`${err.statusCode}: ${err.message}`, {
-    url: req.originalUrl,
-    method: req.method
+  // Log lỗi chi tiết (nhưng không gửi cho người dùng)
+  logger.error(`API Error [${err.statusCode}]: ${err.message}`, {
+    error: err,
+    path: req.originalUrl,
+    method: req.method,
+    requestId: req.id
   });
 
   // Lỗi đã được xử lý
@@ -127,7 +134,10 @@ const sendErrorProd = (err, req, res) => {
   } 
   
   // Lỗi không xác định - không gửi chi tiết cho người dùng
-  logger.error('Lỗi không xác định:', { error: err });
+  logger.error('Lỗi hệ thống không xác định', { 
+    error: err,
+    requestId: req.id
+  });
   
   return res.status(500).json({
     status: 'error',

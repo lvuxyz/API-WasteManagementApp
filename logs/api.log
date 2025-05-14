@@ -1,0 +1,48 @@
+2025-05-14 23:38:44 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-14 23:38:44 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-14 23:38:44 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-14 23:38:44 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-14 23:38:44 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-14 23:38:44 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-14 23:39:20 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-14 23:39:20 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-14 23:39:20 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-14 23:39:20 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-14 23:39:20 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-14 23:39:20 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
