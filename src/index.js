@@ -11,7 +11,6 @@ const rewardRoutes = require('./routes/rewardRoutes');
 const errorHandler = require('./middleware/errorHandler');
 const { NotFoundError } = require('./utils/errors');
 const logger = require('./utils/logger');
-const runMigrations = require('./migrations');
 
 const app = express();
 
@@ -22,22 +21,49 @@ app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // Request logger middleware
 app.use((req, res, next) => {
-  // Generate a unique request ID
+  // Tạo request ID ngẫu nhiên
   req.id = require('crypto').randomUUID();
   
-  logger.info(`${req.method} ${req.originalUrl}`, {
+  // Lấy thông tin cơ bản của request
+  const startTime = Date.now();
+  const reqInfo = {
+    method: req.method,
+    url: req.originalUrl || req.url,
     requestId: req.id,
-    ip: req.ip,
-    userAgent: req.get('User-Agent')
-  });
+    userId: req.user ? req.user.userId : undefined,
+    ip: req.ip || req.headers['x-forwarded-for']
+  };
   
-  // Log response on completion
+  // Log bắt đầu request
+  logger.info(`Request started ${req.method} ${req.originalUrl}`, reqInfo);
+  
+  // Lưu thời gian bắt đầu để tính thời gian xử lý
+  req.startTime = startTime;
+  
+  // Bắt event khi response hoàn thành
   res.on('finish', () => {
-    const logLevel = res.statusCode >= 400 ? 'warn' : 'info';
-    logger[logLevel](`Response: ${res.statusCode} ${req.method} ${req.originalUrl}`, {
-      requestId: req.id,
-      statusCode: res.statusCode
-    });
+    // Tính thời gian xử lý
+    const duration = Date.now() - startTime;
+    
+    // Chọn log level dựa trên status code
+    const logLevel = res.statusCode >= 500 
+      ? 'error' 
+      : res.statusCode >= 400 
+        ? 'warn' 
+        : 'info';
+    
+    // Tạo thông tin phản hồi
+    const responseInfo = {
+      ...reqInfo,
+      statusCode: res.statusCode,
+      duration: `${duration}ms`
+    };
+    
+    // Log kết thúc request với thông tin phản hồi
+    logger[logLevel](
+      `Request completed ${req.method} ${req.originalUrl} - ${res.statusCode} [${duration}ms]`, 
+      responseInfo
+    );
   });
   
   next();
@@ -64,11 +90,9 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5001;
 
-// Run migrations before starting the server
+// Khởi động server trực tiếp không chạy migrations
 (async () => {
   try {
-    logger.info('Đang áp dụng migrations...');
-    await runMigrations();
     app.listen(PORT, () => {
       logger.info(`Server đang chạy trên port ${PORT} trong môi trường ${process.env.NODE_ENV || 'development'}`);
     });

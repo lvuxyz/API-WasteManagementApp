@@ -46,3 +46,1177 @@
 {
   "service": "waste-management-api"
 }
+2025-05-15 02:52:06 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:52:06 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:52:06 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:52:06 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:52:06 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:52:06 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:52:41 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:52:41 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:52:41 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:52:41 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:52:55 [INFO]: SIGINT RECEIVED. Shutting down gracefully
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:53:00 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:53:00 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:53:00 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:53:00 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:53:00 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:53:00 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:53:02 [INFO]: SIGINT RECEIVED. Shutting down gracefully
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:53:57 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:53:57 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:53:57 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:53:57 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:53:57 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-15 02:53:57 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-15 03:05:39 [INFO]: Request started POST /api/v1/auth/login [requestId=efc709a0-18af-410f-bd27-8b42d279c754]
+{
+  "service": "waste-management-api",
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 03:05:39 [INFO] [authController].login: Bắt đầu đăng nhập [controller=authController | functionName=login | userId=unauthenticated]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "efc709a0-18af-410f-bd27-8b42d279c754",
+    "method": "POST",
+    "url": "/api/v1/auth/login",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": "unauthenticated"
+  },
+  "ip": "::ffff:192.168.210.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-15 03:05:39 [INFO] [authController].login: Đăng nhập thành công [controller=authController | functionName=login | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "efc709a0-18af-410f-bd27-8b42d279c754",
+    "method": "POST",
+    "url": "/api/v1/auth/login",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": "unauthenticated"
+  },
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-15 03:05:39 [INFO]: Request completed POST /api/v1/auth/login - 200 [326ms] [requestId=efc709a0-18af-410f-bd27-8b42d279c754]
+{
+  "service": "waste-management-api",
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "326ms"
+}
+2025-05-15 03:05:42 [INFO]: Request started GET /api/v1/auth/me [requestId=5fa7a994-3f2c-425a-aa68-924164e41bd9]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/auth/me",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 03:05:42 [INFO] [authController].getCurrentUser: Đang lấy thông tin người dùng hiện tại [controller=authController | functionName=getCurrentUser | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "5fa7a994-3f2c-425a-aa68-924164e41bd9",
+    "method": "GET",
+    "url": "/api/v1/auth/me",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": 1
+  }
+}
+2025-05-15 03:05:42 [INFO] [authController].getCurrentUser: Lấy thông tin người dùng thành công [controller=authController | functionName=getCurrentUser | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "5fa7a994-3f2c-425a-aa68-924164e41bd9",
+    "method": "GET",
+    "url": "/api/v1/auth/me",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": 1
+  },
+  "username": "admin",
+  "transactionCount": 11
+}
+2025-05-15 03:05:42 [INFO]: Request completed GET /api/v1/auth/me - 200 [99ms] [requestId=5fa7a994-3f2c-425a-aa68-924164e41bd9]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/auth/me",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "99ms"
+}
+2025-05-15 03:05:42 [INFO]: Request started GET /api/v1/auth/me [requestId=ae3044a4-3f60-4d6a-befe-f889a0056aa5]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/auth/me",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 03:05:42 [INFO] [authController].getCurrentUser: Đang lấy thông tin người dùng hiện tại [controller=authController | functionName=getCurrentUser | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "ae3044a4-3f60-4d6a-befe-f889a0056aa5",
+    "method": "GET",
+    "url": "/api/v1/auth/me",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": 1
+  }
+}
+2025-05-15 03:05:42 [INFO] [authController].getCurrentUser: Lấy thông tin người dùng thành công [controller=authController | functionName=getCurrentUser | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "ae3044a4-3f60-4d6a-befe-f889a0056aa5",
+    "method": "GET",
+    "url": "/api/v1/auth/me",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": 1
+  },
+  "username": "admin",
+  "transactionCount": 11
+}
+2025-05-15 03:05:42 [INFO]: Request completed GET /api/v1/auth/me - 200 [22ms] [requestId=ae3044a4-3f60-4d6a-befe-f889a0056aa5]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/auth/me",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "22ms"
+}
+2025-05-15 03:05:42 [INFO]: Request started GET /api/v1/transactions?page=1&limit=3 [requestId=0ceed801-461c-446a-9ca2-7499025518e6]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/transactions?page=1&limit=3",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 03:05:42 [INFO]: Request completed GET /api/v1/transactions?page=1&limit=3 - 200 [25ms] [requestId=0ceed801-461c-446a-9ca2-7499025518e6]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/transactions?page=1&limit=3",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "25ms"
+}
+2025-05-15 03:10:13 [INFO]: Request started POST /api/v1/auth/login [requestId=ae8e579c-d5b9-42bb-8e53-535a0b3d2676]
+{
+  "service": "waste-management-api",
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "ip": "::1"
+}
+2025-05-15 03:10:13 [INFO] [authController].login: Bắt đầu đăng nhập [controller=authController | functionName=login | userId=unauthenticated]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "ae8e579c-d5b9-42bb-8e53-535a0b3d2676",
+    "method": "POST",
+    "url": "/api/v1/auth/login",
+    "ip": "::1",
+    "userAgent": "PostmanRuntime/7.43.4",
+    "userId": "unauthenticated"
+  },
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-15 03:10:14 [INFO] [authController].login: Đăng nhập thành công [controller=authController | functionName=login | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "ae8e579c-d5b9-42bb-8e53-535a0b3d2676",
+    "method": "POST",
+    "url": "/api/v1/auth/login",
+    "ip": "::1",
+    "userAgent": "PostmanRuntime/7.43.4",
+    "userId": "unauthenticated"
+  },
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-15 03:10:14 [INFO]: Request completed POST /api/v1/auth/login - 200 [222ms] [requestId=ae8e579c-d5b9-42bb-8e53-535a0b3d2676]
+{
+  "service": "waste-management-api",
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "ip": "::1",
+  "statusCode": 200,
+  "duration": "222ms"
+}
+2025-05-15 03:14:42 [INFO]: Request started POST /api/v1/auth/login [requestId=f13f94f6-f14a-49fc-bd1d-59305b70076f]
+{
+  "service": "waste-management-api",
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "ip": "::1"
+}
+2025-05-15 03:14:42 [INFO] [authController].login: Bắt đầu đăng nhập [controller=authController | functionName=login | userId=unauthenticated]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "f13f94f6-f14a-49fc-bd1d-59305b70076f",
+    "method": "POST",
+    "url": "/api/v1/auth/login",
+    "ip": "::1",
+    "userAgent": "PostmanRuntime/7.43.4",
+    "userId": "unauthenticated"
+  },
+  "ip": "::1",
+  "userAgent": "PostmanRuntime/7.43.4"
+}
+2025-05-15 03:14:42 [INFO] [authController].login: Đăng nhập thành công [controller=authController | functionName=login | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "f13f94f6-f14a-49fc-bd1d-59305b70076f",
+    "method": "POST",
+    "url": "/api/v1/auth/login",
+    "ip": "::1",
+    "userAgent": "PostmanRuntime/7.43.4",
+    "userId": "unauthenticated"
+  },
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-15 03:14:42 [INFO]: Request completed POST /api/v1/auth/login - 200 [102ms] [requestId=f13f94f6-f14a-49fc-bd1d-59305b70076f]
+{
+  "service": "waste-management-api",
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "ip": "::1",
+  "statusCode": 200,
+  "duration": "102ms"
+}
+2025-05-15 03:14:52 [INFO]: Request started GET /api/v1/rewards/4 [requestId=558d00a4-1ec0-400c-8985-9215115e1cc0]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/rewards/4",
+  "ip": "::1"
+}
+2025-05-15 03:14:52 [ERROR]: API Error [401] Token đã hết hạn [requestId=558d00a4-1ec0-400c-8985-9215115e1cc0]
+{
+  "service": "waste-management-api",
+  "path": "/api/v1/rewards/4",
+  "method": "GET",
+  "errorName": "AuthenticationError"
+}
+2025-05-15 03:14:52 [WARN]: Request completed GET /api/v1/rewards/4 - 401 [15ms] [requestId=558d00a4-1ec0-400c-8985-9215115e1cc0]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/rewards/4",
+  "ip": "::1",
+  "statusCode": 401,
+  "duration": "15ms"
+}
+2025-05-15 03:14:56 [INFO]: Request started GET /api/v1/rewards/4 [requestId=e30cc57f-22ee-416f-aeb6-27c603e068a4]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/rewards/4",
+  "ip": "::1"
+}
+2025-05-15 03:14:56 [INFO]: Request completed GET /api/v1/rewards/4 - 200 [12ms] [requestId=e30cc57f-22ee-416f-aeb6-27c603e068a4]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/rewards/4",
+  "ip": "::1",
+  "statusCode": 200,
+  "duration": "12ms"
+}
+2025-05-15 04:07:07 [INFO]: Request started GET /api/v1/auth/me [requestId=af0e001f-9549-4fa3-8b93-30c93314145c]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/auth/me",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 04:07:07 [INFO] [authController].getCurrentUser: Đang lấy thông tin người dùng hiện tại [controller=authController | functionName=getCurrentUser | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "af0e001f-9549-4fa3-8b93-30c93314145c",
+    "method": "GET",
+    "url": "/api/v1/auth/me",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": 1
+  }
+}
+2025-05-15 04:07:07 [INFO] [authController].getCurrentUser: Lấy thông tin người dùng thành công [controller=authController | functionName=getCurrentUser | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "af0e001f-9549-4fa3-8b93-30c93314145c",
+    "method": "GET",
+    "url": "/api/v1/auth/me",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": 1
+  },
+  "username": "admin",
+  "transactionCount": 11
+}
+2025-05-15 04:07:07 [INFO]: Request completed GET /api/v1/auth/me - 200 [38ms] [requestId=af0e001f-9549-4fa3-8b93-30c93314145c]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/auth/me",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "38ms"
+}
+2025-05-15 04:07:35 [INFO]: Request started POST /api/v1/auth/login [requestId=979e21fe-1682-4a5d-97cf-6e017efd89d3]
+{
+  "service": "waste-management-api",
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 04:07:35 [INFO] [authController].login: Bắt đầu đăng nhập [controller=authController | functionName=login | userId=unauthenticated]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "979e21fe-1682-4a5d-97cf-6e017efd89d3",
+    "method": "POST",
+    "url": "/api/v1/auth/login",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": "unauthenticated"
+  },
+  "ip": "::ffff:192.168.210.168",
+  "userAgent": "Dart/3.5 (dart:io)"
+}
+2025-05-15 04:07:35 [INFO] [authController].login: Đăng nhập thành công [controller=authController | functionName=login | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "979e21fe-1682-4a5d-97cf-6e017efd89d3",
+    "method": "POST",
+    "url": "/api/v1/auth/login",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": "unauthenticated"
+  },
+  "username": "admin",
+  "roles": "ADMIN"
+}
+2025-05-15 04:07:35 [INFO]: Request completed POST /api/v1/auth/login - 200 [102ms] [requestId=979e21fe-1682-4a5d-97cf-6e017efd89d3]
+{
+  "service": "waste-management-api",
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "102ms"
+}
+2025-05-15 04:07:37 [INFO]: Request started GET /api/v1/auth/me [requestId=142fb8c6-d8fb-47e8-af40-9da030cfcd7d]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/auth/me",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 04:07:37 [INFO] [authController].getCurrentUser: Đang lấy thông tin người dùng hiện tại [controller=authController | functionName=getCurrentUser | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "142fb8c6-d8fb-47e8-af40-9da030cfcd7d",
+    "method": "GET",
+    "url": "/api/v1/auth/me",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": 1
+  }
+}
+2025-05-15 04:07:37 [INFO] [authController].getCurrentUser: Lấy thông tin người dùng thành công [controller=authController | functionName=getCurrentUser | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "142fb8c6-d8fb-47e8-af40-9da030cfcd7d",
+    "method": "GET",
+    "url": "/api/v1/auth/me",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": 1
+  },
+  "username": "admin",
+  "transactionCount": 11
+}
+2025-05-15 04:07:37 [INFO]: Request completed GET /api/v1/auth/me - 200 [12ms] [requestId=142fb8c6-d8fb-47e8-af40-9da030cfcd7d]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/auth/me",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "12ms"
+}
+2025-05-15 04:07:37 [INFO]: Request started GET /api/v1/auth/me [requestId=5b97001f-0d7a-489f-adb9-2c0a77332dd2]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/auth/me",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 04:07:37 [INFO] [authController].getCurrentUser: Đang lấy thông tin người dùng hiện tại [controller=authController | functionName=getCurrentUser | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "5b97001f-0d7a-489f-adb9-2c0a77332dd2",
+    "method": "GET",
+    "url": "/api/v1/auth/me",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": 1
+  }
+}
+2025-05-15 04:07:37 [INFO] [authController].getCurrentUser: Lấy thông tin người dùng thành công [controller=authController | functionName=getCurrentUser | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "5b97001f-0d7a-489f-adb9-2c0a77332dd2",
+    "method": "GET",
+    "url": "/api/v1/auth/me",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": 1
+  },
+  "username": "admin",
+  "transactionCount": 11
+}
+2025-05-15 04:07:37 [INFO]: Request completed GET /api/v1/auth/me - 200 [12ms] [requestId=5b97001f-0d7a-489f-adb9-2c0a77332dd2]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/auth/me",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "12ms"
+}
+2025-05-15 04:07:38 [INFO]: Request started GET /api/v1/transactions?page=1&limit=3 [requestId=d356e54b-2d04-4ea6-9f58-d66c88cc42fd]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/transactions?page=1&limit=3",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 04:07:38 [INFO]: Request completed GET /api/v1/transactions?page=1&limit=3 - 200 [33ms] [requestId=d356e54b-2d04-4ea6-9f58-d66c88cc42fd]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/transactions?page=1&limit=3",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "33ms"
+}
+2025-05-15 04:08:51 [INFO]: Request started GET /api/v1/transactions?page=1&limit=3 [requestId=1b89f589-9353-4be1-960f-1a6487a5fd23]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/transactions?page=1&limit=3",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 04:08:51 [INFO]: Request completed GET /api/v1/transactions?page=1&limit=3 - 200 [11ms] [requestId=1b89f589-9353-4be1-960f-1a6487a5fd23]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/transactions?page=1&limit=3",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "11ms"
+}
+2025-05-15 04:08:54 [INFO]: Request started GET /api/v1/waste-types [requestId=a9d8cce7-fd2c-4735-9af9-3763268b2d56]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/waste-types",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 04:08:54 [INFO] [wasteTypeController].getAllWasteTypes: Đang lấy tất cả loại chất thải [controller=wasteTypeController | functionName=getAllWasteTypes | userId=unauthenticated]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "a9d8cce7-fd2c-4735-9af9-3763268b2d56",
+    "method": "GET",
+    "url": "/api/v1/waste-types",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": "unauthenticated"
+  }
+}
+2025-05-15 04:08:54 [INFO] [wasteTypeController].getAllWasteTypes: Lấy tất cả loại chất thải thành công [controller=wasteTypeController | functionName=getAllWasteTypes | userId=unauthenticated]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "a9d8cce7-fd2c-4735-9af9-3763268b2d56",
+    "method": "GET",
+    "url": "/api/v1/waste-types",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": "unauthenticated"
+  },
+  "count": 12
+}
+2025-05-15 04:08:54 [INFO]: Request completed GET /api/v1/waste-types - 200 [18ms] [requestId=a9d8cce7-fd2c-4735-9af9-3763268b2d56]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/waste-types",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "18ms"
+}
+2025-05-15 04:08:54 [INFO]: Request started GET /api/v1/auth/me [requestId=e80e8096-e89a-41d1-9ee0-ad1298f37926]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/auth/me",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 04:08:54 [INFO] [authController].getCurrentUser: Đang lấy thông tin người dùng hiện tại [controller=authController | functionName=getCurrentUser | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "e80e8096-e89a-41d1-9ee0-ad1298f37926",
+    "method": "GET",
+    "url": "/api/v1/auth/me",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": 1
+  }
+}
+2025-05-15 04:08:54 [INFO] [authController].getCurrentUser: Lấy thông tin người dùng thành công [controller=authController | functionName=getCurrentUser | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "e80e8096-e89a-41d1-9ee0-ad1298f37926",
+    "method": "GET",
+    "url": "/api/v1/auth/me",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": 1
+  },
+  "username": "admin",
+  "transactionCount": 11
+}
+2025-05-15 04:08:54 [INFO]: Request completed GET /api/v1/auth/me - 200 [12ms] [requestId=e80e8096-e89a-41d1-9ee0-ad1298f37926]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/auth/me",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "12ms"
+}
+2025-05-15 04:08:57 [INFO]: Request started GET /api/v1/waste-types/5 [requestId=a45907bb-76e0-4062-bff9-a59ea25a0929]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/waste-types/5",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 04:08:57 [INFO] [wasteTypeController].getWasteTypeById: Đang lấy loại chất thải theo ID [controller=wasteTypeController | functionName=getWasteTypeById | userId=unauthenticated | wasteTypeId=5]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "a45907bb-76e0-4062-bff9-a59ea25a0929",
+    "method": "GET",
+    "url": "/api/v1/waste-types/5",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": "unauthenticated"
+  }
+}
+2025-05-15 04:08:57 [INFO] [wasteTypeController].getWasteTypeById: Lấy loại chất thải thành công [controller=wasteTypeController | functionName=getWasteTypeById | userId=unauthenticated | wasteTypeId=5]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "a45907bb-76e0-4062-bff9-a59ea25a0929",
+    "method": "GET",
+    "url": "/api/v1/waste-types/5",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": "unauthenticated"
+  },
+  "wasteName": "Giấy và Bìa Carton"
+}
+2025-05-15 04:08:57 [INFO]: Request completed GET /api/v1/waste-types/5 - 200 [11ms] [requestId=a45907bb-76e0-4062-bff9-a59ea25a0929]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/waste-types/5",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "11ms"
+}
+2025-05-15 04:10:52 [INFO]: Request started GET /api/v1/transactions?page=1&limit=3 [requestId=2175898a-7e6a-4adb-b1fc-89f7fc69e991]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/transactions?page=1&limit=3",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 04:10:52 [INFO]: Request completed GET /api/v1/transactions?page=1&limit=3 - 200 [9ms] [requestId=2175898a-7e6a-4adb-b1fc-89f7fc69e991]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/transactions?page=1&limit=3",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "9ms"
+}
+2025-05-15 04:10:56 [INFO]: Request started GET /api/v1/transactions?page=1&limit=10 [requestId=f71d3f16-f029-42b8-b887-06232563117b]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/transactions?page=1&limit=10",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 04:10:56 [INFO]: Request completed GET /api/v1/transactions?page=1&limit=10 - 200 [9ms] [requestId=f71d3f16-f029-42b8-b887-06232563117b]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/transactions?page=1&limit=10",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "9ms"
+}
+2025-05-15 04:11:00 [INFO]: Request started GET /api/v1/transactions/19 [requestId=9d46e4e0-5f62-4452-85e5-c2df047aeb25]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/transactions/19",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 04:11:00 [INFO]: Request completed GET /api/v1/transactions/19 - 200 [15ms] [requestId=9d46e4e0-5f62-4452-85e5-c2df047aeb25]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/transactions/19",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "15ms"
+}
+2025-05-15 04:11:07 [INFO]: Request started GET /api/v1/auth/me [requestId=7840f35e-2b35-4422-8ab5-df80e6210987]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/auth/me",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 04:11:07 [INFO] [authController].getCurrentUser: Đang lấy thông tin người dùng hiện tại [controller=authController | functionName=getCurrentUser | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "7840f35e-2b35-4422-8ab5-df80e6210987",
+    "method": "GET",
+    "url": "/api/v1/auth/me",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": 1
+  }
+}
+2025-05-15 04:11:07 [INFO] [authController].getCurrentUser: Lấy thông tin người dùng thành công [controller=authController | functionName=getCurrentUser | userId=1]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "7840f35e-2b35-4422-8ab5-df80e6210987",
+    "method": "GET",
+    "url": "/api/v1/auth/me",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": 1
+  },
+  "username": "admin",
+  "transactionCount": 11
+}
+2025-05-15 04:11:07 [INFO]: Request completed GET /api/v1/auth/me - 200 [22ms] [requestId=7840f35e-2b35-4422-8ab5-df80e6210987]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/auth/me",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "22ms"
+}
+2025-05-15 04:11:28 [INFO]: Request started GET /api/v1/waste-types [requestId=a880c8bc-ff5d-4d2e-ba32-0b2664cb8df2]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/waste-types",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 04:11:28 [INFO] [wasteTypeController].getAllWasteTypes: Đang lấy tất cả loại chất thải [controller=wasteTypeController | functionName=getAllWasteTypes | userId=unauthenticated]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "a880c8bc-ff5d-4d2e-ba32-0b2664cb8df2",
+    "method": "GET",
+    "url": "/api/v1/waste-types",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": "unauthenticated"
+  }
+}
+2025-05-15 04:11:28 [INFO] [wasteTypeController].getAllWasteTypes: Lấy tất cả loại chất thải thành công [controller=wasteTypeController | functionName=getAllWasteTypes | userId=unauthenticated]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "a880c8bc-ff5d-4d2e-ba32-0b2664cb8df2",
+    "method": "GET",
+    "url": "/api/v1/waste-types",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": "unauthenticated"
+  },
+  "count": 12
+}
+2025-05-15 04:11:28 [INFO]: Request completed GET /api/v1/waste-types - 200 [5ms] [requestId=a880c8bc-ff5d-4d2e-ba32-0b2664cb8df2]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/waste-types",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "5ms"
+}
+2025-05-15 04:11:28 [INFO]: Request started GET /api/v1/waste-types [requestId=54aa088b-f25b-4ca5-bc26-31b12849eb7a]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/waste-types",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 04:11:28 [INFO] [wasteTypeController].getAllWasteTypes: Đang lấy tất cả loại chất thải [controller=wasteTypeController | functionName=getAllWasteTypes | userId=unauthenticated]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "54aa088b-f25b-4ca5-bc26-31b12849eb7a",
+    "method": "GET",
+    "url": "/api/v1/waste-types",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": "unauthenticated"
+  }
+}
+2025-05-15 04:11:28 [INFO] [wasteTypeController].getAllWasteTypes: Lấy tất cả loại chất thải thành công [controller=wasteTypeController | functionName=getAllWasteTypes | userId=unauthenticated]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "54aa088b-f25b-4ca5-bc26-31b12849eb7a",
+    "method": "GET",
+    "url": "/api/v1/waste-types",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": "unauthenticated"
+  },
+  "count": 12
+}
+2025-05-15 04:11:28 [INFO]: Request completed GET /api/v1/waste-types - 200 [7ms] [requestId=54aa088b-f25b-4ca5-bc26-31b12849eb7a]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/waste-types",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "7ms"
+}
+2025-05-15 04:11:31 [INFO]: Request started GET /api/v1/waste-types/11 [requestId=6891e55c-854f-4f39-bf76-445fd1d4ea1b]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/waste-types/11",
+  "ip": "::ffff:192.168.210.168"
+}
+2025-05-15 04:11:31 [INFO] [wasteTypeController].getWasteTypeById: Đang lấy loại chất thải theo ID [controller=wasteTypeController | functionName=getWasteTypeById | userId=unauthenticated | wasteTypeId=11]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "6891e55c-854f-4f39-bf76-445fd1d4ea1b",
+    "method": "GET",
+    "url": "/api/v1/waste-types/11",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": "unauthenticated"
+  }
+}
+2025-05-15 04:11:31 [INFO] [wasteTypeController].getWasteTypeById: Lấy loại chất thải thành công [controller=wasteTypeController | functionName=getWasteTypeById | userId=unauthenticated | wasteTypeId=11]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "6891e55c-854f-4f39-bf76-445fd1d4ea1b",
+    "method": "GET",
+    "url": "/api/v1/waste-types/11",
+    "ip": "::ffff:192.168.210.168",
+    "userAgent": "Dart/3.5 (dart:io)",
+    "userId": "unauthenticated"
+  },
+  "wasteName": "Chất Thải Độc Hại"
+}
+2025-05-15 04:11:31 [INFO]: Request completed GET /api/v1/waste-types/11 - 200 [5ms] [requestId=6891e55c-854f-4f39-bf76-445fd1d4ea1b]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/waste-types/11",
+  "ip": "::ffff:192.168.210.168",
+  "statusCode": 200,
+  "duration": "5ms"
+}
+2025-05-15 04:13:46 [INFO]: SIGINT RECEIVED. Shutting down gracefully
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:16:11 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:16:11 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:17:06 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:17:06 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:17:21 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:17:21 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:18:18 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:18:18 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:19:15 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:19:15 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:19:15 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:19:15 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:19:15 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:19:15 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:30 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:30 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:30 [INFO]: Checking and creating user tables if not exist...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:31 [INFO]: Users table already exists
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:31 [INFO]: Creating UserOTP table...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:31 [INFO]: UserOTP table created successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:31 [INFO]: WasteTypes table already exists
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:31 [INFO]: CollectionPoints table already exists
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:31 [INFO]: User and related tables check completed
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:31 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:31 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:31 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:31 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:48 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:48 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:48 [INFO]: Checking and creating user tables if not exist...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:48 [INFO]: Users table already exists
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:48 [INFO]: UserOTP table already exists
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:48 [INFO]: WasteTypes table already exists
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:48 [INFO]: CollectionPoints table already exists
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:48 [INFO]: User and related tables check completed
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:48 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:48 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:48 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:21:48 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:22:03 [INFO]: Đang áp dụng migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:22:03 [INFO]: Running database migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:22:03 [INFO]: Checking and creating user tables if not exist...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:22:03 [INFO]: Users table already exists
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:22:03 [INFO]: UserOTP table already exists
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:22:03 [INFO]: WasteTypes table already exists
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:22:03 [INFO]: CollectionPoints table already exists
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:22:03 [INFO]: User and related tables check completed
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:22:03 [INFO]: Running reward tables migrations...
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:22:03 [INFO]: Reward tables migration completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:22:03 [INFO]: All migrations have been completed successfully
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:22:03 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:22:55 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:23:22 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:23:28 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:23:33 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:23:43 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:23:53 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:24:38 [INFO]: SIGINT RECEIVED. Shutting down gracefully
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:33:28 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:34:44 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:34:47 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:35:04 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:37:20 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:43:36 [INFO]: SIGINT RECEIVED. Shutting down gracefully
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:43:50 [INFO]: Server đang chạy trên port 5000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 02:43:53 [INFO]: SIGINT RECEIVED. Shutting down gracefully
+{
+  "service": "waste-management-api"
+}

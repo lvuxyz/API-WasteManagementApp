@@ -61,7 +61,7 @@ const handleValidationErrorDB = (error) => {
 /**
  * Xử lý các lỗi MySQL phổ biến
  */
-const handleMySQLError = (error) => {
+const handleMySQLError = (error, req) => {
   // Xử lý các lỗi MySQL phổ biến và đưa ra thông báo người dùng thân thiện
   const mysqlErrors = {
     'ER_DUP_ENTRY': { message: 'Dữ liệu đã tồn tại trong hệ thống.', statusCode: 409 },
@@ -79,13 +79,16 @@ const handleMySQLError = (error) => {
     return new AppError(message, statusCode);
   }
 
-  // Log chi tiết lỗi database 
-  logger.error(`Lỗi MySQL không xử lý được: ${error.code}`, { 
+  // Log chi tiết lỗi database
+  const logData = {
+    errorCode: error.code,
     sqlMessage: error.sqlMessage,
-    sql: error.sql,
+    sqlQuery: error.sql ? error.sql.substring(0, 200) : undefined, // Chỉ log 200 ký tự đầu tiên của query
     errno: error.errno,
     requestId: req?.id
-  });
+  };
+
+  logger.error(`Lỗi MySQL không xử lý được: ${error.code || 'unknown'}`, logData);
   
   return new AppError('Lỗi cơ sở dữ liệu. Vui lòng thử lại sau.', 500);
 };
@@ -94,15 +97,19 @@ const handleMySQLError = (error) => {
  * Gửi lỗi trong môi trường phát triển
  */
 const sendErrorDev = (err, req, res) => {
-  logger.error(`API Error [${err.statusCode}]: ${err.message}`, { 
-    error: err, 
-    stack: err.stack,
+  const errorMeta = {
     path: req.originalUrl,
     method: req.method,
-    body: req.body,
-    params: req.params,
-    query: req.query,
-    requestId: req.id
+    requestId: req.id,
+    userId: req.user?.userId,
+    body: Object.keys(req.body || {}).length > 0 ? req.body : undefined
+  };
+
+  // Log chi tiết hơn về lỗi
+  logger.error(`API Error [${err.statusCode}] ${err.message}`, {
+    ...errorMeta,
+    errorName: err.name,
+    errorStack: err.stack
   });
 
   res.status(err.statusCode).json({
@@ -117,12 +124,20 @@ const sendErrorDev = (err, req, res) => {
  * Gửi lỗi trong môi trường sản phẩm
  */
 const sendErrorProd = (err, req, res) => {
-  // Log lỗi chi tiết (nhưng không gửi cho người dùng)
-  logger.error(`API Error [${err.statusCode}]: ${err.message}`, {
-    error: err,
+  // Thông tin cơ bản về request
+  const errorMeta = {
     path: req.originalUrl,
     method: req.method,
-    requestId: req.id
+    requestId: req.id,
+    userId: req.user?.userId
+  };
+
+  // Log lỗi chi tiết với metadata hữu ích
+  logger.error(`API Error [${err.statusCode}] ${err.message}`, {
+    ...errorMeta,
+    errorName: err.name,
+    errorCode: err.code,
+    errorStack: process.env.NODE_ENV === 'development' ? err.stack : undefined
   });
 
   // Lỗi đã được xử lý
@@ -134,9 +149,12 @@ const sendErrorProd = (err, req, res) => {
   } 
   
   // Lỗi không xác định - không gửi chi tiết cho người dùng
-  logger.error('Lỗi hệ thống không xác định', { 
-    error: err,
-    requestId: req.id
+  logger.error(`Lỗi hệ thống không xác định: ${err.message}`, { 
+    ...errorMeta,
+    error: {
+      name: err.name,
+      code: err.code
+    }
   });
   
   return res.status(500).json({
@@ -166,7 +184,7 @@ module.exports = (err, req, res, next) => {
     if (error.name === 'TokenExpiredError') error = handleJWTExpiredError();
     if (error.code === 11000 || error.code === 'ER_DUP_ENTRY') error = handleDuplicateFieldsDB(error);
     if (error.name === 'ValidationError' || error.name === 'SequelizeValidationError') error = handleValidationErrorDB(error);
-    if (error.code && error.errno) error = handleMySQLError(error);
+    if (error.code && error.errno) error = handleMySQLError(error, req);
 
     sendErrorProd(error, req, res);
   }

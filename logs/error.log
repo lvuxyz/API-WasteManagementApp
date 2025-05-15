@@ -2950,3 +2950,86 @@ InvalidCredentialsError: Username hoặc mật khẩu không đúng
   "url": "/api/v1/api/v1/auth/me",
   "method": "GET"
 }
+2025-05-15 02:52:41 [ERROR]: LỖI KHÔNG BẮT ĐƯỢC - UNCAUGHT EXCEPTION:
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at Function.listen (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\express\lib\application.js:635:24)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:72:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{
+  "service": "waste-management-api",
+  "error": "listen EADDRINUSE: address already in use :::5000"
+}
+2025-05-15 03:14:52 [ERROR]: API Error [401] Token đã hết hạn [requestId=558d00a4-1ec0-400c-8985-9215115e1cc0]
+{
+  "service": "waste-management-api",
+  "path": "/api/v1/rewards/4",
+  "method": "GET",
+  "errorName": "AuthenticationError"
+}
+2025-05-16 02:16:11 [ERROR]: 
+Error
+    at PromisePool.query (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at createTransactionTables (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\transactionTables.js:8:44)
+    at runMigrations (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\index.js:11:11)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:107:11
+    at Object.<anonymous> (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:115:3)
+    at Module._compile (node:internal/modules/cjs/loader:1546:14)
+    at Object..js (node:internal/modules/cjs/loader:1689:10)
+    at Module.load (node:internal/modules/cjs/loader:1318:32)
+    at Function._load (node:internal/modules/cjs/loader:1128:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+{
+  "service": "waste-management-api",
+  "code": "ECONNREFUSED"
+}
+2025-05-16 02:17:06 [ERROR]: 
+Error
+    at PromisePool.query (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at createTransactionTables (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\transactionTables.js:8:44)
+    at runMigrations (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\index.js:11:11)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:107:11
+    at Object.<anonymous> (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:115:3)
+    at Module._compile (node:internal/modules/cjs/loader:1546:14)
+    at Object..js (node:internal/modules/cjs/loader:1689:10)
+    at Module.load (node:internal/modules/cjs/loader:1318:32)
+    at Function._load (node:internal/modules/cjs/loader:1128:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+{
+  "service": "waste-management-api",
+  "code": "ECONNREFUSED"
+}
+2025-05-16 02:17:21 [ERROR]: 
+Error
+    at PromisePool.query (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at createTransactionTables (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\transactionTables.js:8:44)
+    at runMigrations (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\index.js:11:11)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:98:11
+    at Object.<anonymous> (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:106:3)
+    at Module._compile (node:internal/modules/cjs/loader:1546:14)
+    at Object..js (node:internal/modules/cjs/loader:1689:10)
+    at Module.load (node:internal/modules/cjs/loader:1318:32)
+    at Function._load (node:internal/modules/cjs/loader:1128:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+{
+  "service": "waste-management-api",
+  "code": "ECONNREFUSED"
+}
+2025-05-16 02:18:18 [ERROR]: 
+Error
+    at PromisePool.query (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at createTransactionTables (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\transactionTables.js:8:44)
+    at runMigrations (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\migrations\index.js:11:11)
+    at D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:98:11
+    at Object.<anonymous> (D:\Android Studio\do_an_tot_nghiep\API-WasteManagementApp\src\index.js:106:3)
+    at Module._compile (node:internal/modules/cjs/loader:1546:14)
+    at Object..js (node:internal/modules/cjs/loader:1689:10)
+    at Module.load (node:internal/modules/cjs/loader:1318:32)
+    at Function._load (node:internal/modules/cjs/loader:1128:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+{
+  "service": "waste-management-api",
+  "code": "ECONNREFUSED"
+}
