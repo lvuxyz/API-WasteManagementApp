@@ -138,18 +138,18 @@ const authController = {
       apiLogger.logFunction(FUNCTION_NAME, 'Người dùng đã được tạo thành công', req, { userId });
 
       // Check if this is the first user (admin)
-      const [userCount] = await pool.execute('SELECT COUNT(*) as count FROM Users');
+      const [userCount] = await pool.execute('SELECT COUNT(*) as count FROM users');
       
       if (userCount[0].count === 1) {
         await userRepository.assignRole(userId, 1); // ADMIN role
         apiLogger.logFunction(FUNCTION_NAME, 'Đã gán quyền ADMIN cho người dùng đầu tiên', req, { userId });
       } else {
-        const [userRoleCheck] = await pool.execute('SELECT role_id FROM Roles WHERE name = "USER"');
+        const [userRoleCheck] = await pool.execute('SELECT role_id FROM roles WHERE name = "USER"');
         
         if (userRoleCheck.length > 0) {
           await userRepository.assignRole(userId, userRoleCheck[0].role_id);
         } else {
-          const [insertRoleResult] = await pool.execute('INSERT INTO Roles (name) VALUES ("USER")');
+          const [insertRoleResult] = await pool.execute('INSERT INTO roles (name) VALUES ("USER")');
           await userRepository.assignRole(userId, insertRoleResult.insertId);
         }
         apiLogger.logFunction(FUNCTION_NAME, 'Đã gán quyền USER cho người dùng mới', req, { userId });
@@ -364,7 +364,7 @@ const authController = {
           created_at,
           status,
           lock_until
-        FROM Users
+        FROM users
         WHERE user_id = ?
       `, [user.user_id]);
 

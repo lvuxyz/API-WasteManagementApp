@@ -7,7 +7,7 @@ const { NotFoundError, BadRequestError } = require('../utils/errors');
 exports.getAllCollectionPoints = async (req, res, next) => {
   try {
     const [rows] = await pool.execute(`
-      SELECT * FROM CollectionPoints
+      SELECT * FROM collectionpoints
       ORDER BY name
     `);
     
@@ -32,7 +32,7 @@ exports.getCollectionPointById = async (req, res, next) => {
     
     // Lấy thông tin cơ bản của điểm thu gom
     const [rows] = await pool.execute(`
-      SELECT * FROM CollectionPoints WHERE collection_point_id = ?
+      SELECT * FROM collectionpoints WHERE collection_point_id = ?
     `, [id]);
     
     if (rows.length === 0) {
@@ -41,8 +41,8 @@ exports.getCollectionPointById = async (req, res, next) => {
     
     // Lấy các loại rác được thu gom tại điểm này
     const [wasteTypes] = await pool.execute(`
-      SELECT wt.* FROM WasteTypes wt
-      JOIN CollectionPointWasteTypes cpwt ON wt.waste_type_id = cpwt.waste_type_id
+      SELECT wt.* FROM wastetypes wt
+      JOIN collectionpointwastetypes cpwt ON wt.waste_type_id = cpwt.waste_type_id
       WHERE cpwt.collection_point_id = ?
     `, [id]);
     
@@ -82,20 +82,20 @@ exports.createCollectionPoint = async (req, res, next) => {
     
     // Insert collection point
     const [result] = await pool.execute(`
-      INSERT INTO CollectionPoints (
+      INSERT INTO collectionpoints (
         name, address, latitude, longitude, operating_hours, capacity, status
       ) VALUES (?, ?, ?, ?, ?, ?, ?)
     `, [name, address, latitude, longitude, operating_hours, capacity, status]);
     
     // Create initial status history entry
     await pool.execute(`
-      INSERT INTO CollectionPointStatusHistory (collection_point_id, status, updated_by)
+      INSERT INTO collectionpointstatushistory (collection_point_id, status, updated_by)
       VALUES (?, ?, ?)
     `, [result.insertId, status, req.user.id]);
     
     // Get the created collection point
     const [newCollectionPoint] = await pool.execute(`
-      SELECT * FROM CollectionPoints WHERE collection_point_id = ?
+      SELECT * FROM collectionpoints WHERE collection_point_id = ?
     `, [result.insertId]);
     
     res.status(201).json({
@@ -128,7 +128,7 @@ exports.updateCollectionPoint = async (req, res, next) => {
     
     // Check if collection point exists
     const [existingPoints] = await pool.execute(`
-      SELECT * FROM CollectionPoints WHERE collection_point_id = ?
+      SELECT * FROM collectionpoints WHERE collection_point_id = ?
     `, [id]);
     
     if (existingPoints.length === 0) {
@@ -190,7 +190,7 @@ exports.updateCollectionPoint = async (req, res, next) => {
     
     // Update collection point
     await pool.execute(`
-      UPDATE CollectionPoints
+      UPDATE collectionpoints
       SET ${updateFields.join(', ')}
       WHERE collection_point_id = ?
     `, queryParams);
@@ -198,14 +198,14 @@ exports.updateCollectionPoint = async (req, res, next) => {
     // Create status history entry if status has changed
     if (status !== undefined && status !== oldStatus) {
       await pool.execute(`
-        INSERT INTO CollectionPointStatusHistory (collection_point_id, status, updated_by)
+        INSERT INTO collectionpointstatushistory (collection_point_id, status, updated_by)
         VALUES (?, ?, ?)
       `, [id, status, req.user.id]);
     }
     
     // Get the updated collection point
     const [updatedCollectionPoint] = await pool.execute(`
-      SELECT * FROM CollectionPoints WHERE collection_point_id = ?
+      SELECT * FROM collectionpoints WHERE collection_point_id = ?
     `, [id]);
     
     res.status(200).json({
@@ -228,7 +228,7 @@ exports.deleteCollectionPoint = async (req, res, next) => {
     
     // Check if collection point exists
     const [existingPoints] = await pool.execute(`
-      SELECT * FROM CollectionPoints WHERE collection_point_id = ?
+      SELECT * FROM collectionpoints WHERE collection_point_id = ?
     `, [id]);
     
     if (existingPoints.length === 0) {
@@ -237,7 +237,7 @@ exports.deleteCollectionPoint = async (req, res, next) => {
     
     // Delete the collection point (foreign key constraints will handle related records)
     await pool.execute(`
-      DELETE FROM CollectionPoints WHERE collection_point_id = ?
+      DELETE FROM collectionpoints WHERE collection_point_id = ?
     `, [id]);
     
     res.status(204).json({
@@ -263,7 +263,7 @@ exports.updateCollectionPointStatus = async (req, res, next) => {
     
     // Check if collection point exists
     const [existingPoints] = await pool.execute(`
-      SELECT * FROM CollectionPoints WHERE collection_point_id = ?
+      SELECT * FROM collectionpoints WHERE collection_point_id = ?
     `, [id]);
     
     if (existingPoints.length === 0) {
@@ -276,21 +276,21 @@ exports.updateCollectionPointStatus = async (req, res, next) => {
     if (status !== oldStatus) {
       // Update collection point status
       await pool.execute(`
-        UPDATE CollectionPoints
+        UPDATE collectionpoints
         SET status = ?
         WHERE collection_point_id = ?
       `, [status, id]);
       
       // Create status history entry
       await pool.execute(`
-        INSERT INTO CollectionPointStatusHistory (collection_point_id, status, updated_by)
+        INSERT INTO collectionpointstatushistory (collection_point_id, status, updated_by)
         VALUES (?, ?, ?)
       `, [id, status, req.user.id]);
     }
     
     // Get the updated collection point
     const [updatedCollectionPoint] = await pool.execute(`
-      SELECT * FROM CollectionPoints WHERE collection_point_id = ?
+      SELECT * FROM collectionpoints WHERE collection_point_id = ?
     `, [id]);
     
     res.status(200).json({
@@ -313,7 +313,7 @@ exports.getCollectionPointStatusHistory = async (req, res, next) => {
     
     // Kiểm tra điểm thu gom có tồn tại không
     const [existingPoints] = await pool.execute(`
-      SELECT collection_point_id FROM CollectionPoints WHERE collection_point_id = ?
+      SELECT collection_point_id FROM collectionpoints WHERE collection_point_id = ?
     `, [id]);
     
     if (existingPoints.length === 0) {
@@ -327,8 +327,8 @@ exports.getCollectionPointStatusHistory = async (req, res, next) => {
         cpsh.status,
         cpsh.updated_at,
         COALESCE(u.username, 'System') as updated_by
-      FROM CollectionPointStatusHistory cpsh
-      LEFT JOIN Users u ON u.user_id = cpsh.updated_by
+      FROM collectionpointstatushistory cpsh
+      LEFT JOIN users u ON u.user_id = cpsh.updated_by
       WHERE cpsh.collection_point_id = ?
       ORDER BY cpsh.updated_at DESC
     `, [id]);

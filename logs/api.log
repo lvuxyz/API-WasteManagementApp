@@ -1220,3 +1220,121 @@
 {
   "service": "waste-management-api"
 }
+2025-05-16 03:41:38 [INFO]: Server đang chạy trên port 3000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 03:42:06 [INFO]: Request started GET /api/v1/waste-types/4 [requestId=6bb8f5f9-0d14-4555-a0ea-d43e54b65256]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/waste-types/4",
+  "ip": "::1"
+}
+2025-05-16 03:42:06 [INFO] [wasteTypeController].getWasteTypeById: Đang lấy loại chất thải theo ID [controller=wasteTypeController | functionName=getWasteTypeById | userId=unauthenticated | wasteTypeId=4]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "6bb8f5f9-0d14-4555-a0ea-d43e54b65256",
+    "method": "GET",
+    "url": "/api/v1/waste-types/4",
+    "ip": "::1",
+    "userAgent": "PostmanRuntime/7.43.4",
+    "userId": "unauthenticated"
+  }
+}
+2025-05-16 03:42:07 [INFO] [wasteTypeController].getWasteTypeById: Lấy loại chất thải thành công [controller=wasteTypeController | functionName=getWasteTypeById | userId=unauthenticated | wasteTypeId=4]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "6bb8f5f9-0d14-4555-a0ea-d43e54b65256",
+    "method": "GET",
+    "url": "/api/v1/waste-types/4",
+    "ip": "::1",
+    "userAgent": "PostmanRuntime/7.43.4",
+    "userId": "unauthenticated"
+  },
+  "wasteName": "Nhựa tái chế"
+}
+2025-05-16 03:42:07 [INFO]: Request completed GET /api/v1/waste-types/4 - 200 [102ms] [requestId=6bb8f5f9-0d14-4555-a0ea-d43e54b65256]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/waste-types/4",
+  "ip": "::1",
+  "statusCode": 200,
+  "duration": "102ms"
+}
+2025-05-16 03:42:19 [INFO]: Request started GET /api/v1/waste-types [requestId=292a6ab3-f06d-4935-9027-a6aec8f003cd]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/waste-types",
+  "ip": "::1"
+}
+2025-05-16 03:42:19 [INFO] [wasteTypeController].getAllWasteTypes: Đang lấy tất cả loại chất thải [controller=wasteTypeController | functionName=getAllWasteTypes | userId=unauthenticated]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "292a6ab3-f06d-4935-9027-a6aec8f003cd",
+    "method": "GET",
+    "url": "/api/v1/waste-types",
+    "ip": "::1",
+    "userAgent": "PostmanRuntime/7.43.4",
+    "userId": "unauthenticated"
+  }
+}
+2025-05-16 03:42:19 [INFO] [wasteTypeController].getAllWasteTypes: Lấy tất cả loại chất thải thành công [controller=wasteTypeController | functionName=getAllWasteTypes | userId=unauthenticated]
+{
+  "service": "waste-management-api",
+  "requestInfo": {
+    "id": "292a6ab3-f06d-4935-9027-a6aec8f003cd",
+    "method": "GET",
+    "url": "/api/v1/waste-types",
+    "ip": "::1",
+    "userAgent": "PostmanRuntime/7.43.4",
+    "userId": "unauthenticated"
+  },
+  "count": 12
+}
+2025-05-16 03:42:19 [INFO]: Request completed GET /api/v1/waste-types - 200 [8ms] [requestId=292a6ab3-f06d-4935-9027-a6aec8f003cd]
+{
+  "service": "waste-management-api",
+  "method": "GET",
+  "url": "/api/v1/waste-types",
+  "ip": "::1",
+  "statusCode": 200,
+  "duration": "8ms"
+}
+2025-05-16 03:52:42 [INFO]: Server đang chạy trên port 3000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 03:54:04 [INFO]: Server đang chạy trên port 3000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 03:56:37 [INFO]: Server đang chạy trên port 3000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 03:57:16 [INFO]: Server đang chạy trên port 3000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 03:57:47 [INFO]: Server đang chạy trên port 3000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 03:58:12 [INFO]: Server đang chạy trên port 3000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 03:59:44 [INFO]: Server đang chạy trên port 3000 trong môi trường development
+{
+  "service": "waste-management-api"
+}
+2025-05-16 04:03:06 [INFO]: SIGINT RECEIVED. Shutting down gracefully
+{
+  "service": "waste-management-api"
+}

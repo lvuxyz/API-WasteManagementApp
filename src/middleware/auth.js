@@ -15,9 +15,9 @@ const auth = async (req, res, next) => {
     const [users] = await pool.execute(`
       SELECT u.user_id, u.username, u.email, u.status,
              GROUP_CONCAT(r.name) as roles
-      FROM Users u
-      LEFT JOIN UserRoles ur ON u.user_id = ur.user_id
-      LEFT JOIN Roles r ON ur.role_id = r.role_id
+      FROM users u
+      LEFT JOIN userroles ur ON u.user_id = ur.user_id
+      LEFT JOIN roles r ON ur.role_id = r.role_id
       WHERE u.user_id = ?
       GROUP BY u.user_id`,
       [decoded.id]

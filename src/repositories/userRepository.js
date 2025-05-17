@@ -8,7 +8,7 @@ class UserRepository {
   async findByUsername(username) {
     try {
       const [rows] = await pool.execute(
-        'SELECT * FROM Users WHERE username = ?',
+        'SELECT * FROM users WHERE username = ?',
         [username]
       );
       return rows[0];
@@ -21,7 +21,7 @@ class UserRepository {
   async findByEmail(email) {
     try {
       const [rows] = await pool.execute(
-        'SELECT * FROM Users WHERE email = ?',
+        'SELECT * FROM users WHERE email = ?',
         [email]
       );
       return rows[0];
@@ -34,7 +34,7 @@ class UserRepository {
   async findById(id) {
     try {
       const [rows] = await pool.execute(
-        'SELECT * FROM Users WHERE user_id = ?',
+        'SELECT * FROM users WHERE user_id = ?',
         [id]
       );
       return rows[0];
@@ -50,7 +50,7 @@ class UserRepository {
       
       // Kiểm tra username và email đã tồn tại
       const [existingUsername] = await pool.execute(
-        'SELECT username FROM Users WHERE username = ?',
+        'SELECT username FROM users WHERE username = ?',
         [username]
       );
 
@@ -59,7 +59,7 @@ class UserRepository {
       }
 
       const [existingEmail] = await pool.execute(
-        'SELECT email FROM Users WHERE email = ?',
+        'SELECT email FROM users WHERE email = ?',
         [email]
       );
 
@@ -73,7 +73,7 @@ class UserRepository {
 
       // Insert user mới
       const [result] = await pool.execute(
-        `INSERT INTO Users (
+        `INSERT INTO users (
           full_name,
           username,
           email,
@@ -96,7 +96,7 @@ class UserRepository {
   async assignRole(userId, roleId) {
     try {
       await pool.execute(
-        'INSERT INTO UserRoles (user_id, role_id) VALUES (?, ?)',
+        'INSERT INTO userroles (user_id, role_id) VALUES (?, ?)',
         [userId, roleId]
       );
     } catch (error) {
@@ -111,9 +111,9 @@ class UserRepository {
         SELECT u.user_id, u.full_name, u.username, u.email, u.status, 
                u.phone, u.address, u.created_at, u.login_attempts, u.lock_until,
                GROUP_CONCAT(r.name) as roles
-        FROM Users u
-        LEFT JOIN UserRoles ur ON u.user_id = ur.user_id
-        LEFT JOIN Roles r ON ur.role_id = r.role_id
+        FROM users u
+        LEFT JOIN userroles ur ON u.user_id = ur.user_id
+        LEFT JOIN roles r ON ur.role_id = r.role_id
         WHERE u.user_id = ?
         GROUP BY u.user_id`,
         [userId]
@@ -131,7 +131,7 @@ class UserRepository {
       const hashedPassword = await bcrypt.hash(newPassword, salt);
 
       await pool.execute(
-        'UPDATE Users SET password_hash = ? WHERE user_id = ?',
+        'UPDATE users SET password_hash = ? WHERE user_id = ?',
         [hashedPassword, userId]
       );
     } catch (error) {
@@ -146,7 +146,7 @@ class UserRepository {
       const expiresAt = new Date(Date.now() + 3600000); // 1 hour from now
 
       await pool.execute(
-        'INSERT INTO PasswordResetTokens (user_id, token, expires_at) VALUES (?, ?, ?)',
+        'INSERT INTO passwordresets (user_id, token, expires_at) VALUES (?, ?, ?)',
         [userId, token, expiresAt]
       );
 
@@ -160,7 +160,7 @@ class UserRepository {
   async validatePasswordResetToken(token) {
     try {
       const [rows] = await pool.execute(
-        'SELECT * FROM PasswordResetTokens WHERE token = ? AND expires_at > NOW()',
+        'SELECT * FROM passwordresets WHERE token = ? AND expires_at > NOW()',
         [token]
       );
       return rows[0];
@@ -173,7 +173,7 @@ class UserRepository {
   async deletePasswordResetToken(token) {
     try {
       await pool.execute(
-        'DELETE FROM PasswordResetTokens WHERE token = ?',
+        'DELETE FROM passwordresets WHERE token = ?',
         [token]
       );
     } catch (error) {

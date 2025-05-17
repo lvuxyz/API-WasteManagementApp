@@ -14,7 +14,7 @@ exports.getAllWasteTypes = async (req, res, next) => {
   try {
     logger.logFunction(FUNCTION_NAME, 'Đang lấy tất cả loại chất thải', req);
     
-    const [rows] = await pool.query('SELECT * FROM WasteTypes ORDER BY name');
+    const [rows] = await pool.query('SELECT * FROM wastetypes ORDER BY name');
     
     logger.logFunction(FUNCTION_NAME, 'Lấy tất cả loại chất thải thành công', req, {
       count: rows.length
@@ -44,7 +44,7 @@ exports.getWasteTypeById = async (req, res, next) => {
     logger.logFunction(FUNCTION_NAME, 'Đang lấy loại chất thải theo ID', req, { wasteTypeId: id });
     
     const [rows] = await pool.query(
-      'SELECT * FROM WasteTypes WHERE waste_type_id = ?',
+      'SELECT * FROM wastetypes WHERE waste_type_id = ?',
       [id]
     );
     
@@ -88,12 +88,12 @@ exports.createWasteType = async (req, res, next) => {
     }
     
     const [result] = await pool.query(
-      'INSERT INTO WasteTypes (name, description, recyclable, handling_instructions, unit_price) VALUES (?, ?, ?, ?, ?)',
+      'INSERT INTO wastetypes (name, description, recyclable, handling_instructions, unit_price) VALUES (?, ?, ?, ?, ?)',
       [name, description, recyclable, handling_instructions, unit_price]
     );
     
     const [newWasteType] = await pool.query(
-      'SELECT * FROM WasteTypes WHERE waste_type_id = ?',
+      'SELECT * FROM wastetypes WHERE waste_type_id = ?',
       [result.insertId]
     );
     
@@ -139,7 +139,7 @@ exports.updateWasteType = async (req, res, next) => {
     
     // Check if waste type exists
     const [existingWasteType] = await pool.query(
-      'SELECT * FROM WasteTypes WHERE waste_type_id = ?',
+      'SELECT * FROM wastetypes WHERE waste_type_id = ?',
       [id]
     );
     
@@ -152,7 +152,7 @@ exports.updateWasteType = async (req, res, next) => {
     
     // Update the waste type
     await pool.query(
-      'UPDATE WasteTypes SET name = ?, description = ?, recyclable = ?, handling_instructions = ?, unit_price = ? WHERE waste_type_id = ?',
+      'UPDATE wastetypes SET name = ?, description = ?, recyclable = ?, handling_instructions = ?, unit_price = ? WHERE waste_type_id = ?',
       [
         name || existingWasteType[0].name,
         description !== undefined ? description : existingWasteType[0].description,
@@ -164,7 +164,7 @@ exports.updateWasteType = async (req, res, next) => {
     );
     
     const [updatedWasteType] = await pool.query(
-      'SELECT * FROM WasteTypes WHERE waste_type_id = ?',
+      'SELECT * FROM wastetypes WHERE waste_type_id = ?',
       [id]
     );
     
@@ -208,7 +208,7 @@ exports.deleteWasteType = async (req, res, next) => {
     
     // Check if waste type exists
     const [existingWasteType] = await pool.query(
-      'SELECT * FROM WasteTypes WHERE waste_type_id = ?',
+      'SELECT * FROM wastetypes WHERE waste_type_id = ?',
       [id]
     );
     
@@ -219,7 +219,7 @@ exports.deleteWasteType = async (req, res, next) => {
       return next(new NotFoundError('Không tìm thấy loại chất thải với ID đã cung cấp'));
     }
     
-    await pool.query('DELETE FROM WasteTypes WHERE waste_type_id = ?', [id]);
+    await pool.query('DELETE FROM wastetypes WHERE waste_type_id = ?', [id]);
     
     logger.logFunction(FUNCTION_NAME, 'Xóa loại chất thải thành công', req, {
       wasteTypeId: id,
@@ -265,7 +265,7 @@ exports.addWasteTypeToCollectionPoint = async (req, res, next) => {
     
     // Check if collection point exists
     const [collectionPoint] = await pool.query(
-      'SELECT * FROM CollectionPoints WHERE collection_point_id = ?',
+      'SELECT * FROM collectionpoints WHERE collection_point_id = ?',
       [collection_point_id]
     );
     
@@ -278,7 +278,7 @@ exports.addWasteTypeToCollectionPoint = async (req, res, next) => {
     
     // Check if waste type exists
     const [wasteType] = await pool.query(
-      'SELECT * FROM WasteTypes WHERE waste_type_id = ?',
+      'SELECT * FROM wastetypes WHERE waste_type_id = ?',
       [waste_type_id]
     );
     
@@ -291,7 +291,7 @@ exports.addWasteTypeToCollectionPoint = async (req, res, next) => {
     
     // Check if association already exists
     const [existingAssociation] = await pool.query(
-      'SELECT * FROM CollectionPointWasteTypes WHERE collection_point_id = ? AND waste_type_id = ?',
+      'SELECT * FROM collectionpointwastetypes WHERE collection_point_id = ? AND waste_type_id = ?',
       [collection_point_id, waste_type_id]
     );
     
@@ -305,7 +305,7 @@ exports.addWasteTypeToCollectionPoint = async (req, res, next) => {
     
     // Add association
     await pool.query(
-      'INSERT INTO CollectionPointWasteTypes (collection_point_id, waste_type_id) VALUES (?, ?)',
+      'INSERT INTO collectionpointwastetypes (collection_point_id, waste_type_id) VALUES (?, ?)',
       [collection_point_id, waste_type_id]
     );
     
@@ -344,7 +344,7 @@ exports.removeWasteTypeFromCollectionPoint = async (req, res, next) => {
     
     // Check if association exists
     const [existingAssociation] = await pool.query(
-      'SELECT * FROM CollectionPointWasteTypes WHERE collection_point_id = ? AND waste_type_id = ?',
+      'SELECT * FROM collectionpointwastetypes WHERE collection_point_id = ? AND waste_type_id = ?',
       [collection_point_id, waste_type_id]
     );
     
@@ -358,7 +358,7 @@ exports.removeWasteTypeFromCollectionPoint = async (req, res, next) => {
     
     // Remove association
     await pool.query(
-      'DELETE FROM CollectionPointWasteTypes WHERE collection_point_id = ? AND waste_type_id = ?',
+      'DELETE FROM collectionpointwastetypes WHERE collection_point_id = ? AND waste_type_id = ?',
       [collection_point_id, waste_type_id]
     );
     
@@ -394,7 +394,7 @@ exports.getWasteTypesByCollectionPoint = async (req, res, next) => {
     
     // Check if collection point exists
     const [collectionPoint] = await pool.query(
-      'SELECT * FROM CollectionPoints WHERE collection_point_id = ?',
+      'SELECT * FROM collectionpoints WHERE collection_point_id = ?',
       [collection_point_id]
     );
     
@@ -407,8 +407,8 @@ exports.getWasteTypesByCollectionPoint = async (req, res, next) => {
     
     const [wasteTypes] = await pool.query(
       `SELECT w.* 
-       FROM WasteTypes w 
-       JOIN CollectionPointWasteTypes cpwt ON w.waste_type_id = cpwt.waste_type_id 
+       FROM wastetypes w 
+       JOIN collectionpointwastetypes cpwt ON w.waste_type_id = cpwt.waste_type_id 
        WHERE cpwt.collection_point_id = ?`,
       [collection_point_id]
     );
@@ -448,7 +448,7 @@ exports.getCollectionPointsByWasteType = async (req, res, next) => {
     
     // Check if waste type exists
     const [wasteType] = await pool.query(
-      'SELECT * FROM WasteTypes WHERE waste_type_id = ?',
+      'SELECT * FROM wastetypes WHERE waste_type_id = ?',
       [waste_type_id]
     );
     
@@ -461,8 +461,8 @@ exports.getCollectionPointsByWasteType = async (req, res, next) => {
     
     const [collectionPoints] = await pool.query(
       `SELECT cp.* 
-       FROM CollectionPoints cp 
-       JOIN CollectionPointWasteTypes cpwt ON cp.collection_point_id = cpwt.collection_point_id 
+       FROM collectionpoints cp 
+       JOIN collectionpointwastetypes cpwt ON cp.collection_point_id = cpwt.collection_point_id 
        WHERE cpwt.waste_type_id = ?`,
       [waste_type_id]
     );

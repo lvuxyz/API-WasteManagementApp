@@ -9,8 +9,8 @@ const checkRole = (requiredRole) => {
       // Kiểm tra role của user
       const [userRoles] = await pool.execute(`
         SELECT r.name 
-        FROM Roles r 
-        JOIN UserRoles ur ON r.role_id = ur.role_id 
+        FROM roles r 
+        JOIN userroles ur ON r.role_id = ur.role_id 
         WHERE ur.user_id = ?`,
         [userId]
       );
